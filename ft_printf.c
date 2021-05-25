@@ -6,7 +6,7 @@
 /*   By: cmariot <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/24 10:55:24 by cmariot           #+#    #+#             */
-/*   Updated: 2021/05/25 11:30:24 by cmariot          ###   ########.fr       */
+/*   Updated: 2021/05/25 21:29:43 by cmariot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,27 +38,7 @@
  *
  */
 
-char	*ft_strchr(const char *s, int c)
-{
-	char	*str;
-	int		i;
-
-	if (c < 0 || c > 127)
-		return (NULL);
-	str = (char *)s;
-	i = 0;
-	while (str[i] != '\0')
-	{
-		if (str[i] == c)
-			return (&str[i]);
-		i++;
-	}
-	if (str[i] == '\0' && c == '\0')
-		return (&str[i]);
-	return (NULL);
-}
-
-int		pourcent_d(const char *str)
+int	pourcent_d(const char *str)
 {
 	if (*str == '%')
 		str++;
@@ -67,26 +47,67 @@ int		pourcent_d(const char *str)
 	return (1);
 }
 
+int	ft_putchar(char c)
+{
+	write(1, &c, 1);
+	return (1);
+}
+
+void	ft_putnbr(int n)
+{
+	long int	nb;
+
+	nb = n;
+	if (nb < 0)
+	{
+		ft_putchar('-');
+		nb = -nb;
+	}
+	if ((nb >= 0) && (nb <= 9))
+	{
+		ft_putchar(nb + '0');
+	}
+	else
+	{
+		ft_putnbr(nb / 10);
+		ft_putchar(nb % 10 + '0');
+	}
+}
+
+int		print(const char *format, va_list va_obj)
+{
+	int	ret;
+	int	d;
+
+	ret = 0;
+	while (*format)
+	{
+		if (*format != '%')
+		{
+			ft_putchar(*format);
+			ret++;
+		}
+		else if (pourcent_d(format) == 0)
+		{
+			d = va_arg(va_obj, int);
+			ft_putnbr(d);
+			format++;
+			//ret ++ len_int
+		}
+		format++;
+	}
+	return (ret);
+}
 
 int		ft_printf(const char *format, ...)
 {
 	va_list va_obj;
-	char c;
+	int	result;
 
 	va_start(va_obj, format);
-	while (*format)
-	{
-		if (pourcent_d(format))
-		{
-			c = va_arg(va_obj, int);
-			printf("%d\n", c);
-		}
-		else 
-			write(1, format, 1);
-		format++;
-	}
+	result = print(format, va_obj);
 	va_end(va_obj);
-	return (0);
+	return (result);
 }
 
 // man 3 stdarg / example
@@ -122,11 +143,13 @@ void 	foo(char *fmt, ...)
 
 int 	main(void)
 {
-	int nb;
+	float nb;
+	int result;
 
-	nb = 5;
-	ft_printf("S%dalu:t\n", nb, c);
-//	ft_printf("Salut\n");
-
+	nb = 134.03725763;
+	result = ft_printf("Charl%d\n", nb);
+	ft_putnbr(result);
+	result = printf("\n  %1.4f  \n", nb);
+	ft_putnbr(result);
 	return (0);
 }
