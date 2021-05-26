@@ -6,7 +6,7 @@
 /*   By: cmariot <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/24 10:55:24 by cmariot           #+#    #+#             */
-/*   Updated: 2021/05/26 09:10:26 by cmariot          ###   ########.fr       */
+/*   Updated: 2021/05/26 13:58:11 by cmariot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,20 +23,49 @@
  *
  * Conversion specification list :
  * - %c : The int argument is converted to an unsigned char, and the resulting character is written.
- * - %s : The  
+ * - %s : The string is written without the '\0' character.
  * - %p : 
- * - %d : 
+ * - %d : Is converted to an int and the function prints the number whith it sign if it's negative. 
  * - %i : 
  * - %u : 
  * - %x : 
  * - %X : 
- * - %% ???
+ * - % : The function prints %.
  *
  * The function may be called with a varying number of arguments of varying types. 
  * 
  * Return value : The printf function returns the number of characters printed (not including the trailing '\0' used to end outpout to strings) and a negative value if an error occurs.
  *
  */
+
+// https://perso.liris.cnrs.fr/raphaelle.chaine/COURS/LIFAP6/printf_form.html
+
+int	pourcent_c(const char *str)
+{
+	if (*str == '%')
+		str++;
+		if (*str == 'c')
+			return (0);
+	return (1);
+}
+
+int	pourcent_s(const char *str)
+{
+	if (*str == '%')
+		str++;
+		if (*str == 's')
+			return (0);
+	return (1);
+}
+
+int	pourcent_p(const char *str)
+{
+	if (*str == '%')
+		str++;
+		if (*str == 'p')
+			return (0);
+	return (1);
+}
 
 int	pourcent_d(const char *str)
 {
@@ -47,10 +76,71 @@ int	pourcent_d(const char *str)
 	return (1);
 }
 
-int	ft_putchar(char c)
+int	pourcent_i(const char *str)
+{
+	if (*str == '%')
+		str++;
+		if (*str == 'i')
+			return (0);
+	return (1);
+}
+
+int	pourcent_u(const char *str)
+{
+	if (*str == '%')
+		str++;
+		if (*str == 'u')
+			return (0);
+	return (1);
+}
+
+int	pourcent_x(const char *str)
+{
+	if (*str == '%')
+		str++;
+		if (*str == 'x')
+			return (0);
+	return (1);
+}
+
+int	pourcent_X(const char *str)
+{
+	if (*str == '%')
+		str++;
+		if (*str == 'X')
+			return (0);
+	return (1);
+}
+
+
+
+
+
+
+
+
+int	ft_putchar_ret(char c)
 {
 	write(1, &c, 1);
 	return (1);
+}
+
+int	int_len(int n)
+{
+	int	n_len;
+
+	n_len = 0;
+	while (n != 0)
+	{
+		n = n / 10;
+		n_len++;
+	}
+	return (n_len);
+}
+
+void	ft_putchar(char c)
+{
+	write(1, &c, 1);
 }
 
 void	ft_putnbr(int n)
@@ -72,15 +162,6 @@ void	ft_putnbr(int n)
 		ft_putnbr(nb / 10);
 		ft_putchar(nb % 10 + '0');
 	}
-}
-
-int	pourcent_s(const char *str)
-{
-	if (*str == '%')
-		str++;
-		if (*str == 's')
-			return (0);
-	return (1);
 }
 
 size_t	ft_strlen(const char *s)
@@ -113,21 +194,20 @@ int		print(const char *format, va_list va_obj)
 	int	ret;
 	int	d;
 	char	*s;
+	unsigned char c;
 
 	ret = 0;
 	while (*format)
 	{
 		if (*format != '%')
 		{
-			ft_putchar(*format);
-			ret++;
+			ret += ft_putchar_ret(*format);
 		}
-		else if (pourcent_d(format) == 0)
+		else if (pourcent_c(format) == 0)
 		{
-			d = va_arg(va_obj, int);
-			ret += ft_putnbr(d);
+			c = va_arg(va_obj, int);
+			ret += ft_putchar_ret(c);
 			format++;
-			//ret ++ len_int
 		}
 		else if (pourcent_s(format) == 0)
 		{
@@ -135,6 +215,44 @@ int		print(const char *format, va_list va_obj)
 			ret += ft_putstr(s);
 			format++;
 		}
+		else if (pourcent_p(format) == 0)
+		{
+
+		}
+		else if (pourcent_d(format) == 0)
+		{
+			d = va_arg(va_obj, int);
+			ft_putnbr(d);
+			format++;
+			ret += int_len(d);
+		}
+		else if (pourcent_i(format) == 0)
+		{
+
+		}
+		else if (pourcent_u(format) == 0)
+		{
+
+		}
+		else if (pourcent_x(format) == 0)
+		{
+
+		}
+		else if (pourcent_X(format) == 0)
+		{
+
+		}
+
+
+		else
+		{
+			ft_putchar('%');
+			format++;
+		}
+//		else if (pourcent_u(format) == 0)
+//		{
+//			u = va_arg(va_obj, 
+//		}
 		format++;
 	}
 	return (ret);
@@ -151,46 +269,38 @@ int		ft_printf(const char *format, ...)
 	return (result);
 }
 
-// man 3 stdarg / example
-void 	foo(char *fmt, ...)
-{
-	   va_list ap, ap2;
-	   int d;
-	   char c, *s;
-
-	   va_start(ap, fmt);
-	   va_copy(ap2, ap);
-	   while (*fmt)
-			   switch(*fmt++) {
-			   case 's':                       /* string */
-					   s = va_arg(ap, char *);
-					   printf("string %s\n", s);
-					   break;
-			   case 'd':                       /* int */
-					   d = va_arg(ap, int);
-					   printf("int %d\n", d);
-					   break;
-			   case 'c':                       /* char */
-					   /* Note: char is promoted to int. */
-					   c = va_arg(ap, int);
-					   printf("char %c\n", c);
-					   break;
-			   }
-	   va_end(ap);
-	   /* use ap2 to iterate over the arguments again */
-	   va_end(ap2);
-}
-
-
 int 	main(void)
 {
-	float nb;
+	int nb;
 	int result;
 
-	nb = 134.03725763;
-	result = ft_printf("Charl%ds & %s\n", nb, "toto");
+	result = ft_printf("test1 : texte seul");
+	ft_putchar('\n');
 	ft_putnbr(result);
-	result = printf("\n  %1.4f  \n", nb);
+	ft_putstr("\n\n");
+
+	nb = 3;
+	result = ft_printf("test2 : texte + int %d", nb);
+	ft_putchar('\n');
 	ft_putnbr(result);
+	ft_putstr("\n\n");
+
+
+	result = ft_printf("test3 : texte + str %s", "string");
+	ft_putchar('\n');
+	ft_putnbr(result);
+	ft_putstr("\n\n");
+
+	result = ft_printf("test4 : texte + char %c", 'c');
+	ft_putchar('\n');
+	ft_putnbr(result);
+	ft_putstr("\n\n");
+
+	printf("%u\n", -4);
+	printf("%u\n", 0);
+	printf("%u\n", 4);
+
+	ft_printf("test du 100%");
+
 	return (0);
 }
