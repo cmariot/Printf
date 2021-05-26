@@ -6,7 +6,7 @@
 /*   By: cmariot <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/24 10:55:24 by cmariot           #+#    #+#             */
-/*   Updated: 2021/05/25 21:29:43 by cmariot          ###   ########.fr       */
+/*   Updated: 2021/05/26 09:10:26 by cmariot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,10 +74,45 @@ void	ft_putnbr(int n)
 	}
 }
 
+int	pourcent_s(const char *str)
+{
+	if (*str == '%')
+		str++;
+		if (*str == 's')
+			return (0);
+	return (1);
+}
+
+size_t	ft_strlen(const char *s)
+{
+	size_t	i;
+
+	i = 0;
+	while (*s++)
+		i++;
+	return (i);
+}
+
+int	ft_putstr(char *s)
+{
+	int ret;
+
+	if (s)
+	{
+		ret = ft_strlen(s);
+		while (*s)
+			write(1, s++, 1);
+		return (ret);
+	}
+	else
+		return (0);
+}
+
 int		print(const char *format, va_list va_obj)
 {
 	int	ret;
 	int	d;
+	char	*s;
 
 	ret = 0;
 	while (*format)
@@ -90,9 +125,15 @@ int		print(const char *format, va_list va_obj)
 		else if (pourcent_d(format) == 0)
 		{
 			d = va_arg(va_obj, int);
-			ft_putnbr(d);
+			ret += ft_putnbr(d);
 			format++;
 			//ret ++ len_int
+		}
+		else if (pourcent_s(format) == 0)
+		{
+			s = va_arg(va_obj, char *);
+			ret += ft_putstr(s);
+			format++;
 		}
 		format++;
 	}
@@ -147,7 +188,7 @@ int 	main(void)
 	int result;
 
 	nb = 134.03725763;
-	result = ft_printf("Charl%d\n", nb);
+	result = ft_printf("Charl%ds & %s\n", nb, "toto");
 	ft_putnbr(result);
 	result = printf("\n  %1.4f  \n", nb);
 	ft_putnbr(result);
