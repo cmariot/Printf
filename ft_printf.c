@@ -6,7 +6,11 @@
 /*   By: cmariot <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/24 10:55:24 by cmariot           #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2021/05/28 16:50:39 by cmariot          ###   ########.fr       */
+=======
+/*   Updated: 2021/05/28 13:27:14 by cmariot          ###   ########.fr       */
+>>>>>>> e202f74b05516e9eae24de1f124459aea36396cb
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -304,10 +308,6 @@ int		print(const char *format, va_list va_obj)
 			ft_putchar('%');
 			format++;
 		}
-//		else if (pourcent_u(format) == 0)
-//		{
-//			u = va_arg(va_obj, 
-//		}
 		format++;
 	}
 	return (ret);
@@ -351,6 +351,7 @@ int 	main(void)
 	ft_putnbr(result);
 	ft_putstr("\n\n");
 
+<<<<<<< HEAD
 	printf("%x\n", -4);
 	printf("%x\n", -42);
 	ft_printf("%x\n", -4);
@@ -363,5 +364,14 @@ int 	main(void)
 	ft_printf("%X\n", 42);
 
 	
+=======
+	printf("%u\n", -4);
+	printf("%u\n", 0);
+	printf("%u\n", 4);
+
+	int nb2 = 3;
+	printf("Adresse de int = %p\n",	&nb2);
+
+>>>>>>> e202f74b05516e9eae24de1f124459aea36396cb
 	return (0);
 }
