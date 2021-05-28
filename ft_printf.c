@@ -6,7 +6,7 @@
 /*   By: cmariot <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/24 10:55:24 by cmariot           #+#    #+#             */
-/*   Updated: 2021/05/26 13:58:11 by cmariot          ###   ########.fr       */
+/*   Updated: 2021/05/28 13:27:14 by cmariot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -249,10 +249,6 @@ int		print(const char *format, va_list va_obj)
 			ft_putchar('%');
 			format++;
 		}
-//		else if (pourcent_u(format) == 0)
-//		{
-//			u = va_arg(va_obj, 
-//		}
 		format++;
 	}
 	return (ret);
@@ -300,7 +296,8 @@ int 	main(void)
 	printf("%u\n", 0);
 	printf("%u\n", 4);
 
-	ft_printf("test du 100%");
+	int nb2 = 3;
+	printf("Adresse de int = %p\n",	&nb2);
 
 	return (0);
 }
