@@ -6,7 +6,7 @@
 /*   By: cmariot <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/24 10:55:24 by cmariot           #+#    #+#             */
-/*   Updated: 2021/05/28 13:27:14 by cmariot          ###   ########.fr       */
+/*   Updated: 2021/05/28 18:11:05 by cmariot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,6 +108,15 @@ int	pourcent_X(const char *str)
 	if (*str == '%')
 		str++;
 		if (*str == 'X')
+			return (0);
+	return (1);
+}
+
+int	pourcent_%(const char *str)
+{
+	if (*str == '%')
+		str++;
+		if (*str == '%')
 			return (0);
 	return (1);
 }
@@ -242,9 +251,7 @@ int		print(const char *format, va_list va_obj)
 		{
 
 		}
-
-
-		else
+		else if (pourcent_%(format) == 0)
 		{
 			ft_putchar('%');
 			format++;
