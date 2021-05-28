@@ -6,7 +6,7 @@
 /*   By: cmariot <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/24 10:55:24 by cmariot           #+#    #+#             */
-/*   Updated: 2021/05/26 13:58:11 by cmariot          ###   ########.fr       */
+/*   Updated: 2021/05/28 16:50:39 by cmariot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,13 +112,6 @@ int	pourcent_X(const char *str)
 	return (1);
 }
 
-
-
-
-
-
-
-
 int	ft_putchar_ret(char c)
 {
 	write(1, &c, 1);
@@ -189,12 +182,70 @@ int	ft_putstr(char *s)
 		return (0);
 }
 
+int		ft_check_base(char *base)
+{
+	int			base_len;
+	int			j;
+
+	base_len = 0;
+	while (base[base_len] != '\0')
+	{
+		if (base[base_len] == '+' || base[base_len] == '-')
+			return (0);
+		j = base_len + 1;
+		while (base[j] != '\0')
+		{
+			if (base[base_len] == base[j])
+				return (0);
+			j++;
+		}
+		base_len++;
+	}
+	if (base_len <= 1)
+		return (0);
+	return (1);
+}
+
+int	ft_putnbr_base(int nbr, char *base)
+{
+	int			diviseur;
+	int			result;
+	int			base_len;
+	long int	long_nb;
+	int 		ret;
+
+	ret = 0;
+	if (ft_check_base(base) == 0)
+		return 0;
+	base_len = 0;
+	while (base[base_len] != '\0')
+		base_len++;
+	long_nb = nbr + 0;
+	if (nbr < 0)
+	{
+		ft_putchar('-');
+		long_nb = -(long_nb);
+	}
+	diviseur = 1;
+	while ((long_nb / diviseur) >= base_len)
+		diviseur = diviseur * base_len;
+	while (diviseur > 0)
+	{
+		result = (long_nb / diviseur) % base_len;
+		ret += ft_putchar_ret(base[result]);
+		diviseur = diviseur / base_len;
+	}
+	return (ret);
+}
+
 int		print(const char *format, va_list va_obj)
 {
-	int	ret;
-	int	d;
-	char	*s;
-	unsigned char c;
+	int				ret;
+	int				d;
+	char			*s;
+	unsigned char	c;
+	unsigned int	x;
+	unsigned int	X;
 
 	ret = 0;
 	while (*format)
@@ -236,11 +287,15 @@ int		print(const char *format, va_list va_obj)
 		}
 		else if (pourcent_x(format) == 0)
 		{
-
+			x = va_arg(va_obj, unsigned int);
+			ret += ft_putnbr_base(x, "0123456789abcdef");
+			format++;
 		}
 		else if (pourcent_X(format) == 0)
 		{
-
+			X = va_arg(va_obj, unsigned int);
+			ret += ft_putnbr_base(x, "0123456789ABCDEF");
+			format++;
 		}
 
 
@@ -296,11 +351,17 @@ int 	main(void)
 	ft_putnbr(result);
 	ft_putstr("\n\n");
 
-	printf("%u\n", -4);
-	printf("%u\n", 0);
-	printf("%u\n", 4);
+	printf("%x\n", -4);
+	printf("%x\n", -42);
+	ft_printf("%x\n", -4);
+	
+	printf("%x\n", 0);
+	ft_printf("%x\n", 0);
+	ft_printf("%X\n", 0);
+	printf("%x\n", 42);
+	ft_printf("%x\n", 42);
+	ft_printf("%X\n", 42);
 
-	ft_printf("test du 100%");
-
+	
 	return (0);
 }
