@@ -1,22 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pourcent_c.c                                       :+:      :+:    :+:   */
+/*   ft_tolower.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cmariot <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: cmariot <cmariot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/25 11:17:01 by cmariot           #+#    #+#             */
-/*   Updated: 2021/05/25 11:30:26 by cmariot          ###   ########.fr       */
+/*   Created: 2021/04/10 15:22:54 by cmariot           #+#    #+#             */
+/*   Updated: 2021/04/10 15:23:05 by cmariot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-int		pourcent_c(char *str)
+int	ft_tolower(int c)
 {
-	if (*str == '%')
-		str++;
-		if (*str == 'c')
-			return (0);
-	return (1);
+	if (c >= 'A' && c <= 'Z')
+		return (c + 32);
+	else
+		return (c);
 }

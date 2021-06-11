@@ -1,23 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_lstnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cmariot <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: cmariot <cmariot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/24 10:56:06 by cmariot           #+#    #+#             */
-/*   Updated: 2021/06/11 17:07:25 by cmariot          ###   ########.fr       */
+/*   Created: 2021/05/20 14:11:04 by cmariot           #+#    #+#             */
+/*   Updated: 2021/05/23 13:03:24 by cmariot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF
-# define FT_PRINTF
+#include "libft.h"
 
-# include <stdlib.h>
-# include <unistd.h>
-# include <stdarg.h>
+t_list	*ft_lstnew(void *content)
+{
+	t_list	*tmp;
 
-int	ft_printf(const char *, ...);
-int	ft_putchar_ret(char c);
-
-#endif
+	tmp = malloc(sizeof(t_list));
+	if (tmp)
+	{
+		tmp->content = content;
+		tmp->next = NULL;
+		return (tmp);
+	}
+	else
+		return (NULL);
+}

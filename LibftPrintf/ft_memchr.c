@@ -1,23 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cmariot <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: cmariot <cmariot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/24 10:56:06 by cmariot           #+#    #+#             */
-/*   Updated: 2021/06/11 17:07:25 by cmariot          ###   ########.fr       */
+/*   Created: 2021/04/18 16:25:16 by cmariot           #+#    #+#             */
+/*   Updated: 2021/05/28 15:32:02 by cmariot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF
-# define FT_PRINTF
+#include "libft.h"
 
-# include <stdlib.h>
-# include <unistd.h>
-# include <stdarg.h>
+void	*ft_memchr(const void *s, int c, size_t n)
+{
+	char	*str;
+	size_t	i;
 
-int	ft_printf(const char *, ...);
-int	ft_putchar_ret(char c);
-
-#endif
+	if (n == 0)
+		return (NULL);
+	str = (char *)s;
+	i = 0;
+	while (i < n)
+	{
+		if (str[i] == (char)c)
+			return (&str[i]);
+		i++;
+	}
+	return (NULL);
+}

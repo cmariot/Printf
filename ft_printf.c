@@ -7,6 +7,7 @@
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/24 10:55:24 by cmariot           #+#    #+#             */
 <<<<<<< HEAD
+<<<<<<< HEAD
 /*   Updated: 2021/05/28 18:11:05 by cmariot          ###   ########.fr       */
 =======
 <<<<<<< HEAD
@@ -15,6 +16,9 @@
 /*   Updated: 2021/05/28 13:27:14 by cmariot          ###   ########.fr       */
 >>>>>>> e202f74b05516e9eae24de1f124459aea36396cb
 >>>>>>> 13d88a8367386a4c997fe669033d6bc0dfd4fca5
+=======
+/*   Updated: 2021/06/11 17:11:04 by cmariot          ###   ########.fr       */
+>>>>>>> 98879bbaf1c004c1e2d79222eca931217f6e7f54
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +52,7 @@
 
 // https://perso.liris.cnrs.fr/raphaelle.chaine/COURS/LIFAP6/printf_form.html
 
+<<<<<<< HEAD
 int	pourcent_c(const char *str)
 {
 	if (*str == '%')
@@ -265,18 +270,16 @@ int	ft_putnbr_base(int nbr, char *base)
 	return (ret);
 }
 
+=======
+>>>>>>> 98879bbaf1c004c1e2d79222eca931217f6e7f54
 int		print(const char *format, va_list va_obj)
 {
 	int				ret;
-	int				d;
-	char			*s;
-	unsigned char	c;
-	unsigned int	x;
-	unsigned int	X;
 
 	ret = 0;
 	while (*format)
 	{
+<<<<<<< HEAD
 		if (*format != '%')
 		{
 			ret += ft_putchar_ret(*format);
@@ -329,6 +332,9 @@ int		print(const char *format, va_list va_obj)
 			ft_putchar('%');
 			format++;
 		}
+=======
+		ft_putchar_ret(*format);
+>>>>>>> 98879bbaf1c004c1e2d79222eca931217f6e7f54
 		format++;
 	}
 	return (ret);
@@ -336,8 +342,8 @@ int		print(const char *format, va_list va_obj)
 
 int		ft_printf(const char *format, ...)
 {
-	va_list va_obj;
-	int	result;
+	va_list		va_obj;
+	int			result;
 
 	va_start(va_obj, format);
 	result = print(format, va_obj);
@@ -347,52 +353,6 @@ int		ft_printf(const char *format, ...)
 
 int 	main(void)
 {
-	int nb;
-	int result;
-
-	result = ft_printf("test1 : texte seul");
-	ft_putchar('\n');
-	ft_putnbr(result);
-	ft_putstr("\n\n");
-
-	nb = 3;
-	result = ft_printf("test2 : texte + int %d", nb);
-	ft_putchar('\n');
-	ft_putnbr(result);
-	ft_putstr("\n\n");
-
-
-	result = ft_printf("test3 : texte + str %s", "string");
-	ft_putchar('\n');
-	ft_putnbr(result);
-	ft_putstr("\n\n");
-
-	result = ft_printf("test4 : texte + char %c", 'c');
-	ft_putchar('\n');
-	ft_putnbr(result);
-	ft_putstr("\n\n");
-
-<<<<<<< HEAD
-	printf("%x\n", -4);
-	printf("%x\n", -42);
-	ft_printf("%x\n", -4);
-	
-	printf("%x\n", 0);
-	ft_printf("%x\n", 0);
-	ft_printf("%X\n", 0);
-	printf("%x\n", 42);
-	ft_printf("%x\n", 42);
-	ft_printf("%X\n", 42);
-
-	
-=======
-	printf("%u\n", -4);
-	printf("%u\n", 0);
-	printf("%u\n", 4);
-
-	int nb2 = 3;
-	printf("Adresse de int = %p\n",	&nb2);
-
->>>>>>> e202f74b05516e9eae24de1f124459aea36396cb
+	ft_printf("\nFonction Printf\n");
 	return (0);
 }

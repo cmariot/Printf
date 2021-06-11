@@ -1,23 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cmariot <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: cmariot <cmariot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/24 10:56:06 by cmariot           #+#    #+#             */
-/*   Updated: 2021/06/11 17:07:25 by cmariot          ###   ########.fr       */
+/*   Created: 2021/04/18 14:58:09 by cmariot           #+#    #+#             */
+/*   Updated: 2021/05/28 10:45:23 by cmariot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF
-# define FT_PRINTF
+#include "libft.h"
 
-# include <stdlib.h>
-# include <unistd.h>
-# include <stdarg.h>
+void	*ft_calloc(size_t count, size_t size)
+{
+	char	*tab;
+	size_t	i;
 
-int	ft_printf(const char *, ...);
-int	ft_putchar_ret(char c);
-
-#endif
+	tab = malloc(size * count);
+	if (!tab)
+		return (NULL);
+	i = 0;
+	while (i < count * size)
+	{
+		tab[i] = 0;
+		i++;
+	}
+	return (tab);
+}

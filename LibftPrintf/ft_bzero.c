@@ -1,23 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cmariot <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: cmariot <cmariot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/24 10:56:06 by cmariot           #+#    #+#             */
-/*   Updated: 2021/06/11 17:07:25 by cmariot          ###   ########.fr       */
+/*   Created: 2021/04/18 13:08:10 by cmariot           #+#    #+#             */
+/*   Updated: 2021/04/18 13:43:03 by cmariot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF
-# define FT_PRINTF
+#include "libft.h"
 
-# include <stdlib.h>
-# include <unistd.h>
-# include <stdarg.h>
+void	ft_bzero(void *b, size_t n)
+{
+	unsigned char	*dest;
+	size_t			i;
 
-int	ft_printf(const char *, ...);
-int	ft_putchar_ret(char c);
-
-#endif
+	dest = (unsigned char *)b;
+	i = 0;
+	while (i < n)
+	{
+		dest[i] = 0;
+		i++;
+	}
+}
