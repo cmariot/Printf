@@ -6,13 +6,13 @@
 /*   By: cmariot <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/11 17:03:51 by cmariot           #+#    #+#             */
-/*   Updated: 2021/06/11 17:07:31 by cmariot          ###   ########.fr       */
+/*   Updated: 2021/06/11 18:10:57 by cmariot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_putchar_ret(char c)
+int	ft_putchar_ret(int c)
 {
 	if (c)
 	{

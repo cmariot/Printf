@@ -6,7 +6,7 @@
 /*   By: cmariot <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/24 10:56:06 by cmariot           #+#    #+#             */
-/*   Updated: 2021/06/11 17:07:25 by cmariot          ###   ########.fr       */
+/*   Updated: 2021/06/11 18:11:10 by cmariot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include <stdarg.h>
 
 int	ft_printf(const char *, ...);
-int	ft_putchar_ret(char c);
+int	ft_putchar_ret(int c);
+int	ft_pourcent_char(const char *format, char c);
 
 #endif

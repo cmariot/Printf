@@ -6,19 +6,7 @@
 /*   By: cmariot <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/24 10:55:24 by cmariot           #+#    #+#             */
-<<<<<<< HEAD
-<<<<<<< HEAD
-/*   Updated: 2021/05/28 18:11:05 by cmariot          ###   ########.fr       */
-=======
-<<<<<<< HEAD
-/*   Updated: 2021/05/28 16:50:39 by cmariot          ###   ########.fr       */
-=======
-/*   Updated: 2021/05/28 13:27:14 by cmariot          ###   ########.fr       */
->>>>>>> e202f74b05516e9eae24de1f124459aea36396cb
->>>>>>> 13d88a8367386a4c997fe669033d6bc0dfd4fca5
-=======
-/*   Updated: 2021/06/11 17:11:04 by cmariot          ###   ########.fr       */
->>>>>>> 98879bbaf1c004c1e2d79222eca931217f6e7f54
+/*   Updated: 2021/06/11 18:29:36 by cmariot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,309 +38,45 @@
  *
  */
 
-// https://perso.liris.cnrs.fr/raphaelle.chaine/COURS/LIFAP6/printf_form.html
-
-<<<<<<< HEAD
-int	pourcent_c(const char *str)
+int	print(const char *format, va_list va_obj)
 {
-	if (*str == '%')
-		str++;
-		if (*str == 'c')
-			return (0);
-	return (1);
-}
-
-int	pourcent_s(const char *str)
-{
-	if (*str == '%')
-		str++;
-		if (*str == 's')
-			return (0);
-	return (1);
-}
-
-int	pourcent_p(const char *str)
-{
-	if (*str == '%')
-		str++;
-		if (*str == 'p')
-			return (0);
-	return (1);
-}
-
-int	pourcent_d(const char *str)
-{
-	if (*str == '%')
-		str++;
-		if (*str == 'd')
-			return (0);
-	return (1);
-}
-
-int	pourcent_i(const char *str)
-{
-	if (*str == '%')
-		str++;
-		if (*str == 'i')
-			return (0);
-	return (1);
-}
-
-int	pourcent_u(const char *str)
-{
-	if (*str == '%')
-		str++;
-		if (*str == 'u')
-			return (0);
-	return (1);
-}
-
-int	pourcent_x(const char *str)
-{
-	if (*str == '%')
-		str++;
-		if (*str == 'x')
-			return (0);
-	return (1);
-}
-
-int	pourcent_X(const char *str)
-{
-	if (*str == '%')
-		str++;
-		if (*str == 'X')
-			return (0);
-	return (1);
-}
-
-<<<<<<< HEAD
-int	pourcent_%(const char *str)
-{
-	if (*str == '%')
-		str++;
-		if (*str == '%')
-			return (0);
-	return (1);
-}
-
-
-
-
-
-
-
-
-=======
->>>>>>> 13d88a8367386a4c997fe669033d6bc0dfd4fca5
-int	ft_putchar_ret(char c)
-{
-	write(1, &c, 1);
-	return (1);
-}
-
-int	int_len(int n)
-{
-	int	n_len;
-
-	n_len = 0;
-	while (n != 0)
-	{
-		n = n / 10;
-		n_len++;
-	}
-	return (n_len);
-}
-
-void	ft_putchar(char c)
-{
-	write(1, &c, 1);
-}
-
-void	ft_putnbr(int n)
-{
-	long int	nb;
-
-	nb = n;
-	if (nb < 0)
-	{
-		ft_putchar('-');
-		nb = -nb;
-	}
-	if ((nb >= 0) && (nb <= 9))
-	{
-		ft_putchar(nb + '0');
-	}
-	else
-	{
-		ft_putnbr(nb / 10);
-		ft_putchar(nb % 10 + '0');
-	}
-}
-
-size_t	ft_strlen(const char *s)
-{
-	size_t	i;
-
-	i = 0;
-	while (*s++)
-		i++;
-	return (i);
-}
-
-int	ft_putstr(char *s)
-{
-	int ret;
-
-	if (s)
-	{
-		ret = ft_strlen(s);
-		while (*s)
-			write(1, s++, 1);
-		return (ret);
-	}
-	else
-		return (0);
-}
-
-int		ft_check_base(char *base)
-{
-	int			base_len;
-	int			j;
-
-	base_len = 0;
-	while (base[base_len] != '\0')
-	{
-		if (base[base_len] == '+' || base[base_len] == '-')
-			return (0);
-		j = base_len + 1;
-		while (base[j] != '\0')
-		{
-			if (base[base_len] == base[j])
-				return (0);
-			j++;
-		}
-		base_len++;
-	}
-	if (base_len <= 1)
-		return (0);
-	return (1);
-}
-
-int	ft_putnbr_base(int nbr, char *base)
-{
-	int			diviseur;
-	int			result;
-	int			base_len;
-	long int	long_nb;
-	int 		ret;
-
-	ret = 0;
-	if (ft_check_base(base) == 0)
-		return 0;
-	base_len = 0;
-	while (base[base_len] != '\0')
-		base_len++;
-	long_nb = nbr + 0;
-	if (nbr < 0)
-	{
-		ft_putchar('-');
-		long_nb = -(long_nb);
-	}
-	diviseur = 1;
-	while ((long_nb / diviseur) >= base_len)
-		diviseur = diviseur * base_len;
-	while (diviseur > 0)
-	{
-		result = (long_nb / diviseur) % base_len;
-		ret += ft_putchar_ret(base[result]);
-		diviseur = diviseur / base_len;
-	}
-	return (ret);
-}
-
-=======
->>>>>>> 98879bbaf1c004c1e2d79222eca931217f6e7f54
-int		print(const char *format, va_list va_obj)
-{
-	int				ret;
+	int	ret;
+	int	c;
 
 	ret = 0;
 	while (*format)
 	{
-<<<<<<< HEAD
 		if (*format != '%')
 		{
 			ret += ft_putchar_ret(*format);
 		}
-		else if (pourcent_c(format) == 0)
+		else if (ft_pourcent_char(format, 'c') == 1)
 		{
 			c = va_arg(va_obj, int);
 			ret += ft_putchar_ret(c);
 			format++;
 		}
-		else if (pourcent_s(format) == 0)
-		{
-			s = va_arg(va_obj, char *);
-			ret += ft_putstr(s);
-			format++;
-		}
-		else if (pourcent_p(format) == 0)
-		{
-
-		}
-		else if (pourcent_d(format) == 0)
-		{
-			d = va_arg(va_obj, int);
-			ft_putnbr(d);
-			format++;
-			ret += int_len(d);
-		}
-		else if (pourcent_i(format) == 0)
-		{
-
-		}
-		else if (pourcent_u(format) == 0)
-		{
-
-		}
-		else if (pourcent_x(format) == 0)
-		{
-			x = va_arg(va_obj, unsigned int);
-			ret += ft_putnbr_base(x, "0123456789abcdef");
-			format++;
-		}
-		else if (pourcent_X(format) == 0)
-		{
-			X = va_arg(va_obj, unsigned int);
-			ret += ft_putnbr_base(x, "0123456789ABCDEF");
-			format++;
-		}
-		else if (pourcent_%(format) == 0)
-		{
-			ft_putchar('%');
-			format++;
-		}
-=======
-		ft_putchar_ret(*format);
->>>>>>> 98879bbaf1c004c1e2d79222eca931217f6e7f54
 		format++;
 	}
+	printf("return (%d);\n\n", ret);
 	return (ret);
 }
 
-int		ft_printf(const char *format, ...)
+int	ft_printf(const char *format, ...)
 {
 	va_list		va_obj;
-	int			result;
+	int			ret;
 
 	va_start(va_obj, format);
-	result = print(format, va_obj);
+	ret = print(format, va_obj);
 	va_end(va_obj);
-	return (result);
+	return (ret);
 }
 
 int 	main(void)
 {
-	ft_printf("\nFonction Printf\n");
+	ft_printf("Fonction Printf\n");
+	ft_printf("%c - Test d'affichage de char c\n", '1');
+	
 	return (0);
 }
