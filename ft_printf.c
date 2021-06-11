@@ -6,7 +6,7 @@
 /*   By: cmariot <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/24 10:55:24 by cmariot           #+#    #+#             */
-/*   Updated: 2021/06/11 22:36:42 by cmariot          ###   ########.fr       */
+/*   Updated: 2021/06/11 23:20:20 by cmariot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,22 +24,16 @@ int	simple_printing(const char *format, va_list va_obj)
 		{
 			ret += ft_putchar_ret(*format);
 		}
-		if (ft_pourcent_char(format, 'c') == 1)
+		else if (ft_backslash_pourcent(format))
+		{
+			ret++;
+		}
+		else if (ft_pourcent_char(format, 'c') == 1)
 		{
 			c = va_arg(va_obj, int);
 			ret += ft_putchar_ret(c);
 			format++;
 		}
-		ret += ft_backslash_pourcent(format);
-//		if (*format == '\)
-//		{
-//			format++;
-//			if (*format == '%')
-//			{
-//				ret += ft_putchar_ret('%');
-//			}
-//		}
-
 		format++;
 	}
 //	printf("return (%d);\n\n", ret);

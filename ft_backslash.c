@@ -6,7 +6,7 @@
 /*   By: cmariot <cmariot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/11 21:55:42 by cmariot           #+#    #+#             */
-/*   Updated: 2021/06/11 22:54:02 by cmariot          ###   ########.fr       */
+/*   Updated: 2021/06/11 23:20:12 by cmariot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,16 @@
 
 int ft_backslash_pourcent(const char *format)
 {
-	if (*format == '\b')
+	if (*format == 0x5C)
 	{
-		printf("Backslash\n");
-		format++;
-		if (*format == '%')
+		printf("OK");
+		if (*format++ == 0x25)
 		{
-			ft_putchar_ret('%');
+			printf("OK");
+			printf("%c", 0x25);
 			return (1);
 		}
+		return (1);
 	}
 	return (0);
 }
