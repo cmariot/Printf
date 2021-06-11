@@ -1,23 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar_ret.c                                   :+:      :+:    :+:   */
+/*   ft_backslash.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cmariot <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: cmariot <cmariot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/06/11 17:03:51 by cmariot           #+#    #+#             */
-/*   Updated: 2021/06/11 22:12:28 by cmariot          ###   ########.fr       */
+/*   Created: 2021/06/11 21:55:42 by cmariot           #+#    #+#             */
+/*   Updated: 2021/06/11 22:54:02 by cmariot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_putchar_ret(int c)
+int ft_backslash_pourcent(const char *format)
 {
-	if (c)
+	if (*format == '\b')
 	{
-		if (write(1, &c, 1))
+		printf("Backslash\n");
+		format++;
+		if (*format == '%')
+		{
+			ft_putchar_ret('%');
 			return (1);
+		}
 	}
 	return (0);
 }
