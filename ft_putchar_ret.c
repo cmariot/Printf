@@ -1,23 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_putchar_ret.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cmariot <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/24 10:56:06 by cmariot           #+#    #+#             */
-/*   Updated: 2021/06/11 17:07:25 by cmariot          ###   ########.fr       */
+/*   Created: 2021/06/11 17:03:51 by cmariot           #+#    #+#             */
+/*   Updated: 2021/06/11 17:07:31 by cmariot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF
-# define FT_PRINTF
+#include "ft_printf.h"
 
-# include <stdlib.h>
-# include <unistd.h>
-# include <stdarg.h>
-
-int	ft_printf(const char *, ...);
-int	ft_putchar_ret(char c);
-
-#endif
+int	ft_putchar_ret(char c)
+{
+	if (c)
+	{
+		write(1, &c, 1);
+		return (1);
+	}
+	else
+		return (0);
+}
