@@ -6,11 +6,7 @@
 /*   By: cmariot <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/24 10:55:24 by cmariot           #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2021/05/28 16:50:39 by cmariot          ###   ########.fr       */
-=======
-/*   Updated: 2021/05/28 13:27:14 by cmariot          ###   ########.fr       */
->>>>>>> e202f74b05516e9eae24de1f124459aea36396cb
+/*   Updated: 2021/06/11 14:44:00 by cmariot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,74 +40,11 @@
 
 // https://perso.liris.cnrs.fr/raphaelle.chaine/COURS/LIFAP6/printf_form.html
 
-int	pourcent_c(const char *str)
+int	pourcent_char(const char *str, char c)
 {
 	if (*str == '%')
 		str++;
-		if (*str == 'c')
-			return (0);
-	return (1);
-}
-
-int	pourcent_s(const char *str)
-{
-	if (*str == '%')
-		str++;
-		if (*str == 's')
-			return (0);
-	return (1);
-}
-
-int	pourcent_p(const char *str)
-{
-	if (*str == '%')
-		str++;
-		if (*str == 'p')
-			return (0);
-	return (1);
-}
-
-int	pourcent_d(const char *str)
-{
-	if (*str == '%')
-		str++;
-		if (*str == 'd')
-			return (0);
-	return (1);
-}
-
-int	pourcent_i(const char *str)
-{
-	if (*str == '%')
-		str++;
-		if (*str == 'i')
-			return (0);
-	return (1);
-}
-
-int	pourcent_u(const char *str)
-{
-	if (*str == '%')
-		str++;
-		if (*str == 'u')
-			return (0);
-	return (1);
-}
-
-int	pourcent_x(const char *str)
-{
-	if (*str == '%')
-		str++;
-		if (*str == 'x')
-			return (0);
-	return (1);
-}
-
-int	pourcent_X(const char *str)
-{
-	if (*str == '%')
-		str++;
-		if (*str == 'X')
+		if (*str == c)
 			return (0);
 	return (1);
 }
@@ -258,51 +191,49 @@ int		print(const char *format, va_list va_obj)
 		{
 			ret += ft_putchar_ret(*format);
 		}
-		else if (pourcent_c(format) == 0)
+		else if (pourcent_char(format, 'c') == 0)
 		{
 			c = va_arg(va_obj, int);
 			ret += ft_putchar_ret(c);
 			format++;
 		}
-		else if (pourcent_s(format) == 0)
+		else if (pourcent_char(format, 's') == 0)
 		{
 			s = va_arg(va_obj, char *);
 			ret += ft_putstr(s);
 			format++;
 		}
-		else if (pourcent_p(format) == 0)
+		else if (pourcent_char(format, 'p') == 0)
 		{
 
 		}
-		else if (pourcent_d(format) == 0)
+		else if (pourcent_char(format, 'd') == 0)
 		{
 			d = va_arg(va_obj, int);
 			ft_putnbr(d);
 			format++;
 			ret += int_len(d);
 		}
-		else if (pourcent_i(format) == 0)
+		else if (pourcent_char(format, 'i') == 0)
 		{
 
 		}
-		else if (pourcent_u(format) == 0)
+		else if (pourcent_char(format, 'u') == 0)
 		{
 
 		}
-		else if (pourcent_x(format) == 0)
+		else if (pourcent_char(format, 'x') == 0)
 		{
 			x = va_arg(va_obj, unsigned int);
 			ret += ft_putnbr_base(x, "0123456789abcdef");
 			format++;
 		}
-		else if (pourcent_X(format) == 0)
+		else if (pourcent_char(format, 'X') == 0)
 		{
 			X = va_arg(va_obj, unsigned int);
 			ret += ft_putnbr_base(x, "0123456789ABCDEF");
 			format++;
 		}
-
-
 		else
 		{
 			ft_putchar('%');
@@ -315,8 +246,8 @@ int		print(const char *format, va_list va_obj)
 
 int		ft_printf(const char *format, ...)
 {
-	va_list va_obj;
-	int	result;
+	va_list		va_obj;
+	int			result;
 
 	va_start(va_obj, format);
 	result = print(format, va_obj);
@@ -326,52 +257,6 @@ int		ft_printf(const char *format, ...)
 
 int 	main(void)
 {
-	int nb;
-	int result;
-
-	result = ft_printf("test1 : texte seul");
-	ft_putchar('\n');
-	ft_putnbr(result);
-	ft_putstr("\n\n");
-
-	nb = 3;
-	result = ft_printf("test2 : texte + int %d", nb);
-	ft_putchar('\n');
-	ft_putnbr(result);
-	ft_putstr("\n\n");
-
-
-	result = ft_printf("test3 : texte + str %s", "string");
-	ft_putchar('\n');
-	ft_putnbr(result);
-	ft_putstr("\n\n");
-
-	result = ft_printf("test4 : texte + char %c", 'c');
-	ft_putchar('\n');
-	ft_putnbr(result);
-	ft_putstr("\n\n");
-
-<<<<<<< HEAD
-	printf("%x\n", -4);
-	printf("%x\n", -42);
-	ft_printf("%x\n", -4);
-	
-	printf("%x\n", 0);
-	ft_printf("%x\n", 0);
-	ft_printf("%X\n", 0);
-	printf("%x\n", 42);
-	ft_printf("%x\n", 42);
-	ft_printf("%X\n", 42);
-
-	
-=======
-	printf("%u\n", -4);
-	printf("%u\n", 0);
-	printf("%u\n", 4);
-
-	int nb2 = 3;
-	printf("Adresse de int = %p\n",	&nb2);
-
->>>>>>> e202f74b05516e9eae24de1f124459aea36396cb
+	ft_printf("\nFonction Printf\n");
 	return (0);
 }
