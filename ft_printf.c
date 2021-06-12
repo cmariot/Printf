@@ -6,7 +6,7 @@
 /*   By: cmariot <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/24 10:55:24 by cmariot           #+#    #+#             */
-/*   Updated: 2021/06/11 23:20:20 by cmariot          ###   ########.fr       */
+/*   Updated: 2021/06/12 15:19:14 by cmariot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,15 +20,9 @@ int	simple_printing(const char *format, va_list va_obj)
 	ret = 0;
 	while (*format)
 	{
-		if (*format != '%')
-		{
-			ret += ft_putchar_ret(*format);
-		}
-		else if (ft_backslash_pourcent(format))
-		{
+		if (ft_character_printing(format) == 1)
 			ret++;
-		}
-		else if (ft_pourcent_char(format, 'c') == 1)
+		else if (ft_percent_char(format, 'c') == 1)
 		{
 			c = va_arg(va_obj, int);
 			ret += ft_putchar_ret(c);
@@ -53,10 +47,14 @@ int	ft_printf(const char *format, ...)
 
 int 	main(void)
 {
-//	ft_printf("Fonction Printf\n");
-//	ft_printf("Test d'affichage de char c : %c\n", 'c');
- 	ft_printf("Test d'affichage de \a \\ \" 'b' \' % \% \n");
- 	printf("Test d'affichage de \a \\ \" 'b' \' % \% \n");
+	ft_printf("\nFonction Printf\n");
+//	printf("Fonction Printf\n");
+ 	ft_printf("Test d'affichage de \a \\ \" 'b' \' %% \n");
+ //	printf("Test d'affichage de \a \\ \" 'b' \' %% \n");
+ 	ft_printf("Test d'affichage de \a - \b - \f - \n - \r - \t - \v - \n");
+ //	printf("Test d'affichage de \a - \b - \f - \n - \r - \t - \v - \n");
+	ft_printf("Test d'affichage de char c : %c\n", 'c');
+//	printf("Test d'affichage de char c : %c\n", 'c');
 	
 	return (0);
 }
