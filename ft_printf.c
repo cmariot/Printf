@@ -6,7 +6,7 @@
 /*   By: cmariot <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/24 10:55:24 by cmariot           #+#    #+#             */
-/*   Updated: 2021/06/12 15:19:14 by cmariot          ###   ########.fr       */
+/*   Updated: 2021/06/13 21:47:47 by cmariot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int	simple_printing(const char *format, va_list va_obj)
 		}
 		format++;
 	}
-//	printf("return (%d);\n\n", ret);
+	printf("return (%d);\n\n", ret);
 	return (ret);
 }
 
