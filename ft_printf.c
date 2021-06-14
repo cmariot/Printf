@@ -6,7 +6,7 @@
 /*   By: cmariot <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/24 10:55:24 by cmariot           #+#    #+#             */
-/*   Updated: 2021/06/13 21:47:47 by cmariot          ###   ########.fr       */
+/*   Updated: 2021/06/14 12:34:00 by cmariot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int	simple_printing(const char *format, va_list va_obj)
 		}
 		format++;
 	}
-	printf("return (%d);\n\n", ret);
+//	printf("return (%d);\n\n", ret);
 	return (ret);
 }
 
@@ -47,14 +47,24 @@ int	ft_printf(const char *format, ...)
 
 int 	main(void)
 {
-	ft_printf("\nFonction Printf\n");
+//	ft_printf("\nFonction Printf\n");
 //	printf("Fonction Printf\n");
- 	ft_printf("Test d'affichage de \a \\ \" 'b' \' %% \n");
- //	printf("Test d'affichage de \a \\ \" 'b' \' %% \n");
- 	ft_printf("Test d'affichage de \a - \b - \f - \n - \r - \t - \v - \n");
- //	printf("Test d'affichage de \a - \b - \f - \n - \r - \t - \v - \n");
-	ft_printf("Test d'affichage de char c : %c\n", 'c');
+// 	ft_printf("Test d'affichage de \a \\ \" 'b' \' %% \n");
+// 	printf("Test d'affichage de \a \\ \" 'b' \' %% \n");
+// 	ft_printf("Test d'affichage de \a - \b - \f - \n - \r - \t - \v - \n");
+//	printf("Test d'affichage de \a - \b - \f - \n - \r - \t - \v - \n");
+//	ft_printf("Test d'affichage de char c : %c\n", 'c');
 //	printf("Test d'affichage de char c : %c\n", 'c');
+
+
+	printf("Format %-d\n", 6);	
+	printf("Format %0d\n", 6);	
+	printf("Format %.d\n", 6);	
+	printf("Format %*d\n", 6, 6);	
 	
+	printf("Format %-3d\n", 6);	
+	printf("Format %03d\n", 6);	
+	printf("Format %.3d\n", 6);	
+	printf("Format %*d\n", 6, 6);
 	return (0);
 }

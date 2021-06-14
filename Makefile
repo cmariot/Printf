@@ -6,7 +6,7 @@
 #    By: cmariot <cmariot@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/05/27 18:57:32 by cmariot           #+#    #+#              #
-#    Updated: 2021/06/10 10:32:14 by cmariot          ###   ########.fr        #
+#    Updated: 2021/06/14 10:28:38 by cmariot          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,6 +15,9 @@ CC=gcc
 CCFLAGS=-Wall -Wextra -Werror
 
 SRCS = ft_printf.c \
+	   ft_character_printing.c \
+	   ft_percent_char.c \
+	   ft_putchar_ret.c \
 	   ./LibftPrintf/ft_atoi.c \
        ./LibftPrintf/ft_bzero.c \
 	   ./LibftPrintf/ft_calloc.c \
