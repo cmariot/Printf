@@ -6,7 +6,7 @@
 /*   By: cmariot <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/24 10:55:24 by cmariot           #+#    #+#             */
-/*   Updated: 2021/06/15 12:35:36 by cmariot          ###   ########.fr       */
+/*   Updated: 2021/06/15 14:51:55 by cmariot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,9 @@
 int	simple_printing(const char *format, va_list va_obj)
 {
 	int	ret;
+	char *str;
 
+	str = NULL;
 	ret = 0;
 	while (*format)
 	{
@@ -31,11 +33,28 @@ int	simple_printing(const char *format, va_list va_obj)
 		//	else if (*format == 'p')
 		//		ret += ft_putadr_ret(va_arg(va_obj, void*));
 			else if (*format == 'd')
-				ret += ft_putnbr_ret(va_arg(va_obj, int);
+			{
+				str = ft_itoa(va_arg(va_obj, int));
+				ret += ft_putstr_ret(str);
+				free(str);
+				str = NULL;
+//	ret += ft_putnbr_ret(va_arg(va_obj, int));
+			
+			}
+			else if (*format == 'i')
+				ret += ft_putnbr_ret(va_arg(va_obj, int));
+			else if (*format == 'u')
+			{}
+			else if (*format == 'x')
+			{}
+			else if (*format == 'X')
+			{}
+			else if (*format == '%')
+				ret += ft_putchar_ret('%');
 		}
 		format++;
 	}
-//	printf("return (%d);\n\n", ret);
+	printf("return (%d);\n\n", ret);
 	return (ret);
 }
 
@@ -61,15 +80,21 @@ int 	main(void)
 //	ft_printf("\nFonction Printf\n");
 //	printf("Fonction Printf\n");
 // 	ft_printf("Test d'affichage de \a \\ \" 'b' \' %% \n");
-// 	printf("Test d'affichage de \a \\ \" 'b' \' %% \n");
+// 	   printf("Test d'affichage de \a \\ \" 'b' \' %% \n");
 // 	ft_printf("Test d'affichage de \a - \b - \f - \n - \r - \t - \v - \n");
-//	printf("Test d'affichage de \a - \b - \f - \n - \r - \t - \v - \n");
-	ft_printf("\nTest d'affichage de char c : %c\n", 'c');
-//	printf("Test d'affichage de char c : %c\n", 'c');
-	ft_printf("Test d'affichage de char *str : %s\n", "str");
-//	printf("Test d'affichage de char *str : %s\n", "str\n");
+//	   printf("Test d'affichage de \a - \b - \f - \n - \r - \t - \v - \n");
+//	ft_printf("\nTest d'affichage de char c : %c\n", 'c');
+//	   printf("Test d'affichage de char c : %c\n", 'c');
+//	ft_printf("Test d'affichage de char *str : %s\n", "str");
+//	   printf("Test d'affichage de char *str : %s\n", "str\n");
+
 //	printf("Test d'affichage de l'adresse de *str : %p\n", &str);
-	ft_printf("Test d'affichage de int nb : %d\n", 123456789);
+
+	ft_printf("Test d'affichage de int nb (%d) : %d\n", 123456789);
+//	printf("Test retour = %d\n", ft_printf("Test retour de int nb : %d, %d, %d\n", 23512, -12, -20));
+	
+//	ft_printf("Test d'affichage de int nb (i) : %i\n", 123456789);
+//	printf("Test d'affichage de int nb (i) : %i\n", 123456789);
 
 
 

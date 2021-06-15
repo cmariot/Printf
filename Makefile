@@ -6,7 +6,7 @@
 #    By: cmariot <cmariot@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/05/27 18:57:32 by cmariot           #+#    #+#              #
-#    Updated: 2021/06/14 13:46:55 by cmariot          ###   ########.fr        #
+#    Updated: 2021/06/15 14:51:37 by cmariot          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,6 +19,7 @@ SRCS = ft_printf.c \
 	   ft_percent_char.c \
 	   ft_putchar_ret.c \
 	   ft_putstr_ret.c \
+	   ft_putnbr_ret.c \
 	   ./LibftPrintf/ft_atoi.c \
        ./LibftPrintf/ft_bzero.c \
 	   ./LibftPrintf/ft_calloc.c \
