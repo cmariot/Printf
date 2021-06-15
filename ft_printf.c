@@ -1,4 +1,4 @@
-/* ************************************************************************** */
+/************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
@@ -6,7 +6,7 @@
 /*   By: cmariot <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/24 10:55:24 by cmariot           #+#    #+#             */
-/*   Updated: 2021/06/14 14:55:23 by cmariot          ###   ########.fr       */
+/*   Updated: 2021/06/15 12:35:36 by cmariot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,6 @@
 int	simple_printing(const char *format, va_list va_obj)
 {
 	int	ret;
-	int	c;
-	char *str;
 
 	ret = 0;
 	while (*format)
@@ -26,18 +24,14 @@ int	simple_printing(const char *format, va_list va_obj)
 		else if (*format == '%')
 		{
 			format++;
-			if (*format == 's')
-			{
-				str = va_arg(va_obj, char *);
-				ret += ft_putstr_ret(str);
-				format++;
-			}
-		}
-		else if (ft_percent_char(format, 'c') == 1)
-		{
-			c = va_arg(va_obj, int);
-			ret += ft_putchar_ret(c);
-			format++;
+			if (*format == 'c')
+				ret += ft_putchar_ret(va_arg(va_obj, int));
+			else if (*format == 's')
+				ret += ft_putstr_ret(va_arg(va_obj, char *));
+		//	else if (*format == 'p')
+		//		ret += ft_putadr_ret(va_arg(va_obj, void*));
+			else if (*format == 'd')
+				ret += ft_putnbr_ret(va_arg(va_obj, int);
 		}
 		format++;
 	}
@@ -58,35 +52,39 @@ int	ft_printf(const char *format, ...)
 
 int 	main(void)
 {
+	char *str;
+	char **ptr_str;
+
+	str = "toto\n";
+	ptr_str = &str;
+
 //	ft_printf("\nFonction Printf\n");
 //	printf("Fonction Printf\n");
 // 	ft_printf("Test d'affichage de \a \\ \" 'b' \' %% \n");
 // 	printf("Test d'affichage de \a \\ \" 'b' \' %% \n");
 // 	ft_printf("Test d'affichage de \a - \b - \f - \n - \r - \t - \v - \n");
 //	printf("Test d'affichage de \a - \b - \f - \n - \r - \t - \v - \n");
-//	ft_printf("Test d'affichage de char c : %c\n", 'c');
+	ft_printf("\nTest d'affichage de char c : %c\n", 'c');
 //	printf("Test d'affichage de char c : %c\n", 'c');
+	ft_printf("Test d'affichage de char *str : %s\n", "str");
+//	printf("Test d'affichage de char *str : %s\n", "str\n");
+//	printf("Test d'affichage de l'adresse de *str : %p\n", &str);
+	ft_printf("Test d'affichage de int nb : %d\n", 123456789);
 
 
-	printf("Format %-d\n", 6);	
-	printf("Format %0d\n", 6);	
-	printf("Format %.d\n", 6);	
-	printf("Format %*d\n", 6, 6);	
+
+
+
+//	printf("Format %-d\n", 6);	
+//	printf("Format %0d\n", 6);	
+//	printf("Format %.d\n", 6);	
+//	printf("Format %*d\n", 6, 6);	
 	
-	printf("Format %-3d\n", 6);	
-	printf("Format %03d\n", 6);	
-	printf("Format %.3d\n", 6);	
-	printf("Format %*d\n", 6, 6);
-	printf("%%\n");
-
-	ft_printf("test %s\n", "de str\n");
-	
-	int a;
-	int *ptr_a;
-
-	a = 42;
-	ptr_a = &a;
-	printf("Adresse de a = %p\n", ptr_a);
+//	printf("Format %-3d\n", 6);	
+//	printf("Format %03d\n", 6);	
+//	printf("Format %.3d\n", 6);	
+//	printf("Format %*d\n", 6, 6);
+//	printf("%%\n");
 
 	return (0);
 }
