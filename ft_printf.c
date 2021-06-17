@@ -6,7 +6,7 @@
 /*   By: cmariot <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/24 10:55:24 by cmariot           #+#    #+#             */
-/*   Updated: 2021/06/17 21:30:08 by cmariot          ###   ########.fr       */
+/*   Updated: 2021/06/17 21:45:12 by cmariot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ int	ft_printf(const char *format, ...)
 			//reset flags except total_lenght ? 
 			i = ft_check_flags(format, flags, i++);
 			ft_check_type(format, i, flags);
-
 		}
 		i++;
 	}
@@ -53,6 +52,7 @@ int 	main(void)
 	ret = ft_printf("Test d'affichage int i : %i\n", 67890);
 	ret = ft_printf("Test d'affichage 1464 en hexa : %x\n", 1464);
 	ret = ft_printf("Test d'affichage 1464 en HEXA : %X\n", 1464);
+	ret = ft_printf("Test d'affichage %% : %%\n");
 	
 	return (0);
 }
