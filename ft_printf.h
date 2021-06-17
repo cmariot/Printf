@@ -6,7 +6,7 @@
 /*   By: cmariot <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/24 10:56:06 by cmariot           #+#    #+#             */
-/*   Updated: 2021/06/17 09:39:16 by cmariot          ###   ########.fr       */
+/*   Updated: 2021/06/17 12:16:51 by cmariot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,31 +27,47 @@ typedef struct s_flags
 	int zero;
 	int dot;
 	int star;
-} t_flags
+} t_flags;
 
-int	ft_printf(const char *, ...);
-int	ft_is_in_type_list(int c);
-int	ft_is_in_flags_list(int c);
-int	ft_treatment(int c, t_flags flags, va_list args);
-int	ft_treat_width(int width, int minus, int has_zero);
+//Prend const char * en argument, revoie la longueur affichee. Peut prendre d'autres parametres, geres avec les va_args. 
+int		ft_printf(const char *, ...);
+
+//Verifie que la conversion est geree par notre fonction, si c'est le cas on renvoie un int en fonction du type, sinon on renvoie 0. Cet int va se placer dans la structure, au niveau de type.
+int		ft_is_in_type_list(int c);
+
+//Verifie que le flag est gere par notre fonction, si c'est le cas on revoie un int en fonction du flag, sinon 0. Cet int va se placer dans la structure au bon endroit (minus, zero, dot, star).
+int		ft_is_in_flags_list(int c);
+
+//Traitement, si is_in_flag et is_in_type prend *format (char), la structure et le prochain va_arg ; Renvoie un int correspondant a la longueur qui a ete print. 
+int		ft_treatment(int c, t_flags flags, va_list args);
+
+//
+int		ft_treat_width(int width, int minus, int has_zero);
+
 //...
-int	ft_putchar(int c);
-int	ft_treat_pointer(unsigned long long pointer, t_flags flags);
+
+//Ft_putchar classique, sauf qu'on revoie 1 dans already_print si reussite.
+int		ft_putchar(int c);
+
+int		ft_treat_pointer(unsigned long long pointer, t_flags flags);
+
 char 	*ft_ull_base(unsigned long long ull, int base);
+
+//Convertit un unigned int n en chaine de caracteres. 
 char	*ft_u_itoa(unsigned int n);
+
+//Convertit une chaine de charactere en une nouvelle chiane de character, mais en minuscule
 char	*ft_str_tolower(char *str);
+
 t_flags	ft_flag_minus(t_flags flags);
+
 t_flags	ft_flag_width(va_list args, t_flags flags);
+
 t_flags	ft_flag_digit(char c, t_flags flags);
 
-/*
-int	ft_simple_printing(const char * fornat, va_list va_obj);
-int	ft_character_printing(const char *format);
-int	ft_putchar_ret(int c);
-int	ft_percent_percent(const char *format);
-int	ft_percent_char(const char *format, char c);
-int	ft_putstr_ret(const char *format);
-int	ft_putnbr_ret(int nb);
-char *ft_itoa(int nb);*/
+
+
+
+char	*ft_strdup(const char *s1);
 
 #endif
