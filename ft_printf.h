@@ -6,7 +6,7 @@
 /*   By: cmariot <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/24 10:56:06 by cmariot           #+#    #+#             */
-/*   Updated: 2021/06/17 12:16:51 by cmariot          ###   ########.fr       */
+/*   Updated: 2021/06/17 14:23:13 by cmariot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,21 +21,24 @@
 typedef struct s_flags
 {
 	int already_print;
-	int type;
 	int width;
 	int minus;
 	int zero;
 	int dot;
 	int star;
+	int type;
+
 } t_flags;
 
-//Prend const char * en argument, revoie la longueur affichee. Peut prendre d'autres parametres, geres avec les va_args. 
+//%[flags][champ][specificateur]
+
+//Prend const char * en argument, revoie la longueur affichee. Peut prendre d'autres parametres, geres avec les va_args. Si le char n'est pas un % on l'affiche.
 int		ft_printf(const char *, ...);
 
-//Verifie que la conversion est geree par notre fonction, si c'est le cas on renvoie un int en fonction du type, sinon on renvoie 0. Cet int va se placer dans la structure, au niveau de type.
+//Verifie que la conversion est geree par notre fonction, si c'est le cas on renvoie un int en fonction du type, sinon on renvoie 0. 
 int		ft_is_in_type_list(int c);
 
-//Verifie que le flag est gere par notre fonction, si c'est le cas on revoie un int en fonction du flag, sinon 0. Cet int va se placer dans la structure au bon endroit (minus, zero, dot, star).
+//Verifie que le flag est gere par notre fonction, si c'est le cas on revoie un int en fonction du flag, sinon 0. 
 int		ft_is_in_flags_list(int c);
 
 //Traitement, si is_in_flag et is_in_type prend *format (char), la structure et le prochain va_arg ; Renvoie un int correspondant a la longueur qui a ete print. 
@@ -56,7 +59,7 @@ char 	*ft_ull_base(unsigned long long ull, int base);
 //Convertit un unigned int n en chaine de caracteres. 
 char	*ft_u_itoa(unsigned int n);
 
-//Convertit une chaine de charactere en une nouvelle chiane de character, mais en minuscule
+//Convertit une chaine de charactere en une nouvelle chaine de character, mais en minuscule
 char	*ft_str_tolower(char *str);
 
 t_flags	ft_flag_minus(t_flags flags);

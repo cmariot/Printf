@@ -1,27 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_is_in_flags_list.c                              :+:      :+:    :+:   */
+/*   ft_str_tolower.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cmariot <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/06/17 10:55:21 by cmariot           #+#    #+#             */
-/*   Updated: 2021/06/17 14:23:08 by cmariot          ###   ########.fr       */
+/*   Created: 2021/06/17 13:17:19 by cmariot           #+#    #+#             */
+/*   Updated: 2021/06/17 13:59:00 by cmariot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_is_in_flags_list(int c)
+int	ft_tolower(int c)
 {
-	if (c == '-')
-		return (1);
-	else if	(c == '0')
-		return (2);
-	else if (c == '.')
-		return (3);
-	else if	(c == '*')
-		return (4);
+	if (c >= 'A' && c <= 'Z')
+		return (c + 32);
 	else
-		return (0);
+		return (c);
+}
+
+char *ft_str_tolower(char *str)
+{
+	
+	while (*str)
+	{
+		*str = ft_tolower((int)*str);
+		str++;
+	}
+	return (str);
+}
+
+int	main(void)
+{
+	char *str = "ToTo";
+	str = ft_str_tolower(str);
+	printf("%s\n", str);	
+	return (0);
 }
