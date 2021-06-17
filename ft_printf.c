@@ -6,7 +6,7 @@
 /*   By: cmariot <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/24 10:55:24 by cmariot           #+#    #+#             */
-/*   Updated: 2021/06/17 14:23:10 by cmariot          ###   ########.fr       */
+/*   Updated: 2021/06/17 15:05:09 by cmariot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ int	ft_printf(const char *format, ...)
 	t_flags		flags;
 
 	va_start(va_obj, format);
+	flags.already_print = 0; 
 	while (*format)
 	{
 		if (*format != '%')
