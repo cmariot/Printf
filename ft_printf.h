@@ -6,7 +6,7 @@
 /*   By: cmariot <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/24 10:56:06 by cmariot           #+#    #+#             */
-/*   Updated: 2021/06/17 15:27:55 by cmariot          ###   ########.fr       */
+/*   Updated: 2021/06/17 21:27:22 by cmariot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,53 +20,44 @@
 
 typedef struct s_flags
 {
-	int already_print;
-	int width;
-	int minus;
-	int zero;
-	int dot;
-	int star;
-	int type;
+	va_list args;		// Arg to print out
+	int minus_flag;		// -
+	int zero_flag;		// 0
+	int dot_flag;		// .
+	int star_flag;		// *
+	int field_width;	// Largeur champ
+	int type;		// Specificateur
+	int total_lenght;	// Return value
 
 } t_flags;
 
-//%[flags][champ][specificateur]
+//	%[flags][champ][specificateur]
 
-//Prend const char * en argument, revoie la longueur affichee. Peut prendre d'autres parametres, geres avec les va_args. Si le char n'est pas un % on l'affiche.
-int		ft_printf(const char *, ...);
+//Prend const char * en argument, revoie la longueur affichee. Peut prendre d'autres parametres, geres avec les va_args. 
+int			ft_printf(const char *, ...);
 
-//Verifie que la conversion est geree par notre fonction, si c'est le cas on renvoie un int en fonction du type, sinon on renvoie 0. 
-int		ft_is_in_type_list(int c);
-
-//Verifie que le flag est gere par notre fonction, si c'est le cas on revoie un int en fonction du flag, sinon 0. 
-int		ft_is_in_flags_list(int c);
-
-//Traitement, si is_in_flag et is_in_type prend *format (char), la structure et le prochain va_arg ; Renvoie un int correspondant a la longueur qui a ete print. 
-//int		ft_treatment(int c, t_flags flags, va_list args);
-
-//
-//int		ft_treat_width(int width, int minus, int has_zero);
-
-//...
+//Initialiser toutes les variables de la structure sur 0.
+t_flags 	*ft_initialize_flags(t_flags *flags);
 
 //Ft_putchar classique, sauf qu'on revoie 1 dans already_print si reussite.
 int		ft_putchar(int c);
 
-//int		ft_treat_pointer(unsigned long long pointer, t_flags flags);
+//Lorsqu'on rencontre un %, on verifie quels flags sont presents entre le % et le specificateur, on rentre ces valeurs dans la structure. 
+unsigned int	ft_check_flags(const char *format, t_flags *flags, unsigned int i);
 
-//char 	*ft_ull_base(unsigned long long ull, int base);
+//Verifie que la conversion est geree par notre fonction, si c'est le cas on renvoie un int en fonction du type, sinon on renvoie 0. 
+int		ft_is_in_type_list(int c);
 
-//Convertit un unigned int n en chaine de caracteres. 
-char	*ft_u_itoa(unsigned int n);
+//Lorsqu'on est au niveau d'un specificateur de type on va verifier de quel type il s'agit pour l'envoyer dans la bonne fonction.
+void	ft_check_type(const char *format, unsigned int i, t_flags *flags);
 
-//Convertit une chaine de charactere en une nouvelle chaine de character, mais en minuscule
-char	*ft_str_tolower(char *str);
-
-//t_flags	ft_flag_minus(t_flags flags);
-
-//t_flags	ft_flag_width(va_list args, t_flags flags);
-
-//t_flags	ft_flag_digit(char c, t_flags flags);
+//Dans le cas d'un char a afficher
+void	ft_print_char(t_flags *flags);
+void	ft_print_str(t_flags *flags);
+void	ft_print_unsigned_int(t_flags *flags);
+void 	ft_print_integer(t_flags *flags);
+void	ft_print_hexa(t_flags *flags);
+void	ft_print_hexa_maj(t_flags *flags);
 
 char	*ft_strdup(const char *s1);
 
