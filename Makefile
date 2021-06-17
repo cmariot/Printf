@@ -1,88 +1,73 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: cmariot <cmariot@student.42.fr>            +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2021/05/27 18:57:32 by cmariot           #+#    #+#              #
-#    Updated: 2021/06/17 11:56:09 by cmariot          ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
+NAME = ft_printf
 
-NAME=libftprintf.a
-CC=gcc
-CCFLAGS=-Wall -Wextra -Werror
+HEADER = includes
 
-SRCS = ft_printf.c \
-	   ./LibftPrintf/ft_atoi.c \
-       ./LibftPrintf/ft_bzero.c \
-	   ./LibftPrintf/ft_calloc.c \
-       ./LibftPrintf/ft_itoa.c \
-       ./LibftPrintf/ft_isalnum.c \
-       ./LibftPrintf/ft_isalpha.c \
-       ./LibftPrintf/ft_isascii.c \
-       ./LibftPrintf/ft_isdigit.c \
-       ./LibftPrintf/ft_isprint.c \
-       ./LibftPrintf/ft_memccpy.c \
-       ./LibftPrintf/ft_memchr.c \
-       ./LibftPrintf/ft_memcmp.c \
-       ./LibftPrintf/ft_memcpy.c \
-       ./LibftPrintf/ft_memmove.c \
-       ./LibftPrintf/ft_memset.c \
-       ./LibftPrintf/ft_putchar_fd.c \
-       ./LibftPrintf/ft_putendl_fd.c \
-       ./LibftPrintf/ft_putnbr_fd.c \
-       ./LibftPrintf/ft_putstr_fd.c \
-       ./LibftPrintf/ft_split.c \
-       ./LibftPrintf/ft_strchr.c \
-       ./LibftPrintf/ft_strdup.c \
-       ./LibftPrintf/ft_strjoin.c \
-       ./LibftPrintf/ft_strlcat.c \
-       ./LibftPrintf/ft_strlcpy.c \
-       ./LibftPrintf/ft_strlen.c \
-       ./LibftPrintf/ft_strmapi.c \
-       ./LibftPrintf/ft_strncmp.c \
-       ./LibftPrintf/ft_strnstr.c \
-       ./LibftPrintf/ft_strrchr.c \
-       ./LibftPrintf/ft_strtrim.c \
-       ./LibftPrintf/ft_substr.c \
-       ./LibftPrintf/ft_tolower.c \
-       ./LibftPrintf/ft_toupper.c \
-	   ./LibftPrintf/ft_lstadd_back.c \
-	   ./LibftPrintf/ft_lstadd_front.c \
-	   ./LibftPrintf/ft_lstclear.c \
-	   ./LibftPrintf/ft_lstdelone.c \
-	   ./LibftPrintf/ft_lstiter.c \
-	   ./LibftPrintf/ft_lstlast.c \
-	   ./LibftPrintf/ft_lstmap.c \
-	   ./LibftPrintf/ft_lstnew.c \
-	   ./LibftPrintf/ft_lstsize.c \
+FLAGS = -Wall -Wextra -Ofast
 
+LFT = libft
+LFT_INC = $(LFT)/includes
 
-BONUS_SRCS =
+ifdef DEBUG
+FLAGS = -Wall -Werror -Wextra -g
 
-OBJS = ${SRCS:.c=.o}
+else
+FLAGS = -Wall -Werror -Wextra
+endif
 
-BONUS_OBJS = ${BONUS_SRCS:.c=.o}
+LIB = libft
 
-RM = rm -rf
+SRC = srcs/ft_printf.c \
+	srcs/ft_initialize_flags.c \
+	srcs/ft_check_type.c \
+	srcs/ft_is_in_flags_list.c \
+	srcs/ft_is_in_type_list.c \
+	srcs/ft_putchar.c \
+	srcs/ft_print_char.c \
+	srcs/ft_print_str.c \
+	srcs/ft_print_integer.c \
+	srcs/ft_print_unsigned_int.c \
+	srcs/ft_print_hexa.c \
+	srcs/ft_print_hexa_maj.c \
+	srcs/ft_check_flags.c
 
-.c.o:
-		${CC} ${CCFLAGS} -c $< -o ${<:.c=.o}
+OBJ = $(SRC:%.c=obj/%.o)
 
-all:		${NAME}
+all: prepare compile_lib compile_p $(NAME) exec
 
-$(NAME):	${OBJS}
-	ar rc ${NAME} ${OBJS}
+exec:
+		@printf "\n\n\033[32mRun like this:\n \033[39m\n"
 
-bonus: 		${OBJS} ${BONUS_OBJS}
-	ar rc ${NAME} ${OBJS} ${BONUS_OBJS}
+norm:
+		@norminette $(SRC) $(HEADER)
+
+$(NAME): $(OBJ)
+		@gcc $(FLAGS) -o $(NAME) $(OBJ) -I $(LFT_INC) -I $(HEADER) \
+		-L $(LFT) -lft 
+		@printf " => Ok.\n"
+
+prepare:
+		@mkdir -p obj/srcs
+
+compile_lib:
+		@make -C $(LFT)
+
+compile_p:
+		@echo "\033[31mCompiling $(NAME) wait...\033[39m"
+
+obj/%.o: %.c $(HEADER)
+		@gcc $(FLAGS) \
+		-I $(HEADER) \
+		-o $@ -c $<
+		@printf "|"
 
 clean:
-		${RM} ${OBJS} ${BONUS_OBJS}
+		@/bin/rm -rf ./obj
+		@make -C $(LFT) fclean
+		@/bin/rm -rf $(OBJ)
+		@echo "\033[41;39mRemoving Objects Wait...\033[49;39m"
 
-fclean:		clean
-		${RM} ${NAME}
+fclean: clean
+		@/bin/rm -f $(NAME)
+		@echo "\033[41;39mRemoving Binary Wait...\033[49;39m\n"
 
-re:			fclean all
+re: fclean all
