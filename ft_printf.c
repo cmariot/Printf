@@ -1,12 +1,12 @@
-/************************************************************************** */
+/* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cmariot <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: cmariot <cmariot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/24 10:55:24 by cmariot           #+#    #+#             */
-/*   Updated: 2021/06/17 21:45:12 by cmariot          ###   ########.fr       */
+/*   Created: 2021/06/17 23:26:05 by cmariot           #+#    #+#             */
+/*   Updated: 2021/06/17 23:26:33 by cmariot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,8 @@ int	ft_printf(const char *format, ...)
 			flags->total_lenght += ft_putchar(format[i]);
 		else if (format[i] == '%')
 		{
-			//reset flags except total_lenght ? 
+		//	if (flags->total_lenght != 0)
+		//		flags = ft_reset_struct(flags); 
 			i = ft_check_flags(format, flags, i++);
 			ft_check_type(format, i, flags);
 		}
@@ -44,7 +45,7 @@ int 	main(void)
 {
 	int ret;
 
-	ret = ft_printf("Fonction Printf\n");
+	ret = ft_printf("\nFonction Printf\n");
 	ret = ft_printf("Test d'affichage char : %c\n", 'c');
 	ret = ft_printf("Test d'affichage str : %s\n", "str");
 	ret = ft_printf("Test d'affichage unsigned int : %u\n", 123456789);
@@ -53,6 +54,11 @@ int 	main(void)
 	ret = ft_printf("Test d'affichage 1464 en hexa : %x\n", 1464);
 	ret = ft_printf("Test d'affichage 1464 en HEXA : %X\n", 1464);
 	ret = ft_printf("Test d'affichage %% : %%\n");
+
+	ft_printf("Retour = %i\n", ft_printf("\nTest valeur de retour\n"));
+	ft_printf("Retour = %i\n", ft_printf("Test valeur de retour %d\n", 25));
+	ft_printf("Retour = %i\n", ft_printf("Test valeur de retour %s\n", "25"));
+
 	
 	return (0);
 }
