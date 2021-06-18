@@ -6,35 +6,35 @@
 /*   By: cmariot <cmariot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/17 17:34:02 by cmariot           #+#    #+#             */
-/*   Updated: 2021/06/17 18:41:29 by cmariot          ###   ########.fr       */
+/*   Updated: 2021/06/18 17:39:18 by cmariot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-unsigned int	ft_check_flags(const char *format, t_flags *flags, unsigned int i)
+unsigned int	ft_chck_flgs(const char *frmt, t_flags *flgs, unsigned int i)
 {
 	i++;
-	while (!ft_is_in_type_list(format[i]))
+	while (!ft_is_in_type_list(frmt[i]))
 	{
-		if (format[i] == '-')
+		if (frmt[i] == '-')
 		{
-			flags->minus_flag = 1;
+			flgs->minus_flag = 1;
 			i++;
 		}
-		else if (format[i] == '0')
+		else if (frmt[i] == '0')
 		{
-			flags->zero_flag = 1;
+			flgs->zero_flag = 1;
 			i++;
 		}
-		else if (format[i] == '.')
+		else if (frmt[i] == '.')
 		{
-			flags->dot_flag = 1;
+			flgs->dot_flag = 1;
 			i++;
 		}
-		else if (format[i] == '*')
+		else if (frmt[i] == '*')
 		{
-			flags->star_flag = 1;
+			flgs->star_flag = 1;
 			i++;
 		}
 	}

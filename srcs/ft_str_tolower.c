@@ -6,13 +6,13 @@
 /*   By: cmariot <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/17 13:17:19 by cmariot           #+#    #+#             */
-/*   Updated: 2021/06/17 15:05:22 by cmariot          ###   ########.fr       */
+/*   Updated: 2021/06/18 17:10:12 by cmariot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-char *ft_str_tolower(char *str)
+char	*ft_str_tolower(char *str)
 {
 	if (*str)
 	{

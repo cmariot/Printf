@@ -6,7 +6,7 @@
 /*   By: cmariot <cmariot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/17 23:26:05 by cmariot           #+#    #+#             */
-/*   Updated: 2021/06/18 15:47:27 by cmariot          ###   ########.fr       */
+/*   Updated: 2021/06/18 17:35:30 by cmariot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	ft_printf(const char *format, ...)
 {
-	t_flags 	*flags;
+	t_flags			*flags;
 	unsigned int	i;
 
 	flags = malloc(sizeof(t_flags));
@@ -29,10 +29,8 @@ int	ft_printf(const char *format, ...)
 			flags->total_lenght += ft_putchar(format[i]);
 		else if (format[i] == '%')
 		{
-		//	if (flags->total_lenght != 0)
-		//		flags = ft_reset_struct(flags); 
-			i = ft_check_flags(format, flags, i++);
-			ft_check_type(format, i, flags);
+			i = ft_chck_flgs(format, flags, i++);
+			ft_chck_type(format, i, flags);
 		}
 		i++;
 	}
@@ -54,16 +52,12 @@ int 	main(void)
 	ret = ft_printf("Test d'affichage 1464 en hexa : %x\n", 1464);
 	ret = ft_printf("Test d'affichage 1464 en HEXA : %X\n", 1464);
 	ret = ft_printf("Test d'affichage %% : %%\n");
-	//ret = ft_printf("Test d'affichage adresse : %p\n", &ret);
-
 	ft_printf("Retour = %i\n", ft_printf("\nTest valeur de retour\n"));
 	ft_printf("Retour = %i\n", ft_printf("Test valeur de retour %d\n", 25));
 	ft_printf("Retour = %i\n", ft_printf("Test valeur de retour %s\n", "25"));
-
 	printf("Test du flag '-'\n");
 	printf("Test du flag '-' sur .%-c.\n", 'c');
 	printf("Test du flag '-' sur .%-2c.\n", 'c');
 	printf("Test du flag '-' sur .%-c.\n", 'c');
-	
 	return (0);
 }

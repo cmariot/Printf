@@ -6,7 +6,7 @@
 /*   By: cmariot <cmariot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/17 18:32:19 by cmariot           #+#    #+#             */
-/*   Updated: 2021/06/17 21:24:46 by cmariot          ###   ########.fr       */
+/*   Updated: 2021/06/18 17:24:35 by cmariot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ft_uitoa_hexa_maj(unsigned int n, t_flags *flags)
 {
-	char 		*base;
+	char			*base;
 	unsigned int	diviseur;
 	unsigned int	result;
 
@@ -32,7 +32,7 @@ void	ft_uitoa_hexa_maj(unsigned int n, t_flags *flags)
 
 void	ft_print_hexa_maj(t_flags *flags)
 {
-	unsigned int X;
+	unsigned int	X;
 
 	X = va_arg(flags->args, unsigned int);
 	ft_uitoa_hexa_maj(X, flags);

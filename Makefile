@@ -6,7 +6,7 @@
 #    By: cmariot <cmariot@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/05/27 18:57:32 by cmariot           #+#    #+#              #
-#    Updated: 2021/06/18 15:47:38 by cmariot          ###   ########.fr        #
+#    Updated: 2021/06/18 18:10:46 by cmariot          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,7 +34,7 @@ SRCS = srcs/ft_printf.c \
        srcs/ft_print_unsigned_int.c \
        srcs/ft_print_hexa.c \
        srcs/ft_print_hexa_maj.c \
-	   srcs/ft_print_addr.c \
+       srcs/ft_print_addr.c \
        srcs/ft_check_flags.c
 
 SRCS_OBJS = ${SRCS:.c=.o}
@@ -94,34 +94,35 @@ REMOVE = rm -rf
 .c.o:
 				@${COMPILER} ${COMPILER_FLAGS} -c $< -o ${<:.c=.o} -I ${INCLUDES_DIR} -I ${LIBFT_DIR}
 
-${NAME}:		compil_libft compil_srcs
-				@printf "The program is ready to be execute.\n"
+${NAME}:			compil_libft compil_srcs
+				@printf "\x1b[32mThe program is ready to be execute.\n\x1b[0m"
 
-all: 			norme compil_libft compil_srcs exec
+all: 				norme compil_libft compil_srcs exec
 
 norme:
-				@norminette | grep "Error"
+				@norminette
 
-compil_libft: 	${LIBFT_OBJS}
+compil_libft: 			${LIBFT_OBJS}
 				@ar rc ${LIBFT_NAME} ${LIBFT_OBJS}
 				@ranlib ${LIBFT_NAME}
-				@printf "Libft is compilated\n"
+				@printf "\x1b[32mLibft is compilated\n\x1b[0m"
 
-compil_srcs:	${SRCS_OBJS}
-				@${COMPILER} ${COMPILER_FLAGS} -o ${PROGRAM_NAME} \
-					${SRCS_OBJS} -L ${LIBFT_DIR} -I ${INCLUDES_DIR} 
-				@printf "Srcs are compilated\n"
+compil_srcs:			${SRCS_OBJS}
+				@${COMPILER} ${COMPILER_FLAGS} -o ${PROGRAM_NAME} ${SRCS_OBJS} -L ${LIBFT_DIR} -lft -I ${INCLUDES_DIR} 
+				@printf "\x1b[32mSrcs are compilated\n\x1b[0m"
 			
 exec:
 				@./${PROGRAM_NAME}
 clean:
 				@${REMOVE} ${LIBFT_OBJS}
 				@${REMOVE} ${SRCS_OBJS}
-				@printf "The .o files have been deleted\n"
+				@printf "\x1b[32mThe .o files have been deleted\n\x1b[0m"
 
-fclean:			clean
+fclean:				clean
 				@${REMOVE} ${LIBFT_NAME}
 				@${REMOVE} ${PROGRAM_NAME}
-				@printf "The binary file have been deleted\n"
+				@printf "\x1b[32mThe binary files have been deleted\n\x1b[0m"
 
 re:				fclean all
+
+.PHONY:				clean fclean

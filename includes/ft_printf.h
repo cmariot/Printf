@@ -6,13 +6,12 @@
 /*   By: cmariot <cmariot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/17 23:26:23 by cmariot           #+#    #+#             */
-/*   Updated: 2021/06/18 15:23:16 by cmariot          ###   ########.fr       */
+/*   Updated: 2021/06/18 17:55:42 by cmariot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
-#ifndef FT_PRINTF
-# define FT_PRINTF
+#ifndef FT_PRINTF_H
+# define FT_PRINTF_H
 
 # define INT_MIN	-2147483648
 # define INT_MAX	2147483647
@@ -21,53 +20,47 @@
 # include <unistd.h>
 # include <stdarg.h>
 # include <stdio.h>
+# include "libft.h"
 
 typedef struct s_flags
 {
-	va_list args;		// Arg to print out
-	int minus_flag;		// -
-	int zero_flag;		// 0
-	int dot_flag;		// .
-	int star_flag;		// *
-	int field_width;	// Largeur champ
-	int type;			// Specificateur
-	int total_lenght;	// Return value
+	va_list	args;
+	int		minus_flag;
+	int		zero_flag;
+	int		dot_flag;
+	int		star_flag;
+	int		field_width;
+	int		type;
+	int		total_lenght;
+}	t_flags;
 
-} t_flags;
-
-
-//	%[flags][champ][specificateur]
-
-
-//Prend const char * en argument, revoie la longueur affichee. Peut prendre d'autres parametres, les va_args. 
-int		ft_printf(const char *, ...);
-//Initialiser toutes les variables de la structure sur 0.
-t_flags 	*ft_initialize_flags(t_flags *flags);
-//Reinitialiser les variables de la structure sur 0 entre les appels.
-t_flags	*ft_reset_struct(t_flags *flags);
-//Affiche un char et revoit 1 dans total_lenght si reussite.
-int		ft_putchar(int c);
-//Lorsqu'on rencontre un %, on verifie quels flags sont presents entre le % et le specificateur, on rentre ces valeurs dans la structure. 
-unsigned int	ft_check_flags(const char *format, t_flags *flags, unsigned int i);
-//Verifie que la conversion est geree par notre fonction, si c'est le cas on renvoie un int en fonction du type, sinon on renvoie 0. 
-int		ft_is_in_type_list(int c);
-//Lorsqu'on est au niveau d'un specificateur de type on va verifier de quel type il s'agit pour l'envoyer dans la bonne fonction.
-void		ft_check_type(const char *format, unsigned int i, t_flags *flags);
-//Dans le cas d'un char a afficher
-void		ft_print_char(t_flags *flags);
-// Affiche char *str
-void		ft_print_str(t_flags *flags);
-// Affiche un unsigned int
-void		ft_print_unsigned_int(t_flags *flags);
-// Affiche un int
-void 		ft_print_integer(t_flags *flags);
-// Affiche un unsigned int en hexa (0123456789abcdef)
-void		ft_print_hexa(t_flags *flags);
-// Affiche un unsigned int en hexa (0123456789ABCDEF)
-void		ft_print_hexa_maj(t_flags *flags);
-// Affiche l'addresse d'une variable
-void		ft_print_addr(t_flags *flags);
-
-char	*ft_strdup(const char *s1);
+/* This functiun works like the printf function. */
+int				ft_printf(const char *format, ...);
+/* All the struct variables are set to 0. */
+t_flags			*ft_initialize_flags(t_flags *flags);
+/* Reset the struct variables to zero. */
+t_flags			*ft_reset_struct(t_flags *flags);
+/* Print a char and return 1. */
+int				ft_putchar(int c);
+/* When we see a '%' we check the flag and put data in the structure. */
+unsigned int	ft_chck_flgs(const char *frmt, t_flags *flgs, unsigned int i);
+/* We check if the specifier is correct */
+int				ft_is_in_type_list(int c);
+/* We call the right function for the specifier */
+void			ft_chck_type(const char *frmt, unsigned int i, t_flags *flgs);
+/* If %c print a char */
+void			ft_print_char(t_flags *flags);
+/* If %s print a str */
+void			ft_print_str(t_flags *flags);
+/* If %u print a unsigned int */
+void			ft_print_unsigned_int(t_flags *flags);
+/* If %d or %i print an integer */
+void			ft_print_integer(t_flags *flags);
+/* If %x convert an unsigned int to hexa (0123456789abcdef) */
+void			ft_print_hexa(t_flags *flags);
+/* If %X convert an unsigned int to hexa (0123456789ABCDEF) */
+void			ft_print_hexa_maj(t_flags *flags);
+/* If %p print the memory */
+void			ft_print_addr(t_flags *flags);
 
 #endif

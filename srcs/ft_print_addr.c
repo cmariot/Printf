@@ -6,7 +6,7 @@
 /*   By: cmariot <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/18 14:52:30 by cmariot           #+#    #+#             */
-/*   Updated: 2021/06/18 15:35:27 by cmariot          ###   ########.fr       */
+/*   Updated: 2021/06/18 17:11:17 by cmariot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ft_print_addr(t_flags *flags)
 {
-	void *p;
+	void	*p;
 
 	p = va_arg(flags->args, void *);
 	printf("%p\n", p);

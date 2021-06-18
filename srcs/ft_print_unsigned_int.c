@@ -6,43 +6,11 @@
 /*   By: cmariot <cmariot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/17 18:32:19 by cmariot           #+#    #+#             */
-/*   Updated: 2021/06/17 19:58:50 by cmariot          ###   ########.fr       */
+/*   Updated: 2021/06/18 17:23:43 by cmariot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-
-static size_t	ft_strlen(const char *s)
-{
-	size_t	i;
-
-	i = 0;
-	while (*s++)
-		i++;
-	return (i);
-}
-
-char	*ft_strdup(const char *s1)
-{
-	int		src_len;
-	char	*src;
-	char	*cpy;
-	int		i;
-
-	src = (char *)s1;
-	src_len = ft_strlen(src);
-	cpy = malloc(sizeof(char) * (src_len + 1));
-	if (!cpy)
-		return (NULL);
-	i = 0;
-	while (i < src_len)
-	{
-		cpy[i] = s1[i];
-		i++;
-	}
-	cpy[i] = '\0';
-	return (cpy);
-}
 
 static unsigned int	int_len(unsigned int n)
 {
@@ -80,8 +48,8 @@ static char	*ft_u_itoa(unsigned int n)
 
 void	ft_print_unsigned_int(t_flags *flags)
 {
-	unsigned int u;
-	char *str;
+	unsigned int	u;
+	char			*str;
 
 	u = va_arg(flags->args, unsigned int);
 	str = ft_u_itoa(u);
@@ -89,5 +57,4 @@ void	ft_print_unsigned_int(t_flags *flags)
 	{
 		flags->total_lenght += ft_putchar(*str++);
 	}
-
 }

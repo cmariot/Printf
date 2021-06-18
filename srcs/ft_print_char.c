@@ -6,7 +6,7 @@
 /*   By: cmariot <cmariot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/17 18:32:19 by cmariot           #+#    #+#             */
-/*   Updated: 2021/06/18 15:47:33 by cmariot          ###   ########.fr       */
+/*   Updated: 2021/06/18 17:21:47 by cmariot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,8 @@
 
 void	ft_print_char(t_flags *flags)
 {
-	char c;
+	char	c;
 
 	c = va_arg(flags->args, int);
-//	if (flags->wdt && !flags->minus)
 	flags->total_lenght += write(1, &c, sizeof(c));
-//	if (flags->wdt && flags->minus)
 }
