@@ -6,7 +6,7 @@
 /*   By: cmariot <cmariot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/17 18:26:17 by cmariot           #+#    #+#             */
-/*   Updated: 2021/06/17 21:46:38 by cmariot          ###   ########.fr       */
+/*   Updated: 2021/06/18 15:20:18 by cmariot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,7 @@ void	ft_check_type(const char *format, unsigned int i, t_flags *flags)
 	else if (format[i] == 's')
 		ft_print_str(flags);
 	else if (format[i] == 'p')
-	{
-		//	ft_print_addr(flags);
-	}
+		ft_print_addr(flags);
 	else if (format[i] == 'u')
 		ft_print_unsigned_int(flags);
 	else if (format[i] == 'x')

@@ -1,23 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_char.c                                    :+:      :+:    :+:   */
+/*   ft_print_addr.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cmariot <cmariot@student.42.fr>            +#+  +:+       +#+        */
+/*   By: cmariot <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/06/17 18:32:19 by cmariot           #+#    #+#             */
-/*   Updated: 2021/06/18 15:47:33 by cmariot          ###   ########.fr       */
+/*   Created: 2021/06/18 14:52:30 by cmariot           #+#    #+#             */
+/*   Updated: 2021/06/18 15:35:27 by cmariot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	ft_print_char(t_flags *flags)
+void	ft_print_addr(t_flags *flags)
 {
-	char c;
+	void *p;
 
-	c = va_arg(flags->args, int);
-//	if (flags->wdt && !flags->minus)
-	flags->total_lenght += write(1, &c, sizeof(c));
-//	if (flags->wdt && flags->minus)
+	p = va_arg(flags->args, void *);
+	printf("%p\n", p);
 }

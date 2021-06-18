@@ -6,11 +6,7 @@
 #    By: cmariot <cmariot@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/05/27 18:57:32 by cmariot           #+#    #+#              #
-<<<<<<< HEAD
-#    Updated: 2021/06/18 14:40:46 by cmariot          ###   ########.fr        #
-=======
-#    Updated: 2021/06/18 11:37:58 by cmariot          ###   ########.fr        #
->>>>>>> c80b12d041438ec70ef52f23b08896861bf7c546
+#    Updated: 2021/06/18 15:47:38 by cmariot          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,11 +20,7 @@ COMPILER_FLAGS = -Wall -Wextra -Werror
 
 INCLUDES_DIR = includes
 
-<<<<<<< HEAD
 SRCS_DIR = srcs
-=======
-SRCS_OBJS = ${SRCS:%.c=obj/%.o}
->>>>>>> c80b12d041438ec70ef52f23b08896861bf7c546
 
 SRCS = srcs/ft_printf.c \
        srcs/ft_initialize_flags.c \
@@ -42,21 +34,15 @@ SRCS = srcs/ft_printf.c \
        srcs/ft_print_unsigned_int.c \
        srcs/ft_print_hexa.c \
        srcs/ft_print_hexa_maj.c \
+	   srcs/ft_print_addr.c \
        srcs/ft_check_flags.c
 
-<<<<<<< HEAD
 SRCS_OBJS = ${SRCS:.c=.o}
 
 LIBFT_NAME = libft/libft.a
 
 LIBFT_DIR = libft
 
-=======
-LIBFT_DIR = libft
-
-LIBFT_OBJS = ${LIBFT_SRCS:%.c=obj/%.o}
-
->>>>>>> c80b12d041438ec70ef52f23b08896861bf7c546
 LIBFT_SRCS = libft/ft_atoi.c \
 	     libft/ft_bzero.c \
 	     libft/ft_calloc.c \
@@ -101,15 +87,12 @@ LIBFT_SRCS = libft/ft_atoi.c \
 	     libft/ft_tolower.c \
 	     libft/ft_toupper.c
 
-<<<<<<< HEAD
 LIBFT_OBJS = ${LIBFT_SRCS:.c=.o}
-
-OBJ_DIR = obj
 
 REMOVE = rm -rf
 
 .c.o:
-		@${COMPILER} ${COMPILER_FLAGS} -c $< -o ${<:.c=.o} -I ${INCLUDES_DIR} -I ${LIBFT_DIR}
+				@${COMPILER} ${COMPILER_FLAGS} -c $< -o ${<:.c=.o} -I ${INCLUDES_DIR} -I ${LIBFT_DIR}
 
 ${NAME}:		compil_libft compil_srcs
 				@printf "The program is ready to be execute.\n"
@@ -121,11 +104,12 @@ norme:
 
 compil_libft: 	${LIBFT_OBJS}
 				@ar rc ${LIBFT_NAME} ${LIBFT_OBJS}
+				@ranlib ${LIBFT_NAME}
 				@printf "Libft is compilated\n"
 
 compil_srcs:	${SRCS_OBJS}
 				@${COMPILER} ${COMPILER_FLAGS} -o ${PROGRAM_NAME} \
-					-L ${LIBFT_DIR} ${SRCS_OBJS}
+					${SRCS_OBJS} -L ${LIBFT_DIR} -I ${INCLUDES_DIR} 
 				@printf "Srcs are compilated\n"
 			
 exec:
@@ -141,44 +125,3 @@ fclean:			clean
 				@printf "The binary file have been deleted\n"
 
 re:				fclean all
-
-
-=======
-REMOVE = rm -rf
-
-
-all: 				verif_code_source \
-				compilation \
-				assemblage \
-				eddition_de_liens \
-				execution
-
-verif_code_source:	
-				norminette | grep "Error"
-
-norme:				verif_code_source
-
-compilation:
-				${COMPILER} ${COMPILER_FLAGS} -c ${SRCS} ${LIBTF_SRCS} -I ${INCLUDES_DIR} -I ${LIBFT_DIR}
-
-
-
-
-$(PROGRAM_NAME):	${OBJS}
-			${COMPILER} ${COMPILER_FLAGS} -o ${PROGRAM_NAME} ${OBJS} -I ${INCLUDES_DIR} -I ${LIBFT_DIR}
-			ar rc ${PROGRAM_NAME} ${OBJS}
-
-		
-
-
-clean:
-			${REMOVE} ${OBJS}
-			${REMOVE} ${TMP_OBJ_DIR}
-			make -C $(LIBFT_DIR) clean
-
-fclean:			clean
-			${REMOVE} ${PROGRAM_NAME}
-			make -C $(LIBFT_DIR) fclean
-
-re:			fclean all
->>>>>>> c80b12d041438ec70ef52f23b08896861bf7c546

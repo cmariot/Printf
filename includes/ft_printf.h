@@ -6,7 +6,7 @@
 /*   By: cmariot <cmariot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/17 23:26:23 by cmariot           #+#    #+#             */
-/*   Updated: 2021/06/18 13:18:00 by cmariot          ###   ########.fr       */
+/*   Updated: 2021/06/18 15:23:16 by cmariot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,8 @@ void 		ft_print_integer(t_flags *flags);
 void		ft_print_hexa(t_flags *flags);
 // Affiche un unsigned int en hexa (0123456789ABCDEF)
 void		ft_print_hexa_maj(t_flags *flags);
-
+// Affiche l'addresse d'une variable
+void		ft_print_addr(t_flags *flags);
 
 char	*ft_strdup(const char *s1);
 
