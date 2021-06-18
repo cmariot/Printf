@@ -6,9 +6,11 @@
 #    By: cmariot <cmariot@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/05/27 18:57:32 by cmariot           #+#    #+#              #
-#    Updated: 2021/06/18 10:20:37 by cmariot          ###   ########.fr        #
+#    Updated: 2021/06/18 14:40:46 by cmariot          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
+
+NAME = libftprintf.a
 
 PROGRAM_NAME = libftprintf.a
 
@@ -18,7 +20,7 @@ COMPILER_FLAGS = -Wall -Wextra -Werror
 
 INCLUDES_DIR = includes
 
-LIBFT_DIR = libft
+SRCS_DIR = srcs
 
 SRCS = srcs/ft_printf.c \
        srcs/ft_initialize_flags.c \
@@ -33,6 +35,12 @@ SRCS = srcs/ft_printf.c \
        srcs/ft_print_hexa.c \
        srcs/ft_print_hexa_maj.c \
        srcs/ft_check_flags.c
+
+SRCS_OBJS = ${SRCS:.c=.o}
+
+LIBFT_NAME = libft/libft.a
+
+LIBFT_DIR = libft
 
 LIBFT_SRCS = libft/ft_atoi.c \
 	     libft/ft_bzero.c \
@@ -78,47 +86,44 @@ LIBFT_SRCS = libft/ft_atoi.c \
 	     libft/ft_tolower.c \
 	     libft/ft_toupper.c
 
-OBJS = ${SRCS:.c=.o} ${LIBFT_SRCS:.c=.o}
+LIBFT_OBJS = ${LIBFT_SRCS:.c=.o}
+
+OBJ_DIR = obj
 
 REMOVE = rm -rf
 
 .c.o:
-		${COMPILER} ${COMPILER_FLAGS} -o ${PROGRAM_NAME} ${OBJS} -I ${INCLUDES_DIR}
+		@${COMPILER} ${COMPILER_FLAGS} -c $< -o ${<:.c=.o} -I ${INCLUDES_DIR} -I ${LIBFT_DIR}
 
-all: 		compile_libft \
-		compile_srcs \
-		exec
+${NAME}:		compil_libft compil_srcs
+				@printf "The program is ready to be execute.\n"
 
-$(NAME):	${OBJS}
-		ar rc ${PROGRAM_NAME} ${OBJS}
-
-compile_libft:
-		make -C $(LIBFT_DIR)
-		printf "Libft compilation OK.\n"
-
-$(NAME):	${OBJS}
-		ar rc ${PROGRAM_NAME} ${OBJS}
-
-compile_srcs:	${NAME}
-		printf "Srcs compilation OK.\n"
-
-exec:
-		
-		printf "Execution OK.\n"
+all: 			norme compil_libft compil_srcs exec
 
 norme:
-		norminette ${SRCS} ${INCLUDES_DIR}
-		printf "Norme.\n"
+				@norminette | grep "Error"
 
+compil_libft: 	${LIBFT_OBJS}
+				@ar rc ${LIBFT_NAME} ${LIBFT_OBJS}
+				@printf "Libft is compilated\n"
+
+compil_srcs:	${SRCS_OBJS}
+				@${COMPILER} ${COMPILER_FLAGS} -o ${PROGRAM_NAME} \
+					-L ${LIBFT_DIR} ${SRCS_OBJS}
+				@printf "Srcs are compilated\n"
+			
+exec:
+				@./${PROGRAM_NAME}
 clean:
-		${REMOVE} ${OBJS}
-		${REMOVE} ${TMP_OBJ_DIR}
-		make -C $(LIBFT_DIR) clean
-		printf "Clean OK.\n"
+				@${REMOVE} ${LIBFT_OBJS}
+				@${REMOVE} ${SRCS_OBJS}
+				@printf "The .o files have been deleted\n"
 
-fclean:		clean
-		${REMOVE} ${PROGRAM_NAME}
-		make -C $(LIBFT_DIR) fclean
-		printf "FClean OK.\n"
+fclean:			clean
+				@${REMOVE} ${LIBFT_NAME}
+				@${REMOVE} ${PROGRAM_NAME}
+				@printf "The binary file have been deleted\n"
 
-re:		fclean all
+re:				fclean all
+
+
