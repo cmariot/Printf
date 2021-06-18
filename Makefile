@@ -6,7 +6,7 @@
 #    By: cmariot <cmariot@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/05/27 18:57:32 by cmariot           #+#    #+#              #
-#    Updated: 2021/06/18 02:12:13 by cmariot          ###   ########.fr        #
+#    Updated: 2021/06/18 09:28:31 by cmariot          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,7 +36,7 @@ SRCS = ./srcs/ft_printf.c \
        ./srcs/ft_print_hexa_maj.c \
        ./srcs/ft_check_flags.c
 
-OBJS = ${SRCS:.c=.o} ${LIBFT_SRCS:.c=.o}
+OBJS = ${SRCS:.c=.o}
 
 RM = rm -rf
 
@@ -52,8 +52,8 @@ $(NAME):	${OBJS}
 		@ar rc ${PROGRAM_NAME} ${OBJS}
 
 prepare:
-#		@mkdir ${TMP_OBJ_DIR}
-#		@printf "Dossier temporaire cree.\n"
+		@mkdir ${TMP_OBJ_DIR}
+		@printf "Dossier temporaire cree.\n"
 
 
 compile_libft:
@@ -76,6 +76,7 @@ norme:
 
 clean:
 		@${RM} ${OBJS}
+		@${RM} ${TMP_OBJ_DIR}
 		@make -C $(LIBFT_DIR) clean
 		@printf "Clean OK.\n"
 
