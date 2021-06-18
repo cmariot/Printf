@@ -1,73 +1,87 @@
-NAME = ft_printf
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: cmariot <cmariot@student.42.fr>            +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2021/05/27 18:57:32 by cmariot           #+#    #+#              #
+#    Updated: 2021/06/18 02:12:13 by cmariot          ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
 
-HEADER = includes
+PROGRAM_NAME = libftprintf.a
 
-FLAGS = -Wall -Wextra -Ofast
+COMPILER = gcc
 
-LFT = libft
-LFT_INC = $(LFT)/includes
+COMPILER_FLAGS = -Wall -Wextra -Werror
 
-ifdef DEBUG
-FLAGS = -Wall -Werror -Wextra -g
+INCLUDES_DIR = includes
 
-else
-FLAGS = -Wall -Werror -Wextra
-endif
+LIBFT_DIR = libft
 
-LIB = libft
+TMP_OBJ_DIR = obj
 
-SRC = srcs/ft_printf.c \
-	srcs/ft_initialize_flags.c \
-	srcs/ft_check_type.c \
-	srcs/ft_is_in_flags_list.c \
-	srcs/ft_is_in_type_list.c \
-	srcs/ft_putchar.c \
-	srcs/ft_print_char.c \
-	srcs/ft_print_str.c \
-	srcs/ft_print_integer.c \
-	srcs/ft_print_unsigned_int.c \
-	srcs/ft_print_hexa.c \
-	srcs/ft_print_hexa_maj.c \
-	srcs/ft_check_flags.c
+SRCS = ./srcs/ft_printf.c \
+       ./srcs/ft_initialize_flags.c \
+       ./srcs/ft_check_type.c \
+       ./srcs/ft_is_in_flags_list.c \
+       ./srcs/ft_is_in_type_list.c \
+       ./srcs/ft_putchar.c \
+       ./srcs/ft_print_char.c \
+       ./srcs/ft_print_str.c \
+       ./srcs/ft_print_integer.c \
+       ./srcs/ft_print_unsigned_int.c \
+       ./srcs/ft_print_hexa.c \
+       ./srcs/ft_print_hexa_maj.c \
+       ./srcs/ft_check_flags.c
 
-OBJ = $(SRC:%.c=obj/%.o)
+OBJS = ${SRCS:.c=.o} ${LIBFT_SRCS:.c=.o}
 
-all: prepare compile_lib compile_p $(NAME) exec
+RM = rm -rf
 
-exec:
-		@printf "\n\n\033[32mRun like this:\n \033[39m\n"
+.c.o:
+		@${COMPILER} ${COMPILER_FLAGS} -o ${PROGRAM_NAME} -I ${INCLUDES_DIR} -c $< -o ${<:.c=.o}
 
-norm:
-		@norminette $(SRC) $(HEADER)
+all: 		prepare \
+		compile_libft \
+		compile_srcs \
+		exec
 
-$(NAME): $(OBJ)
-		@gcc $(FLAGS) -o $(NAME) $(OBJ) -I $(LFT_INC) -I $(HEADER) \
-		-L $(LFT) -lft 
-		@printf " => Ok.\n"
+$(NAME):	${OBJS}
+		@ar rc ${PROGRAM_NAME} ${OBJS}
 
 prepare:
-		@mkdir -p obj/srcs
+#		@mkdir ${TMP_OBJ_DIR}
+#		@printf "Dossier temporaire cree.\n"
 
-compile_lib:
-		@make -C $(LFT)
 
-compile_p:
-		@echo "\033[31mCompiling $(NAME) wait...\033[39m"
+compile_libft:
+		@make -C $(LIBFT_DIR)
+		@printf "Libft compilation OK.\n"
 
-obj/%.o: %.c $(HEADER)
-		@gcc $(FLAGS) \
-		-I $(HEADER) \
-		-o $@ -c $<
-		@printf "|"
+$(NAME):	${OBJS}
+		@ar rc ${PROGRAM_NAME} ${OBJS}
+
+compile_srcs:	${NAME}
+		@printf "Srcs compilation OK.\n"
+
+exec:
+		@./ft_printf
+		@printf "Execution OK.\n"
+
+norme:
+		norminette ${SRCS} ${INCLUDES_DIR}
+		@printf "Norme.\n"
 
 clean:
-		@/bin/rm -rf ./obj
-		@make -C $(LFT) fclean
-		@/bin/rm -rf $(OBJ)
-		@echo "\033[41;39mRemoving Objects Wait...\033[49;39m"
+		@${RM} ${OBJS}
+		@make -C $(LIBFT_DIR) clean
+		@printf "Clean OK.\n"
 
-fclean: clean
-		@/bin/rm -f $(NAME)
-		@echo "\033[41;39mRemoving Binary Wait...\033[49;39m\n"
+fclean:		clean
+		@${RM} ${PROGRAM_NAME}
+		@make -C $(LIBFT_DIR) fclean
+		@printf "FClean OK.\n"
 
-re: fclean all
+re:		fclean all
