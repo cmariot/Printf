@@ -6,7 +6,7 @@
 /*   By: cmariot <cmariot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/17 23:26:05 by cmariot           #+#    #+#             */
-/*   Updated: 2021/06/19 13:56:27 by cmariot          ###   ########.fr       */
+/*   Updated: 2021/06/19 14:55:57 by cmariot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,9 @@ int	ft_printf(const char *format, ...)
 	{
 		if (format[i] != '%')
 			flags->total_lenght += ft_putchar(format[i]);
-		else if (format[i] == '%')
+		else if (format[i++] == '%')
 		{
-			i = ft_chck_flgs(format, flags, i++);
+			i = ft_chck_flgs(format, flags, i);
 			ft_chck_type(format, i, flags);
 		}
 		i++;
