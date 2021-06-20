@@ -6,7 +6,7 @@
 /*   By: cmariot <cmariot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/17 23:26:23 by cmariot           #+#    #+#             */
-/*   Updated: 2021/06/18 17:55:42 by cmariot          ###   ########.fr       */
+/*   Updated: 2021/06/19 17:28:44 by cmariot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,5 +62,9 @@ void			ft_print_hexa(t_flags *flags);
 void			ft_print_hexa_maj(t_flags *flags);
 /* If %p print the memory */
 void			ft_print_addr(t_flags *flags);
+/* If there is a flag that specifies a field width */
+void			ft_print_space(t_flags *flags, int len);
+/* If there is a star flag we take a va_arg as field width */
+void			ft_star_flag(t_flags *flags);
 
 #endif

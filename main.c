@@ -6,7 +6,7 @@
 /*   By: cmariot <cmariot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/19 13:29:53 by cmariot           #+#    #+#             */
-/*   Updated: 2021/06/19 16:14:20 by cmariot          ###   ########.fr       */
+/*   Updated: 2021/06/19 20:29:00 by cmariot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,7 @@ int 	main(void)
 //	ft_printf("%*c", 0, '0');
 //	ft_printf("%*c", 10, '0');
 //	ft_printf("%*c", -10, '0');
-	ft_printf(".%*c.%*c.\n", -10, '0', 10, '1');
-	printf(".%*c.%*c.\n", -10, '0', 10, '1');
+//	ft_printf(".%*c.%*c.\n", -10, '0', 10, '1');
 //	ft_printf("*%c%*c", '0', 10, '1');
 //	ft_printf("%*c%c*", -10, '0', '1');
 //	ft_printf("%-10c*",'0');
@@ -66,5 +65,11 @@ int 	main(void)
 //	ft_printf(" -%*c* -%-*c* ", -1, 0, 1, 0);
 //	ft_printf(" -%-*c* -%-*c* ", 2, 0, -2, 0);
 //	ft_printf(" -%-2c* -%2c* ", 0, 0);
+
+	
+	ft_printf("Test sur les char *\n");
+	ft_printf(". %*.s %.1s .", 10, "123", "4567");
+	ft_putchar_fd('\n', 1);
+	ft_printf(". %*.s %.1s .", 10, "123", "4567");
 	return (0);
 }

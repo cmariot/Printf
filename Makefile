@@ -6,7 +6,7 @@
 #    By: cmariot <cmariot@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/05/27 18:57:32 by cmariot           #+#    #+#              #
-#    Updated: 2021/06/19 14:30:11 by cmariot          ###   ########.fr        #
+#    Updated: 2021/06/20 11:41:50 by cmariot          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,7 +35,9 @@ SRCS = srcs/ft_printf.c \
        srcs/ft_print_hexa.c \
        srcs/ft_print_hexa_maj.c \
        srcs/ft_print_addr.c \
-       srcs/ft_check_flags.c
+       srcs/ft_check_flags.c \
+	   srcs/ft_print_space.c \
+	   srcs/ft_star_flag.c
 
 SRCS_OBJS = ${SRCS:.c=.o}
 
@@ -91,6 +93,10 @@ LIBFT_OBJS = ${LIBFT_SRCS:.c=.o}
 
 REMOVE = rm -rf
 
+MAIN = main.c
+
+EXECUTABLE_NAME = ft_printf
+
 .c.o:
 				@${COMPILER} ${COMPILER_FLAGS} -c $< -o ${<:.c=.o} -I ${INCLUDES_DIR} -I ${LIBFT_DIR}
 
@@ -110,7 +116,7 @@ compil_srcs:	compil_libft ${SRCS_OBJS}
 				@printf "\x1b[32mlibftprintf.a is ready.\n\x1b[0m"
 			
 test:			compil_srcs
-				@${COMPILER} ${COMPILER_FLAGS} main.c ${PROGRAM_NAME} -o ft_printf -I ${INCLUDES_DIR} -I ${LIBFT_DIR}
+				@${COMPILER} ${COMPILER_FLAGS} ${MAIN} ${PROGRAM_NAME} -o ${EXECUTABLE_NAME -I ${INCLUDES_DIR} -I ${LIBFT_DIR}
 				@./ft_printf
 clean:
 				@cd libft && make clean
