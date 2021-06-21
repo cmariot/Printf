@@ -6,7 +6,7 @@
 /*   By: cmariot <cmariot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/17 23:26:23 by cmariot           #+#    #+#             */
-/*   Updated: 2021/06/19 17:28:44 by cmariot          ###   ########.fr       */
+/*   Updated: 2021/06/21 16:37:59 by cmariot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ typedef struct s_flags
 	int		dot_flag;
 	int		star_flag;
 	int		field_width;
+	int		precision;
 	int		type;
 	int		total_lenght;
 }	t_flags;

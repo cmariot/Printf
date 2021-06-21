@@ -6,7 +6,7 @@
 #    By: cmariot <cmariot@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/05/27 18:57:32 by cmariot           #+#    #+#              #
-#    Updated: 2021/06/20 11:41:50 by cmariot          ###   ########.fr        #
+#    Updated: 2021/06/21 16:01:50 by cmariot          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -116,8 +116,9 @@ compil_srcs:	compil_libft ${SRCS_OBJS}
 				@printf "\x1b[32mlibftprintf.a is ready.\n\x1b[0m"
 			
 test:			compil_srcs
-				@${COMPILER} ${COMPILER_FLAGS} ${MAIN} ${PROGRAM_NAME} -o ${EXECUTABLE_NAME -I ${INCLUDES_DIR} -I ${LIBFT_DIR}
+				@${COMPILER} ${COMPILER_FLAGS} ${MAIN} ${PROGRAM_NAME} -o ${EXECUTABLE_NAME} -I ${INCLUDES_DIR} -I ${LIBFT_DIR}
 				@./ft_printf
+
 clean:
 				@cd libft && make clean
 				@${REMOVE} ${SRCS_OBJS}

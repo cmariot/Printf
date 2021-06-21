@@ -6,7 +6,7 @@
 /*   By: cmariot <cmariot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/19 13:29:53 by cmariot           #+#    #+#             */
-/*   Updated: 2021/06/19 20:29:00 by cmariot          ###   ########.fr       */
+/*   Updated: 2021/06/21 16:53:06 by cmariot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int 	main(void)
 {
-//	int		ret;
+	int		ret;
 
 //	ret = ft_printf("Fonction Printf\n");
 //	ret = ft_printf("Test d'affichage char : %c\n", 'c');
@@ -68,8 +68,10 @@ int 	main(void)
 
 	
 	ft_printf("Test sur les char *\n");
-	ft_printf(". %*.s %.1s .", 10, "123", "4567");
+	ret = ft_printf(". %*.s %.1s .", 10, "123", "4567");
+	printf("ret1 = %d\n", ret);
 	ft_putchar_fd('\n', 1);
-	ft_printf(". %*.s %.1s .", 10, "123", "4567");
+	ret = printf(". 123 4567 .");
+	printf("ret2 = %d\n", ret);
 	return (0);
 }
