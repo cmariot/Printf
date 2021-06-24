@@ -6,7 +6,7 @@
 /*   By: cmariot <cmariot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/17 18:32:19 by cmariot           #+#    #+#             */
-/*   Updated: 2021/06/18 17:21:22 by cmariot          ###   ########.fr       */
+/*   Updated: 2021/06/24 13:52:23 by cmariot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,17 @@ void	ft_uitoa_hexa(unsigned int n, t_flags *flags)
 void	ft_print_hexa(t_flags *flags)
 {
 	unsigned int	x;
+	int				len;
 
 	x = va_arg(flags->args, unsigned int);
+	len = ft_uitohexa_len(x);
+	if (flags->field_width && !flags->minus_flag)
+		ft_print_space(flags, len);
 	ft_uitoa_hexa(x, flags);
+	if (flags->field_width && flags->minus_flag && !flags->dot_flag)
+	{
+		ft_print_space(flags, len);
+		flags->minus_flag = 0;
+	}
+	flags->dot_flag = 0;
 }

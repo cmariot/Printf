@@ -6,11 +6,28 @@
 /*   By: cmariot <cmariot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/17 18:32:19 by cmariot           #+#    #+#             */
-/*   Updated: 2021/06/18 17:24:35 by cmariot          ###   ########.fr       */
+/*   Updated: 2021/06/24 13:56:04 by cmariot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+
+unsigned int	ft_uitoupperhexa_len(unsigned int n)
+{
+	unsigned int	n_len;
+	unsigned int	diviseur;
+
+	n_len = 0;
+	diviseur = 1;
+	while ((n / diviseur) >= 16)
+		diviseur = diviseur * 16;
+	while (diviseur > 0)
+	{
+		n_len++;
+		diviseur = diviseur / 16;
+	}
+	return (n_len);
+}
 
 void	ft_uitoa_hexa_maj(unsigned int n, t_flags *flags)
 {
@@ -33,7 +50,17 @@ void	ft_uitoa_hexa_maj(unsigned int n, t_flags *flags)
 void	ft_print_hexa_maj(t_flags *flags)
 {
 	unsigned int	X;
+	unsigned int	len;
 
 	X = va_arg(flags->args, unsigned int);
+	len = ft_uitoupperhexa_len(X);
+	if (flags->field_width && !flags->minus_flag)
+		ft_print_space(flags, len);
 	ft_uitoa_hexa_maj(X, flags);
+	if (flags->field_width && flags->minus_flag && !flags->dot_flag)
+	{
+		ft_print_space(flags, len);
+		flags->minus_flag = 0;
+	}
+	flags->dot_flag = 0;
 }

@@ -6,7 +6,7 @@
 /*   By: cmariot <cmariot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/17 17:34:02 by cmariot           #+#    #+#             */
-/*   Updated: 2021/06/21 16:52:55 by cmariot          ###   ########.fr       */
+/*   Updated: 2021/06/24 13:58:07 by cmariot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,11 +30,11 @@ unsigned int	ft_chck_flgs(const char *frmt, t_flags *flgs, unsigned int i)
 		{
 			flgs->dot_flag = 1;
 			i++;
-			while (ft_isdigit(frmt[i]))
-			{
-				flgs->precision = flgs->precision * 10 + frmt[i] - '0';
-				i++;
-			}			
+//			while (ft_isdigit(frmt[i]))
+//			{
+//				flgs->precision = flgs->precision * 10 + frmt[i] - '0';
+//				i++;
+//			}			
 		}
 		else if (frmt[i] == '*')
 		{

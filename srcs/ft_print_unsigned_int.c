@@ -6,7 +6,7 @@
 /*   By: cmariot <cmariot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/17 18:32:19 by cmariot           #+#    #+#             */
-/*   Updated: 2021/06/18 17:23:43 by cmariot          ###   ########.fr       */
+/*   Updated: 2021/06/24 13:57:53 by cmariot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,8 @@ void	ft_print_unsigned_int(t_flags *flags)
 
 	u = va_arg(flags->args, unsigned int);
 	str = ft_u_itoa(u);
+	if (flags->field_width && !flags->minus_flag)
+		ft_print_space(flags, len);
 	while (*str)
 	{
 		flags->total_lenght += ft_putchar(*str++);
