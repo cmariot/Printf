@@ -6,7 +6,7 @@
 /*   By: cmariot <cmariot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/19 13:29:53 by cmariot           #+#    #+#             */
-/*   Updated: 2021/06/21 16:53:06 by cmariot          ###   ########.fr       */
+/*   Updated: 2021/06/24 13:58:01 by cmariot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,11 +67,21 @@ int 	main(void)
 //	ft_printf(" -%-2c* -%2c* ", 0, 0);
 
 	
-	ft_printf("Test sur les char *\n");
-	ret = ft_printf(". %*.s %.1s .", 10, "123", "4567");
-	printf("ret1 = %d\n", ret);
-	ft_putchar_fd('\n', 1);
-	ret = printf(". 123 4567 .");
-	printf("ret2 = %d\n", ret);
+//	ft_printf("Test sur les char *\n");
+//	ret = ft_printf(". %*.s %.1s .", 10, "123", "4567");
+//	printf("ret1 = %d\n", ret);
+//	ft_putchar_fd('\n', 1);
+//	ret = printf(". 123 4567 .");
+//	printf("ret2 = %d\n", ret);
+
+	ret = ft_printf("%x\n", 15);
+	printf("%x\n", 15);
+	ft_printf(".%5x.\n", 15);
+	printf(".%5x.\n", 15);
+	ft_printf(".%-5x.\n", 15);
+	printf(".%-5x.\n", 15);
+
+
+
 	return (0);
 }
