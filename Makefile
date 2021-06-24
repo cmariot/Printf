@@ -6,7 +6,7 @@
 #    By: cmariot <cmariot@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/05/27 18:57:32 by cmariot           #+#    #+#              #
-#    Updated: 2021/06/20 11:41:50 by cmariot          ###   ########.fr        #
+#    Updated: 2021/06/21 09:38:22 by cmariot          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -105,7 +105,7 @@ ${NAME}:		compil_srcs
 all: 			compil_srcs
 
 norme:
-				@norminette
+				@norminette .
 				@printf "\x1b[32mThe norm is checked in this directory and all subdirectories.\n\x1b[0m"
 
 compil_libft:
@@ -116,7 +116,7 @@ compil_srcs:	compil_libft ${SRCS_OBJS}
 				@printf "\x1b[32mlibftprintf.a is ready.\n\x1b[0m"
 			
 test:			compil_srcs
-				@${COMPILER} ${COMPILER_FLAGS} ${MAIN} ${PROGRAM_NAME} -o ${EXECUTABLE_NAME -I ${INCLUDES_DIR} -I ${LIBFT_DIR}
+				@${COMPILER} ${COMPILER_FLAGS} ${MAIN} ${PROGRAM_NAME} -o ${EXECUTABLE_NAME} -I ${INCLUDES_DIR} -I ${LIBFT_DIR}
 				@./ft_printf
 clean:
 				@cd libft && make clean
@@ -126,7 +126,7 @@ clean:
 fclean:			clean
 				@cd libft && make fclean
 				@${REMOVE} ${PROGRAM_NAME}
-				@${REMOVE} ft_printf
+				@${REMOVE} ${EXECUTABLE_NAME}
 				@printf "\x1b[32mThe binary files have been deleted\n\x1b[0m"
 
 re:				fclean all
