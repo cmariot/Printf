@@ -6,7 +6,7 @@
 /*   By: cmariot <cmariot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/19 13:29:53 by cmariot           #+#    #+#             */
-/*   Updated: 2021/06/24 13:58:01 by cmariot          ###   ########.fr       */
+/*   Updated: 2021/06/25 16:51:36 by cmariot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,14 +74,21 @@ int 	main(void)
 //	ret = printf(". 123 4567 .");
 //	printf("ret2 = %d\n", ret);
 
-	ret = ft_printf("%x\n", 15);
-	printf("%x\n", 15);
-	ft_printf(".%5x.\n", 15);
-	printf(".%5x.\n", 15);
-	ft_printf(".%-5x.\n", 15);
-	printf(".%-5x.\n", 15);
+//	ret = ft_printf("%x\n", 15);
+//	printf("%x\n", 15);
+//	ft_printf(".%5x.\n", 15);
+//	printf(".%5x.\n", 15);
+//	ft_printf(".%-5x.\n", 15);
+//	printf(".%-5x.\n", 15);
 
-
+//	ft_printf("%d\n", 0);
+//	ret = ft_printf(".%.i.\n", 0);
+//	printf(".%.i.\n", 0);
+//	ret = ft_printf(".%-.2i.\n", 0);
+//	printf(".%-.2i.\n", 1);
+	
+	ft_printf(".%*.s.%.1s.\n", 10, "123", "4567");
+	ret = printf(".%*.s.%.1s.\n", 10, "123", "4567");
 
 	return (0);
 }

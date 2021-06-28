@@ -6,13 +6,13 @@
 /*   By: cmariot <cmariot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/17 18:32:19 by cmariot           #+#    #+#             */
-/*   Updated: 2021/06/24 13:57:53 by cmariot          ###   ########.fr       */
+/*   Updated: 2021/06/24 17:02:13 by cmariot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static unsigned int	int_len(unsigned int n)
+unsigned int	uint_len(unsigned int n)
 {
 	int	n_len;
 
@@ -25,15 +25,15 @@ static unsigned int	int_len(unsigned int n)
 	return (n_len);
 }
 
-static char	*ft_u_itoa(unsigned int n)
+char	*ft_u_itoa(unsigned int n)
 {
 	unsigned int	n_len;
 	char			*nombre;
 
 	if (n == 0)
 		return (ft_strdup("0"));
-	n_len = int_len(n);
-	nombre = malloc(sizeof(char) * (n_len));
+	n_len = uint_len(n);
+	nombre = malloc(sizeof(char) * (n_len + 1));
 	if (nombre == NULL)
 		return (NULL);
 	nombre[n_len] = '\0';
@@ -50,13 +50,20 @@ void	ft_print_unsigned_int(t_flags *flags)
 {
 	unsigned int	u;
 	char			*str;
+	unsigned int	len;
 
 	u = va_arg(flags->args, unsigned int);
 	str = ft_u_itoa(u);
+	len = ft_strlen(str);
 	if (flags->field_width && !flags->minus_flag)
 		ft_print_space(flags, len);
 	while (*str)
 	{
 		flags->total_lenght += ft_putchar(*str++);
 	}
+	if (flags->field_width && flags->minus_flag && !flags->dot_flag)
+		ft_print_space(flags, len);
+	flags->minus_flag = 0;
+	flags->dot_flag = 0;
+//	free(str);
 }

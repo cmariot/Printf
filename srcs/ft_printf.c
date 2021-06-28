@@ -6,7 +6,7 @@
 /*   By: cmariot <cmariot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/17 23:26:05 by cmariot           #+#    #+#             */
-/*   Updated: 2021/06/24 13:58:09 by cmariot          ###   ########.fr       */
+/*   Updated: 2021/06/25 16:15:06 by cmariot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ int	ft_printf(const char *format, ...)
 {
 	t_flags			*flags;
 	unsigned int	i;
+	int				result;
 
 	flags = malloc(sizeof(t_flags));
 	if (flags == NULL)
@@ -34,7 +35,8 @@ int	ft_printf(const char *format, ...)
 		}
 		i++;
 	}
-	va_end(flags->args);
+	result = flags->total_lenght;
 	free(flags);
-	return (flags->total_lenght);
+	va_end(flags->args);
+	return (result);
 }

@@ -6,7 +6,7 @@
 /*   By: cmariot <cmariot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/17 18:32:19 by cmariot           #+#    #+#             */
-/*   Updated: 2021/06/24 13:58:04 by cmariot          ###   ########.fr       */
+/*   Updated: 2021/06/28 10:14:20 by cmariot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,12 @@ void	ft_print_str(t_flags *flags)
 		ft_star_flag(flags);
 	str = va_arg(flags->args, char *);
 	len = ft_strlen(str);
-	if (flags->field_width && !flags->minus_flag && !flags->dot_flag)
+	if (flags->field_width && !flags->minus_flag)
 		ft_print_space(flags, ft_strlen(str));
+	if (flags->dot_flag)
+	{
+		return ;
+	}
 	while (*str)
 		flags->total_lenght += ft_putchar(*str++);
 	if (flags->field_width && flags->minus_flag && !flags->dot_flag)
