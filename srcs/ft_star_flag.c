@@ -6,7 +6,7 @@
 /*   By: cmariot <cmariot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/19 17:27:15 by cmariot           #+#    #+#             */
-/*   Updated: 2021/06/19 17:27:20 by cmariot          ###   ########.fr       */
+/*   Updated: 2021/06/28 15:33:21 by cmariot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	ft_star_flag(t_flags *flags)
 	flags->field_width = va_arg(flags->args, int);
 	if (flags->field_width < 0)
 	{
-		flags->field_width = -flags->field_width;
+		flags->field_width = -(flags->field_width);
 		flags->minus_flag = 1;
 	}
 	flags->star_flag = 0;

@@ -6,7 +6,7 @@
 /*   By: cmariot <cmariot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/17 17:34:02 by cmariot           #+#    #+#             */
-/*   Updated: 2021/06/25 16:49:50 by cmariot          ###   ########.fr       */
+/*   Updated: 2021/06/28 19:13:10 by cmariot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,10 @@ unsigned int	ft_chck_flgs(const char *frmt, t_flags *flgs, unsigned int i)
 		else if (frmt[i] == '.')
 		{
 			flgs->dot_flag = 1;
+			flgs->precision = 0; 
 			i++;
+			while (ft_isdigit(frmt[i]))
+				flgs->precision = flgs->precision * 10 + frmt[i++] - '0';
 		}
 		else if (frmt[i] == '*')
 		{
@@ -37,13 +40,8 @@ unsigned int	ft_chck_flgs(const char *frmt, t_flags *flgs, unsigned int i)
 			i++;
 		}
 		else if (ft_isdigit(frmt[i]))
-		{
 			while (ft_isdigit(frmt[i]))
-			{
-				flgs->field_width = flgs->field_width * 10 + frmt[i] - '0';
-				i++;
-			}
-		}
+				flgs->field_width = flgs->field_width * 10 + frmt[i++] - '0';
 	}
 	return (i);
 }

@@ -6,7 +6,7 @@
 /*   By: cmariot <cmariot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/19 13:29:53 by cmariot           #+#    #+#             */
-/*   Updated: 2021/06/25 16:51:36 by cmariot          ###   ########.fr       */
+/*   Updated: 2021/06/28 18:54:50 by cmariot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 int 	main(void)
 {
 	int		ret;
-
 //	ret = ft_printf("Fonction Printf\n");
 //	ret = ft_printf("Test d'affichage char : %c\n", 'c');
 //	ret = ft_printf("Test d'affichage str : %s\n", "str");
@@ -26,7 +25,7 @@ int 	main(void)
 //	ret = ft_printf("Test d'affichage 1464 en HEXA : %X\n", 1464);
 //	ret = ft_printf("Test d'affichage de l'adresse d'une variable : %p\n", &ret);
 //	ret = ft_printf("Test d'affichage %% : %%\n");
-//
+
 //	ft_printf("Retour = %i\n", ft_printf("\nTest valeur de retour\n"));
 //	ft_printf("Retour = %i\n", ft_printf("Test valeur de retour %d\n", 25));
 //	ft_printf("Retour = %i\n", ft_printf("Test valeur de retour %s\n", "25"));
@@ -73,22 +72,25 @@ int 	main(void)
 //	ft_putchar_fd('\n', 1);
 //	ret = printf(". 123 4567 .");
 //	printf("ret2 = %d\n", ret);
-
 //	ret = ft_printf("%x\n", 15);
 //	printf("%x\n", 15);
 //	ft_printf(".%5x.\n", 15);
 //	printf(".%5x.\n", 15);
 //	ft_printf(".%-5x.\n", 15);
 //	printf(".%-5x.\n", 15);
-
 //	ft_printf("%d\n", 0);
 //	ret = ft_printf(".%.i.\n", 0);
 //	printf(".%.i.\n", 0);
 //	ret = ft_printf(".%-.2i.\n", 0);
 //	printf(".%-.2i.\n", 1);
-	
-	ft_printf(".%*.s.%.1s.\n", 10, "123", "4567");
-	ret = printf(".%*.s.%.1s.\n", 10, "123", "4567");
+//	ret = ft_printf(".%*s.\n", 10, "abcd");
+//	ret = ft_printf(".%*s.\n", 1, "abcd");
+//	ret = ft_printf(".%*.2s.\n", 10, "abcd");
+//	ret = ft_printf(".%*.s.%.1s.\n", 10, "123", "4567");
+//	ret = ft_printf(".%*.4s.%.4s.\n", 10, "123", "4567");
+//	ret = ft_printf(".%*.5s.%*.5s.\n", -10, "123", 10, "4567");
+	ret = ft_printf(".%10.s.%1.s.\n", "123", "4567");
+	ret = printf(".%10.s.%1.s.\n", "123", "4567");
 
 	return (0);
 }
