@@ -6,7 +6,7 @@
 /*   By: cmariot <cmariot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/17 18:32:19 by cmariot           #+#    #+#             */
-/*   Updated: 2021/06/28 19:10:55 by cmariot          ###   ########.fr       */
+/*   Updated: 2021/06/29 17:30:10 by cmariot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ void	ft_print_str(t_flags *flags)
 {
 	char	*str;
 	int		len;
+	int		backup_precision;
 
 	if (flags->star_flag)
 		ft_star_flag(flags);
@@ -24,8 +25,11 @@ void	ft_print_str(t_flags *flags)
 	if (flags->field_width && !flags->minus_flag)
 		ft_print_space(flags, len);
 	if (flags->dot_flag)
-		while (*str && flags->precision--)
+	{
+		backup_precision = flags->precision;
+		while (*str && backup_precision--)
 			flags->total_lenght += ft_putchar(*str++);
+	}
 	else
 		while (*str)
 			flags->total_lenght += ft_putchar(*str++);

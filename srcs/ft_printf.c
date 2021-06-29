@@ -6,7 +6,7 @@
 /*   By: cmariot <cmariot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/17 23:26:05 by cmariot           #+#    #+#             */
-/*   Updated: 2021/06/25 16:15:06 by cmariot          ###   ########.fr       */
+/*   Updated: 2021/06/29 17:27:42 by cmariot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@ int	ft_printf(const char *format, ...)
 	flags = malloc(sizeof(t_flags));
 	if (flags == NULL)
 		return (-1);
-	flags = ft_initialize_flags(flags);
 	va_start(flags->args, format);
+	flags = ft_initialize_flags(flags);
 	i = 0;
 	while (format[i])
 	{
