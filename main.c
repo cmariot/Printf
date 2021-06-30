@@ -6,7 +6,7 @@
 /*   By: cmariot <cmariot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/19 13:29:53 by cmariot           #+#    #+#             */
-/*   Updated: 2021/06/29 17:19:39 by cmariot          ###   ########.fr       */
+/*   Updated: 2021/06/30 14:49:06 by cmariot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,19 +88,33 @@ int 	main(void)
 //	ret = ft_printf(".%*.2s.\n", 10, "abcd");
 //	ret = ft_printf(".%*.s.%.1s.\n", 10, "123", "4567");
 //	ret = ft_printf(".%10.4s.%.4s.\n", "123", "4567");
-	ret = ft_printf(".%-10.6s.\n", "123");
-	ret = printf(".%-10.5s.\n", "123");
+//	ret = ft_printf(".%-10.6s.\n", "123");
 //	ft_printf(".%*.5s.%*.5s.\n", 10, "123", -10, "4567");
 //	printf(".%*.5s.%*.5s.\n", 10, "123", -10, "4567");
 //	ft_printf(".%*.5s.%*.5s.\n", -10, "123", -10, "4567");
 //	printf(".%*.5s.%*.5s.\n", -10, "123", -10, "4567");
-
-
 //	ret = ft_printf(".%*.5s.%*.5s.\n", -10, "123", 10, "4567");
 //	ret = ft_printf(".%10.s.%1.s.\n", "123", "4567");
 //	ret = ft_printf(".%3.3s.%3.3s.\n", "123", "4567");
 //	ret = ft_printf(".%4.3s.%-4.3s.\n", "123", "4567");
 //	ret = printf(".%4.3s.%-4.3s.\n", "123", "4567");
+//	ret = ft_printf(" %-3.s ", NULL);
+//	ret = ft_printf(" %-3.s ", NULL);
+
+//	ret = ft_printf(".%.*s.\n", -2, "123");
+//	ret = printf(".%.*s.\n", -2, "123");
+
+	ret = ft_printf("Test d'affichage sur les integer\n");
+//	ret = ft_printf("%d\n", 0);
+//	ret = ft_printf(".%-.2i.\n", 1);
+	ret = ft_printf(".%-3.2i.%10.42i.\n", 1, -1);
+	ret = printf(".%-3.2i.%10.42i.\n", 1, -1);
+
+
+
+
+
+
 
 	return (0);
 }

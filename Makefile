@@ -6,7 +6,7 @@
 #    By: cmariot <cmariot@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/05/27 18:57:32 by cmariot           #+#    #+#              #
-#    Updated: 2021/06/24 16:50:35 by cmariot          ###   ########.fr        #
+#    Updated: 2021/06/30 13:18:15 by cmariot          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,6 @@ SRCS_DIR = srcs
 SRCS = srcs/ft_printf.c \
        srcs/ft_initialize_flags.c \
        srcs/ft_check_type.c \
-       srcs/ft_is_in_flags_list.c \
        srcs/ft_is_in_type_list.c \
        srcs/ft_putchar.c \
        srcs/ft_print_char.c \
@@ -106,14 +105,14 @@ all: 			compil_srcs
 
 norme:
 				@norminette .
-				@printf "\x1b[32mThe norm is checked in this directory and all subdirectories.\n\x1b[0m"
+				@printf "\x1b[32mThe norm is checked in this directory and all subdirectories.\x1b[0m\n"
 
 compil_libft:
 				@cd libft && make libft.a
 
 compil_srcs:	compil_libft ${SRCS_OBJS}
 				@ar rc ${PROGRAM_NAME} ${SRCS_OBJS} ${LIBFT_OBJS}
-				@printf "\x1b[32mlibftprintf.a is ready.\n\x1b[0m"
+				@printf "\x1b[32mlibftprintf.a is ready.\x1b[0m\n"
 			
 test:			compil_srcs
 				@${COMPILER} ${COMPILER_FLAGS} ${MAIN} ${PROGRAM_NAME} -o ${EXECUTABLE_NAME} -I ${INCLUDES_DIR} -I ${LIBFT_DIR}
@@ -122,13 +121,13 @@ test:			compil_srcs
 clean:
 				@cd libft && make clean
 				@${REMOVE} ${SRCS_OBJS}
-				@printf "\x1b[32mThe object files have been deleted\n\x1b[0m"
+				@printf "\x1b[32mThe object files have been deleted\x1b[0m\n"
 
 fclean:			clean
 				@cd libft && make fclean
 				@${REMOVE} ${PROGRAM_NAME}
 				@${REMOVE} ${EXECUTABLE_NAME}
-				@printf "\x1b[32mThe binary files have been deleted\n\x1b[0m"
+				@printf "\x1b[32mThe binary files have been deleted\x1b[0m\n"
 
 re:				fclean all
 
