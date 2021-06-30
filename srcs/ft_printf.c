@@ -6,7 +6,7 @@
 /*   By: cmariot <cmariot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/17 23:26:05 by cmariot           #+#    #+#             */
-/*   Updated: 2021/06/30 13:16:42 by cmariot          ###   ########.fr       */
+/*   Updated: 2021/06/30 19:55:28 by cmariot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	ft_printf(const char *format, ...)
 	while (format[i])
 	{
 		if (format[i] != '%')
-			flags->total_lenght += ft_putchar(format[i]);
+			flags->total_print += ft_putchar(format[i]);
 		else if (format[i++] == '%')
 		{
 			i = ft_chck_flgs(format, flags, i);
@@ -35,7 +35,7 @@ int	ft_printf(const char *format, ...)
 		}
 		i++;
 	}
-	result = flags->total_lenght;
+	result = flags->total_print;
 	free(flags);
 	va_end(flags->args);
 	return (result);

@@ -6,7 +6,7 @@
 /*   By: cmariot <cmariot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/17 23:26:23 by cmariot           #+#    #+#             */
-/*   Updated: 2021/06/29 17:35:02 by cmariot          ###   ########.fr       */
+/*   Updated: 2021/06/30 19:54:19 by cmariot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,14 +25,14 @@
 typedef struct s_flags
 {
 	va_list	args;
-	int		minus_flag;
-	int		zero_flag;
-	int		dot_flag;
-	int		star_flag;
+	int		minus;
+	int		zero;
+	int		star_for_field_width;
 	int		field_width;
+	int		dot;
+	int		star_for_precision;
 	int		precision;
-	int		type;
-	int		total_lenght;
+	int		total_print;
 }	t_flags;
 
 /* This functiun works like the printf function. */
@@ -66,6 +66,9 @@ void			ft_print_addr(t_flags *flags);
 /* If there is a flag that specifies a field width */
 void			ft_print_space(t_flags *flags, int len);
 /* If there is a star flag we take a va_arg as field width */
-void			ft_star_flag(t_flags *flags);
+void			ft_field_width_star(t_flags *flags);
+/* If there is a star flag after the dot flag the va_arg is for the precision*/ 
+void			ft_precision_star(t_flags *flags);
+
 
 #endif

@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_unsigned_int.c                            :+:      :+:    :+:   */
+/*   ft_u_itoa.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cmariot <cmariot@student.42.fr>            +#+  +:+       +#+        */
+/*   By: cmariot <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/06/17 18:32:19 by cmariot           #+#    #+#             */
-/*   Updated: 2021/06/30 19:56:56 by cmariot          ###   ########.fr       */
+/*   Created: 2021/06/17 11:44:28 by cmariot           #+#    #+#             */
+/*   Updated: 2021/06/17 12:08:44 by cmariot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-unsigned int	uint_len(unsigned int n)
+unsigned int	int_len(unsigned int n)
 {
 	int	n_len;
 
@@ -32,8 +32,8 @@ char	*ft_u_itoa(unsigned int n)
 
 	if (n == 0)
 		return (ft_strdup("0"));
-	n_len = uint_len(n);
-	nombre = malloc(sizeof(char) * (n_len + 1));
+	n_len = int_len(n);
+	nombre = malloc(sizeof(char) * (n_len));
 	if (nombre == NULL)
 		return (NULL);
 	nombre[n_len] = '\0';
@@ -44,25 +44,4 @@ char	*ft_u_itoa(unsigned int n)
 		n_len--;
 	}
 	return (nombre);
-}
-
-void	ft_print_unsigned_int(t_flags *flags)
-{
-	unsigned int	u;
-	char			*str;
-	unsigned int	len;
-
-	u = va_arg(flags->args, unsigned int);
-	str = ft_u_itoa(u);
-	len = ft_strlen(str);
-	if (flags->field_width && !flags->minus)
-		ft_print_space(flags, len);
-	while (*str)
-	{
-		flags->total_print += ft_putchar(*str++);
-	}
-	if (flags->field_width && flags->minus && !flags->dot)
-		ft_print_space(flags, len);
-	flags->minus = 0;
-	flags->dot = 0;
 }

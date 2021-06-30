@@ -6,7 +6,7 @@
 /*   By: cmariot <cmariot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/17 18:26:17 by cmariot           #+#    #+#             */
-/*   Updated: 2021/06/30 12:24:50 by cmariot          ###   ########.fr       */
+/*   Updated: 2021/06/30 19:40:03 by cmariot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,6 @@ void	ft_chck_type(const char *frmt, unsigned int i, t_flags *flgs)
 	else if (frmt[i] == 'X')
 		ft_print_hexa_maj(flgs);
 	else if (frmt[i] == '%')
-		flgs->total_lenght += ft_putchar('%');
+		flgs->total_print += ft_putchar('%');
 	return ;
 }

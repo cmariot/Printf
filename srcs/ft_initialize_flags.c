@@ -6,7 +6,7 @@
 /*   By: cmariot <cmariot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/17 16:50:13 by cmariot           #+#    #+#             */
-/*   Updated: 2021/06/21 16:53:16 by cmariot          ###   ########.fr       */
+/*   Updated: 2021/06/30 19:54:50 by cmariot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,13 @@
 
 t_flags	*ft_initialize_flags(t_flags *flags)
 {
-	flags->minus_flag = 0;
-	flags->zero_flag = 0;
-	flags->dot_flag = 0;
-	flags->star_flag = 0;
+	flags->minus = 0;
+	flags->zero = 0;
+	flags->star_for_field_width = 0;
 	flags->field_width = 0;
-	flags->type = 0;
-	flags->total_lenght = 0;
+	flags->dot = 0;
+	flags->star_for_precision = 0;
 	flags->precision = 0;
+	flags->total_print = 0;
 	return (flags);
 }
