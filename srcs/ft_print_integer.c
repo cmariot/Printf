@@ -6,16 +6,15 @@
 /*   By: cmariot <cmariot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/17 19:23:50 by cmariot           #+#    #+#             */
-/*   Updated: 2021/06/30 20:06:05 by cmariot          ###   ########.fr       */
+/*   Updated: 2021/06/30 21:39:33 by cmariot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include "libft.h"
 
 void	ft_treat_integer(char *str, t_flags *flags)
 {
-	int len;
+	int	len;
 	int	backup_precision;
 
 	len = ft_strlen(str);
@@ -50,7 +49,6 @@ void	ft_treat_integer(char *str, t_flags *flags)
 	return ;
 }
 
-
 void	ft_print_integer(t_flags *flags)
 {
 	int		d;
@@ -62,7 +60,7 @@ void	ft_print_integer(t_flags *flags)
 		ft_precision_star(flags);
 	d = va_arg(flags->args, int);
 	str = ft_itoa(d);
-	ft_treat_integer(str, flags); 
+	ft_treat_integer(str, flags);
 	free(str);
 	return ;
 }
