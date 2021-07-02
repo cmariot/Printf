@@ -6,46 +6,77 @@
 /*   By: cmariot <cmariot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/17 19:23:50 by cmariot           #+#    #+#             */
-/*   Updated: 2021/07/01 17:20:37 by cmariot          ###   ########.fr       */
+/*   Updated: 2021/07/03 01:06:30 by cmariot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
+void	ft_print_space_for_integer(t_flags *flags, int len)
+{
+	char	c;
+	int		i;
+
+	c = ' ';
+	i = 0;
+	if (flags->field_width)
+	{
+		if (len > flags->precision)
+		{
+			if (flags->field_width > len)
+				while ((flags->field_width - len) - i++)
+					flags->total_print += write(1, &c, 1);
+		}
+		else if (flags->precision > len)
+		{
+			if (flags->field_width > flags->precision)
+				while ((flags->field_width - flags->precision) - i++)
+					flags->total_print += write(1, &c, 1);
+		}
+		else if (len < flags->field_width)
+			while (flags->field_width-- - len)
+				flags->total_print += write(1, &c, 1);
+	}
+	flags->field_width = 0;
+}
+
 void	ft_treat_integer(char *str, t_flags *flags)
 {
 	int	len;
-	int	backup_precision;
+	int	i;
 
 	len = ft_strlen(str);
-	if (flags->zero && *str == '-')
-	{
-		flags->total_print += ft_putchar(*str++);
-	}
 	if (flags->field_width && !flags->minus)
-		ft_print_space(flags, len);
-	backup_precision = flags->precision;
+		ft_print_space_for_integer(flags, len);
 	if (flags->dot)
 	{
-		if (*str == '-')
+		i = 0;
+		if (flags->precision && (len < flags->precision))
 		{
-			flags->total_print += ft_putchar(*str++);
-			len--;
-		}
-		if (len < flags->precision)
-			while (backup_precision - len++)
+			if (*str == '-' && flags->precision)
+			{
+				flags->total_print += ft_putchar(*str++);
+				// Pas sur du i ici
+				i--;
+			}
+			while ((flags->precision - len) - i++)
+				// Ici a corriger, afficher des espaces si fw ?
 				flags->total_print += ft_putchar('0');
-		while (*str /*&& backup_precision--*/)
+		}
+		else if (!flags->precision)
+			while (*str == '0')
+				str++;
+		while (*str)
 			flags->total_print += ft_putchar(*str++);
+
 	}
-	else if (!flags->dot)
+	else
 		while (*str)
 			flags->total_print += ft_putchar(*str++);
 	if (flags->field_width && flags->minus)
-		ft_print_space(flags, len);
+		ft_print_space_for_integer(flags, len);
 	flags->minus = 0;
-	flags->dot = 0;
-	return ;
+	flags->zero = 0;
 }
 
 void	ft_print_integer(t_flags *flags)
@@ -61,5 +92,4 @@ void	ft_print_integer(t_flags *flags)
 	str = ft_itoa(d);
 	ft_treat_integer(str, flags);
 	free(str);
-	return ;
 }

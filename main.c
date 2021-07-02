@@ -6,7 +6,7 @@
 /*   By: cmariot <cmariot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/19 13:29:53 by cmariot           #+#    #+#             */
-/*   Updated: 2021/07/01 17:08:36 by cmariot          ###   ########.fr       */
+/*   Updated: 2021/07/03 00:53:48 by cmariot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,8 @@ int 	main(void)
 //	printf(".%5x.\n", 15);
 //	ft_printf(".%-5x.\n", 15);
 //	printf(".%-5x.\n", 15);
-//	ft_printf("%d\n", 0);
+//	ret = ft_printf("%d\n", 0);
+//	ret = ft_printf(".%.i.\n", 001);
 //	ret = ft_printf(".%.i.\n", 0);
 //	printf(".%.i.\n", 0);
 //	ret = ft_printf(".%-.2i.\n", 0);
@@ -110,17 +111,26 @@ int 	main(void)
 //	ret = ft_printf("%05d\n", -123456789);
 //	ret = ft_printf(".%-3.2i.\n", 0);
 //	ret = printf(".%-3.2i.\n", 0);
-//	ret = ft_printf(".%-3.2i.%10.42i.\n", 1, -1);
+//	ret = ft_printf(".%-3.2i.%10.42i.\n", 10, -10);
+//	ret = printf(".%-3.2i.%10.42i.\n", 10, -10);
 //	ret = ft_printf(".%*.*i.\n", 2, 5, 123);
 //	ret = printf(".%*.*i.\n", 2, 5, 123);
 //	ret = printf(".*%-*.*i*.*%*.*i*.\n", 4, 5, 10, 10, 21, -10);
 //	ret = ft_printf(".%i.\n", 214748364999);
-	ret = ft_printf("*%-*.*d*%*.*d*\n", 6, 2, 102, 10, 21, -101);
-	ret = printf("*%-*.*d*%*.*d*\n", 6, 2, 102, 10, 21, -101);
-//	ret = ft_printf("*%-*.*i**%*.*i*\n", 6, 2, 102, 10, 21, -101);
-//	ret = printf("*%-*.*i**%*.*i*\n", 6, 2, 102, 10, 21, -101);
-//	ft_printf("%.2d\n", 123);
-//	printf("%.2d\n", 123);
+//	ret = ft_printf("*%-*.*d*%*.*d*\n", 6, 2, 102, 10, 21, -101);
+//	ret = ft_printf(".%0*.*i.\n", 21, 10, -101);
+//	ret = printf(".%0*.*i.\n", 21, 10, -101);
+//	ret = ft_printf("--0*%0*.0i*00*%0*.10i*0--\n", -2, 0, 21, 1);
+//	ret = printf("--0*%0*.0i*00*%0*.10i*0--\n", -2, 0, 21, 1);
+ret=	ft_printf("%9.10i\n", UINT_MAX);
+ret=	printf("%9.10li\n", UINT_MAX);
+//	printf("%10.2i\n", UINT_MAX);
+	ft_printf(".%1.i.\n", 0);
+	printf(".%1.i.\n", 0);
+	ft_printf(".%2.i.\n", 0);
+	printf(".%2.i.\n", 0);
+	ft_printf(".%3.i.\n", 0);
+	printf(".%3.i.\n", 0);
 
 	return (0);
 }

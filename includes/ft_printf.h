@@ -6,7 +6,7 @@
 /*   By: cmariot <cmariot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/17 23:26:23 by cmariot           #+#    #+#             */
-/*   Updated: 2021/07/01 13:59:22 by cmariot          ###   ########.fr       */
+/*   Updated: 2021/07/03 00:45:50 by cmariot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # define INT_MIN	-2147483648
 # define INT_MAX	2147483647
+# define UINT_MAX	4294967295
 
 # include <stdlib.h>
 # include <unistd.h>
