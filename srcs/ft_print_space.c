@@ -6,7 +6,7 @@
 /*   By: cmariot <cmariot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/19 17:05:47 by cmariot           #+#    #+#             */
-/*   Updated: 2021/06/30 21:34:00 by cmariot          ###   ########.fr       */
+/*   Updated: 2021/07/01 17:12:20 by cmariot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	ft_print_space(t_flags *flags, int len)
 {
 	char	c;
 
-	if (flags->zero)
+	if (flags->zero && !flags->minus)
 		c = '0';
 	else
 		c = ' ';

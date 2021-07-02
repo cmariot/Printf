@@ -6,7 +6,7 @@
 /*   By: cmariot <cmariot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/19 13:29:53 by cmariot           #+#    #+#             */
-/*   Updated: 2021/06/30 19:28:12 by cmariot          ###   ########.fr       */
+/*   Updated: 2021/07/01 17:08:36 by cmariot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,8 +86,7 @@ int 	main(void)
 //	ret = ft_printf(".%*s.\n", 10, "abcd");
 //	ret = ft_printf(".%*s.\n", 1, "abcd");
 //	ret = ft_printf(".%*.2s.\n", 10, "abcd");
-	ret = ft_printf(".%*.s.%.1s.\n", 10, "123", "4567");
-	ret = printf(".%*.s.%.1s.\n", 10, "123", "4567");
+//	ret = ft_printf(".%*.s.%.1s.\n", 10, "123", "4567");
 //	ret = ft_printf(".%10.4s.%.4s.\n", "123", "4567");
 //	ret = ft_printf(".%-10.6s.\n", "123");
 //	ft_printf(".%*.5s.%*.5s.\n", 10, "123", -10, "4567");
@@ -101,29 +100,27 @@ int 	main(void)
 //	ret = printf(".%4.3s.%-4.3s.\n", "123", "4567");
 //	ret = ft_printf(" %-3.s ", NULL);
 //	ret = ft_printf(" %-3.s ", NULL);
-
 //	ret = ft_printf(".%.*s.\n", -2, "123");
-//	ret = printf(".%.*s.\n", -2, "123");
-
 //	ret = ft_printf("Test d'affichage sur les integer\n");
 //	ret = ft_printf("%d\n", 0);
-//	ret = ft_printf("%5d\n", 0);
+//	ret = ft_printf(".%5d.\n", 1);
 //	ret = ft_printf("%-5d\n", 0);
 //	ret = ft_printf("%5d\n", -10);
 //	ret = ft_printf("%5d\n", -12345678);
 //	ret = ft_printf("%05d\n", -123456789);
-//	ret = ft_printf(".%-.2i.\n", 1);
+//	ret = ft_printf(".%-3.2i.\n", 0);
+//	ret = printf(".%-3.2i.\n", 0);
 //	ret = ft_printf(".%-3.2i.%10.42i.\n", 1, -1);
 //	ret = ft_printf(".%*.*i.\n", 2, 5, 123);
 //	ret = printf(".%*.*i.\n", 2, 5, 123);
 //	ret = printf(".*%-*.*i*.*%*.*i*.\n", 4, 5, 10, 10, 21, -10);
-
 //	ret = ft_printf(".%i.\n", 214748364999);
-
-
-
-
-
+	ret = ft_printf("*%-*.*d*%*.*d*\n", 6, 2, 102, 10, 21, -101);
+	ret = printf("*%-*.*d*%*.*d*\n", 6, 2, 102, 10, 21, -101);
+//	ret = ft_printf("*%-*.*i**%*.*i*\n", 6, 2, 102, 10, 21, -101);
+//	ret = printf("*%-*.*i**%*.*i*\n", 6, 2, 102, 10, 21, -101);
+//	ft_printf("%.2d\n", 123);
+//	printf("%.2d\n", 123);
 
 	return (0);
 }

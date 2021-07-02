@@ -6,7 +6,7 @@
 /*   By: cmariot <cmariot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/17 19:23:50 by cmariot           #+#    #+#             */
-/*   Updated: 2021/06/30 21:39:33 by cmariot          ###   ########.fr       */
+/*   Updated: 2021/07/01 17:20:37 by cmariot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ void	ft_treat_integer(char *str, t_flags *flags)
 	if (flags->zero && *str == '-')
 	{
 		flags->total_print += ft_putchar(*str++);
-		len--;
 	}
 	if (flags->field_width && !flags->minus)
 		ft_print_space(flags, len);
@@ -34,12 +33,12 @@ void	ft_treat_integer(char *str, t_flags *flags)
 			len--;
 		}
 		if (len < flags->precision)
-			while (flags->precision - len++)
+			while (backup_precision - len++)
 				flags->total_print += ft_putchar('0');
-		while (*str && backup_precision--)
+		while (*str /*&& backup_precision--*/)
 			flags->total_print += ft_putchar(*str++);
 	}
-	else
+	else if (!flags->dot)
 		while (*str)
 			flags->total_print += ft_putchar(*str++);
 	if (flags->field_width && flags->minus)
