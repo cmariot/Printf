@@ -6,7 +6,7 @@
 /*   By: cmariot <cmariot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/17 23:26:23 by cmariot           #+#    #+#             */
-/*   Updated: 2021/07/03 00:45:50 by cmariot          ###   ########.fr       */
+/*   Updated: 2021/07/05 18:25:51 by cmariot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ typedef struct s_flags
 	int		star_for_precision;
 	int		precision;
 	int		total_print;
+	int		minus_printed;
 }	t_flags;
 
 /* This functiun works like the printf function. */
