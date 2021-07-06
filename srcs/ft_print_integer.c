@@ -6,7 +6,7 @@
 /*   By: cmariot <cmariot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/17 19:23:50 by cmariot           #+#    #+#             */
-/*   Updated: 2021/07/06 17:39:17 by cmariot          ###   ########.fr       */
+/*   Updated: 2021/07/06 18:40:02 by cmariot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,12 @@ void	ft_space_after_integer(t_flags *flags, int len)
 	i = 0;
 	if (flags->field_width > flags->precision)
 	{
-		if (flags->precision > len)
+		if (flags->dot && flags->field_width && !flags->precision)
+		{
+			while (flags->field_width-- - len)
+				flags->total_print += write(1, &c, 1);
+		}
+		else if (flags->precision > len)
 		{
 			if (flags->minus_printed)
 				i++;
@@ -89,6 +94,11 @@ int		ft_printf_integer_len(char *str, t_flags *flags)
 				if (*str == '-')
 					len--;
 			}
+		}
+		else if (!flags->precision)
+		{
+			while (*str++ == '0')
+				len--;
 		}
 	}
 	return (len);
