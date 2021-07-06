@@ -6,7 +6,7 @@
 /*   By: cmariot <cmariot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/17 19:23:50 by cmariot           #+#    #+#             */
-/*   Updated: 2021/07/06 18:40:02 by cmariot          ###   ########.fr       */
+/*   Updated: 2021/07/06 18:46:46 by cmariot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,12 @@ void	ft_space_before_integer(t_flags *flags, int len, char *str)
 	i = 0;
 	if (flags->field_width > flags->precision)
 	{
-		if (flags->precision > len)
+		if (flags->dot && flags->field_width && !flags->precision)
+		{
+			while (flags->field_width-- - len)
+				flags->total_print += write(1, &c, 1);
+		}
+		else if (flags->precision > len)
 		{
 			if (*str == '-')
 				i++;
@@ -121,15 +126,15 @@ void	ft_treat_integer(char *str, t_flags *flags)
 	{
 		i = 0;
 	//	printf("precision = %d\n", flags->precision); 
-	//	printf("initial_len = %d\n", initial_len); 
-	//	printf("final_len = %d\n", final_len); 
+		printf("initial_len = %d\n", initial_len); 
+		printf("final_len = %d\n", final_len); 
 		if (flags->precision >= initial_len)
 		{
 			if (*str == '-')
 			{
 				if (!flags->minus_printed)
 					flags->total_print += ft_putchar('-');
-				initial_len--;
+				//initial_len--;
 				flags->minus_printed = 1;
 			}
 			while (flags->precision - initial_len - i++)
