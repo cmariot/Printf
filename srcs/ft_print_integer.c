@@ -6,7 +6,7 @@
 /*   By: cmariot <cmariot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/17 19:23:50 by cmariot           #+#    #+#             */
-/*   Updated: 2021/07/06 14:37:23 by cmariot          ###   ########.fr       */
+/*   Updated: 2021/07/06 17:39:17 by cmariot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@ void	ft_space_before_integer(t_flags *flags, int len, char *str)
 	{
 		if (flags->precision > len)
 		{
+			if (*str == '-')
+				i++;
 			while ((flags->field_width - flags->precision) - i++)
 				flags->total_print += write(1, &c, 1);
 		}
@@ -54,21 +56,16 @@ void	ft_space_after_integer(t_flags *flags, int len)
 
 	c = ' ';
 	i = 0;
-	if (flags->field_width)
+	if (flags->field_width > flags->precision)
 	{
-		if (len > flags->precision)
+		if (flags->precision > len)
 		{
-			if (flags->field_width > len)
-				while ((flags->field_width - len) - i++)
-					flags->total_print += write(1, &c, 1);
+			if (flags->minus_printed)
+				i++;
+			while ((flags->field_width - flags->precision) - i++)
+				flags->total_print += write(1, &c, 1);
 		}
-		else if (flags->precision > len)
-		{
-			if (flags->field_width > flags->precision)
-				while ((flags->field_width - flags->precision) - i++)
-					flags->total_print += write(1, &c, 1);
-		}
-		else if (len < flags->field_width)
+		else if (flags->field_width > len)
 			while (flags->field_width-- - len)
 				flags->total_print += write(1, &c, 1);
 	}
@@ -116,9 +113,9 @@ void	ft_treat_integer(char *str, t_flags *flags)
 	//	printf("precision = %d\n", flags->precision); 
 	//	printf("initial_len = %d\n", initial_len); 
 	//	printf("final_len = %d\n", final_len); 
-		if (flags->precision > initial_len)
+		if (flags->precision >= initial_len)
 		{
-			if (*str == '-' && flags->precision)
+			if (*str == '-')
 			{
 				if (!flags->minus_printed)
 					flags->total_print += ft_putchar('-');
@@ -128,12 +125,14 @@ void	ft_treat_integer(char *str, t_flags *flags)
 			while (flags->precision - initial_len - i++)
 				flags->total_print += ft_putchar('0');
 		}
-		else if (!flags->precision)
+		else if (flags->precision == 0)
+		{
 			while (*str == '0')
 			{
 				final_len--;
 				str++;
 			}
+		}
 	}
 	// Afficher les char
 	if (flags->minus_printed)
@@ -142,10 +141,11 @@ void	ft_treat_integer(char *str, t_flags *flags)
 		flags->total_print += ft_putchar(*str++);
 	// Afficher les espaces en cas de FW et flag - 
 	if (flags->field_width && flags->minus)
-		ft_space_after_integer(flags, final_len);
+		ft_space_after_integer(flags, initial_len);
 	// Remise a zero des flags
 	flags->minus = 0;
 	flags->zero = 0;
+	flags->minus_printed = 0;
 	flags->field_width = 0;
 }
 
