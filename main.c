@@ -6,7 +6,7 @@
 /*   By: cmariot <cmariot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/19 13:29:53 by cmariot           #+#    #+#             */
-/*   Updated: 2021/07/06 12:33:23 by cmariot          ###   ########.fr       */
+/*   Updated: 2021/07/06 14:37:32 by cmariot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,8 +111,8 @@ int 	main(void)
 //	ret = ft_printf("%05d\n", -123456789);
 //	ret = ft_printf(".%-3.2i.\n", 0);
 //	ret = printf(".%-3.2i.\n", 0);
-	ret = ft_printf(".%.4i.\n", -1);
-	ret = printf(".%.4i.\n", -1);
+//	ret = ft_printf(".%.4i.\n", -1);
+//	ret = printf(".%.4i.\n", -1);
 //	ret = printf(".%-3.2i.\n", 0);
 //	ret = ft_printf(".%10.42i.\n", 0);
 //	ret = printf(".%10.42i.\n", 0);
@@ -165,5 +165,17 @@ int 	main(void)
 	ret = printf(".%3.6i.\n", -1);
 	ret = ft_printf(".%3.3i.\n", -1);
 */
+
+	ret = ft_printf(".%0-*.*i.%0*.*i.\n", 2, 6, 102, 21, 10, -101);
+	ret = printf(".%-*.*i.%0*.*i.\n", 2, 6, 102, 21, 10, -101);
+
+//	ret = ft_printf(".%0*.0i.%0*.10i.\n", -2, 0, 21, 1);
+//	ret = printf(".%0*.0i.%0*.10i.\n", -2, 0, 21, 1);
+//	ret = ft_printf(".%0-*i.%0*i.\n", 21, 1021, 21, -1011);
+//	ret = printf(".%-*i.%0*i.\n", 21, 1021, 21, -1011);
+
+//	ret = ft_printf(".%0*.0i.%0*.10i.\n", -21, INT_MAX, 21, INT_MIN);
+//	printf(".%0*.0i.%0*.10li.\n", -21, INT_MAX, 21, INT_MIN);
+
 	return (0);
 }
