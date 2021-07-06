@@ -6,7 +6,7 @@
 /*   By: cmariot <cmariot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/19 13:29:53 by cmariot           #+#    #+#             */
-/*   Updated: 2021/07/06 18:43:04 by cmariot          ###   ########.fr       */
+/*   Updated: 2021/07/06 21:22:20 by cmariot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,9 @@ int 	main(void)
 //	ret = ft_printf("Test d'affichage 1464 en HEXA : %X\n", 1464);
 //	ret = ft_printf("Test d'affichage de l'adresse d'une variable : %p\n", &ret);
 //	ret = ft_printf("Test d'affichage %% : %%\n");
-
 //	ft_printf("Retour = %i\n", ft_printf("\nTest valeur de retour\n"));
 //	ft_printf("Retour = %i\n", ft_printf("Test valeur de retour %d\n", 25));
 //	ft_printf("Retour = %i\n", ft_printf("Test valeur de retour %s\n", "25"));
-
 //	ft_printf("Test sur les char\n");
 //	ft_printf("%c", '0'); //OK
 //	ft_printf(" %c ", '0'); //OK 
@@ -63,9 +61,7 @@ int 	main(void)
 //	ft_printf(" -%-*c* -%-*c* ", 2, 0, -2, 0);
 //	ft_printf(" -%*c* -%-*c* ", -1, 0, 1, 0);
 //	ft_printf(" -%-*c* -%-*c* ", 2, 0, -2, 0);
-//	ft_printf(" -%-2c* -%2c* ", 0, 0);
-
-	
+//	ft_printf(" -%-2c* -%2c* ", 0, 0);	
 //	ft_printf("Test sur les char *\n");
 //	ret = ft_printf(". %*.s %.1s .", 10, "123", "4567");
 //	printf("ret1 = %d\n", ret);
@@ -142,7 +138,6 @@ int 	main(void)
 //	printf(".%2.i.\n", 0);
 //	ft_printf(".%3.i.\n", 0);
 //	printf(".%3.i.\n", 0);
-
 //	ret = ft_printf("%i\n", 1);
 //	printf("%i\n", 1);
 //	ft_printf("%.i\n", 1);
@@ -152,47 +147,51 @@ int 	main(void)
 //	ft_printf("%.i\n", 0);
 //	printf("%.2i\n", 02);
 //	ft_printf("%.2i\n", 02);
-
 /*	ret = ft_printf(".%2i.\n", 1);
 	ret = ft_printf(".%5i.\n", 1);
 	ret = ft_printf(".%2.1i.\n", 1);
 	ret = ft_printf(".%2.2i.\n", 1);
 	ret = ft_printf(".%2.3i.\n", 1);
-
 	ret = printf(".%3i.\n", -1);
 	ret = printf(".%5i.\n", -1);
 	ret = printf(".%3.1i.\n", -1);
 	ret = printf(".%3.6i.\n", -1);
-	ret = ft_printf(".%3.3i.\n", -1);
-*/
-
+	ret = ft_printf(".%3.3i.\n", -1);*/
 //	ret = ft_printf(".%0*.*i.\n", 21, 10, 101);
 //	ret = printf(".%0*.*i.\n", 21, 10, 101);
-
 //	ret = ft_printf(".%0*.0i.%0*.10i.\n", -2, 0, 21, 1);
 //	ret = printf(".%0*.0i.%0*.10i.\n", -2, 0, 21, 1);
 //	ret = ft_printf(".%0-*i.%0*i.\n", 21, 1021, 21, -1011);
 //	ret = printf(".%-*i.%0*i.\n", 21, 1021, 21, -1011);
-
 //	ret = ft_printf(".%0*.0i.%0*.10i.\n", -21, INT_MAX, 21, INT_MIN);
 //	printf(".%0*.0i.%0*.10li.\n", -21, INT_MAX, 21, INT_MIN);
-
 //	ret = ft_printf(".%-0*.20i.%-0*.10i.\n", -21, CHAR_MAX, 21, CHAR_MIN);
 //	ret = printf(".%-*.20i.%-*.10i.\n", -21, CHAR_MAX, 21, CHAR_MIN);
-
 //	ret = ft_printf(".%-0*.4i.%-0*.4i.\n", -21, CHAR_MAX, 21, CHAR_MIN);
 //	ret = printf(".%-*.4i.%-*.4i.\n", -21, CHAR_MAX, 21, CHAR_MIN);
-
 //	ret = ft_printf(".%0*.0i.%0*.10i.\n", -2, 0, 21, 1);
 //	ret = printf(".%0*.0i.%0*.10i.\n", -2, 0, 21, 1);
-
 //	ret = ft_printf(".%9.2i.\n", UINT_MAX);
 //	ret = printf(".%9.2li.\n", UINT_MAX);
-//
 //	ret = ft_printf(".%-0*.10i.%-0*.0i.\n", 21, 1021, 21, -1011);
 //	ret = printf(".%-*.10i.%-*.0i.\n", 21, 1021, 21, -1011);
-
-	ret = ft_printf(".%0*.0i.%0*.10i.\n", -2, 0, 21, 1);
-	ret = printf(".%0*.0i.%0*.10i.\n", -2, 0, 21, 1);
+//	ret = ft_printf(".%0*.0i.%0*.10i.\n", -2, 0, 21, 1);
+//	ret = printf(".%0*.0i.%0*.10i.\n", -2, 0, 21, 1);
+//	ret = ft_printf(".%-0*.4i.%-0*.4i.\n", -21, CHAR_MAX, 21, CHAR_MIN);
+//	ret = printf(".%-*.4i.%-*.4i.\n", -21, CHAR_MAX, 21, CHAR_MIN);
+	ft_printf("%9.2i\n", INT_MAX);
+	printf("%9.2i\n", INT_MAX);
+	ft_printf("%10.2i\n", UINT_MAX);
+	printf("%10.2li\n", UINT_MAX);
+	ft_printf("%11.2i\n", UINT_MAX);
+	printf("%11.2li\n", UINT_MAX);
+	ft_printf("%09.0i\n", UINT_MAX);
+	printf("%09.0li\n", UINT_MAX);
+	ft_printf("%09.2i\n", UINT_MAX);
+	printf("%09.2li\n", UINT_MAX);
+	ft_printf("%010.0i\n", UINT_MAX);
+	printf("%010.0li\n", UINT_MAX);
+	ft_printf("%010.2i\n", UINT_MAX);
+	printf("%010.2li\n", UINT_MAX);
 	return (0);
 }

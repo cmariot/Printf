@@ -6,12 +6,20 @@
 /*   By: cmariot <cmariot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/17 19:23:50 by cmariot           #+#    #+#             */
-/*   Updated: 2021/07/06 18:46:46 by cmariot          ###   ########.fr       */
+/*   Updated: 2021/07/06 21:22:05 by cmariot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
+t_flags ft_reset_flags(t_flags *flags)
+{
+	flags->minus = 0;
+	flags->zero = 0;
+	flags->minus_printed = 0;
+	flags->field_width = 0;
+	return (*flags);
+}
 
 void	ft_space_before_integer(t_flags *flags, int len, char *str)
 {
@@ -76,8 +84,12 @@ void	ft_space_after_integer(t_flags *flags, int len)
 				flags->total_print += write(1, &c, 1);
 		}
 		else if (flags->field_width > len)
+		{
+			if (flags->minus_printed)
+					len++;
 			while (flags->field_width-- - len)
 				flags->total_print += write(1, &c, 1);
+		}
 	}
 	return ;
 }
@@ -115,53 +127,37 @@ void	ft_treat_integer(char *str, t_flags *flags)
 	int	final_len;
 	int	i;
 
-	//Calculer len, si precision et les autres cas.
 	initial_len = ft_strlen(str);
 	final_len = ft_printf_integer_len(str, flags);
-	//Afficher FW si on a pas de flag -
 	if (flags->field_width && !flags->minus)
 		ft_space_before_integer(flags, final_len, str);
-	//Afficher les 0 en cas de flags dot, precision
 	if (flags->dot)
 	{
 		i = 0;
-	//	printf("precision = %d\n", flags->precision); 
-		printf("initial_len = %d\n", initial_len); 
-		printf("final_len = %d\n", final_len); 
 		if (flags->precision >= initial_len)
 		{
 			if (*str == '-')
 			{
 				if (!flags->minus_printed)
 					flags->total_print += ft_putchar('-');
-				//initial_len--;
+				initial_len--;
 				flags->minus_printed = 1;
 			}
 			while (flags->precision - initial_len - i++)
 				flags->total_print += ft_putchar('0');
 		}
 		else if (flags->precision == 0)
-		{
 			while (*str == '0')
-			{
-				final_len--;
 				str++;
-			}
-		}
 	}
-	// Afficher les char
 	if (flags->minus_printed)
 		str++;
 	while (*str)
 		flags->total_print += ft_putchar(*str++);
-	// Afficher les espaces en cas de FW et flag - 
 	if (flags->field_width && flags->minus)
-		ft_space_after_integer(flags, initial_len);
-	// Remise a zero des flags
-	flags->minus = 0;
-	flags->zero = 0;
-	flags->minus_printed = 0;
-	flags->field_width = 0;
+		ft_space_after_integer(flags, final_len);
+	ft_reset_flags(flags);
+	return ;
 }
 
 void	ft_print_integer(t_flags *flags)
@@ -174,7 +170,10 @@ void	ft_print_integer(t_flags *flags)
 	if (flags->star_for_precision)
 		ft_precision_star(flags);
 	d = va_arg(flags->args, int);
-	str = ft_itoa(d);
-	ft_treat_integer(str, flags);
-	free(str);
+	if (d <= INT_MAX)
+	{
+		str = ft_itoa(d);
+		ft_treat_integer(str, flags);
+		free(str);
+	}
 }
