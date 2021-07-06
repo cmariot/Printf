@@ -6,7 +6,7 @@
 /*   By: cmariot <cmariot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/19 13:29:53 by cmariot           #+#    #+#             */
-/*   Updated: 2021/07/05 18:47:25 by cmariot          ###   ########.fr       */
+/*   Updated: 2021/07/06 12:33:23 by cmariot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,10 +111,16 @@ int 	main(void)
 //	ret = ft_printf("%05d\n", -123456789);
 //	ret = ft_printf(".%-3.2i.\n", 0);
 //	ret = printf(".%-3.2i.\n", 0);
+	ret = ft_printf(".%.4i.\n", -1);
+	ret = printf(".%.4i.\n", -1);
+//	ret = printf(".%-3.2i.\n", 0);
+//	ret = ft_printf(".%10.42i.\n", 0);
+//	ret = printf(".%10.42i.\n", 0);
+//	ret = ft_printf(".%-3.2i.%10.42i.\n", 10, -10);
 //	ret = ft_printf(".%-3.2i.%10.42i.\n", 10, -10);
 //	ret = printf(".%-3.2i.%10.42i.\n", 10, -10);
-	ret = ft_printf(".%-3.2i.%10.42i.\n", 0, 0);
-	ret = printf(".%-3.2i.%10.42i.\n", 0, 0);
+//	ret = ft_printf(".%-3.2i.%10.42i.\n", 0, 0);
+//	ret = printf(".%-3.2i.%10.42i.\n", 0, 0);
 //	ret = ft_printf(".%*.*i.\n", 2, 5, 123);
 //	ret = printf(".%*.*i.\n", 2, 5, 123);
 //	ret = printf(".*%-*.*i*.*%*.*i*.\n", 4, 5, 10, 10, 21, -10);
@@ -137,5 +143,27 @@ int 	main(void)
 //	ft_printf(".%3.i.\n", 0);
 //	printf(".%3.i.\n", 0);
 
+//	ret = ft_printf("%i\n", 1);
+//	printf("%i\n", 1);
+//	ft_printf("%.i\n", 1);
+//	printf("%.i\n", 1);
+//	ft_printf("%i\n", 0);
+//	printf("%i\n", 0);
+//	ft_printf("%.i\n", 0);
+//	printf("%.2i\n", 02);
+//	ft_printf("%.2i\n", 02);
+
+/*	ret = ft_printf(".%2i.\n", 1);
+	ret = ft_printf(".%5i.\n", 1);
+	ret = ft_printf(".%2.1i.\n", 1);
+	ret = ft_printf(".%2.2i.\n", 1);
+	ret = ft_printf(".%2.3i.\n", 1);
+
+	ret = printf(".%3i.\n", -1);
+	ret = printf(".%5i.\n", -1);
+	ret = printf(".%3.1i.\n", -1);
+	ret = printf(".%3.6i.\n", -1);
+	ret = ft_printf(".%3.3i.\n", -1);
+*/
 	return (0);
 }

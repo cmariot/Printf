@@ -6,22 +6,17 @@
 /*   By: cmariot <cmariot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/17 19:23:50 by cmariot           #+#    #+#             */
-/*   Updated: 2021/07/05 18:47:21 by cmariot          ###   ########.fr       */
+/*   Updated: 2021/07/06 12:33:06 by cmariot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
+
 void	ft_space_before_integer(t_flags *flags, int len, char *str)
 {
 	char	c;
 	int		i;
-
-	// The number of spaces to print before the integer is influenced by :
-	// - The field_width given
-	// 		. If fw > len or precision
-	// 		. If the zero flag is present we print 0 and not spaces
-	// 		. 
 
 	if (flags->zero && !flags->minus)
 	{
@@ -37,26 +32,19 @@ void	ft_space_before_integer(t_flags *flags, int len, char *str)
 	i = 0;
 	if (flags->field_width > flags->precision)
 	{
-		if (len < flags->field_width)
+		if (flags->field_width > len)
 		{
-			if (flags->field_width > flags->precision)
-				while (flags->field_width-- - len)
-					flags->total_print += write(1, &c, 1);
-		}
-		else if (len > flags->precision)
-		{
-			if (flags->field_width > len)
-				while ((flags->field_width - len) - i++)
-					flags->total_print += write(1, &c, 1);
+			while (flags->field_width-- - len)
+				flags->total_print += write(1, &c, 1);
 		}
 		else if (flags->precision > len)
 		{
-			if (flags->field_width > flags->precision)
-				while ((flags->field_width - flags->precision) - i++)
-					flags->total_print += write(1, &c, 1);
+			while ((flags->field_width - flags->precision) - i++)
+				flags->total_print += write(1, &c, 1);
 		}
-		flags->field_width = 0;
 	}
+	flags->field_width = 0;
+	return ;
 }
 
 void	ft_space_after_integer(t_flags *flags, int len)
@@ -77,6 +65,7 @@ void	ft_space_after_integer(t_flags *flags, int len)
 		else if (flags->precision > len)
 		{
 			if (flags->field_width > flags->precision)
+				//FW > precision > len
 				while ((flags->field_width - flags->precision) - i++)
 					flags->total_print += write(1, &c, 1);
 		}
@@ -87,39 +76,73 @@ void	ft_space_after_integer(t_flags *flags, int len)
 	return ;
 }
 
-void	ft_treat_integer(char *str, t_flags *flags)
+
+int		ft_printf_integer_len(char *str, t_flags *flags)
 {
-	int	len;
-	int	i;
+	int len;
 
 	len = ft_strlen(str);
+	if (flags->dot)
+	{
+	//	while (*str++ == '0')
+	//		len--;
+		if (flags->precision)
+		{
+
+			if (flags->precision > len)
+				while (flags->precision - len)
+					len++;
+		}
+	}
+	return (len);
+}
+
+void	ft_treat_integer(char *str, t_flags *flags)
+{
+	int initial_len;
+	int	final_len;
+	int	i;
+
+	//Calculer len, si precision et les autres cas.
+	initial_len = ft_strlen(str);
+	final_len = ft_printf_integer_len(str, flags);
+	//Afficher FW si on a pas de flag -
 	if (flags->field_width && !flags->minus)
-		ft_space_before_integer(flags, len, str);
+		ft_space_before_integer(flags, final_len, str);
+	//Afficher les 0 en cas de flags dot, precision
 	if (flags->dot)
 	{
 		i = 0;
-		if (flags->precision && (len < flags->precision))
+	//	printf("precision = %d\n", flags->precision); 
+	//	printf("initial_len = %d\n", initial_len); 
+	//	printf("final_len = %d\n", final_len); 
+		if (flags->precision > initial_len)
 		{
 			if (*str == '-' && flags->precision)
 			{
 				flags->total_print += ft_putchar('-');
+				initial_len--;
 				flags->minus_printed = 1;
 			}
-			while ((flags->precision - len) - i++)
+			while (flags->precision - initial_len - i++)
 				flags->total_print += ft_putchar('0');
 		}
 		else if (!flags->precision)
 			while (*str == '0')
 				str++;
 	}
+	// Afficher les char
 	if (flags->minus_printed)
 		str++;
 	while (*str)
 		flags->total_print += ft_putchar(*str++);
+	// Afficher les espaces en cas de FW et flag - 
 	if (flags->field_width && flags->minus)
-		ft_space_after_integer(flags, len);
+		ft_space_after_integer(flags, final_len);
+	// Remise a zero des flags
 	flags->minus = 0;
 	flags->zero = 0;
+	flags->field_width = 0;
 }
 
 void	ft_print_integer(t_flags *flags)
