@@ -6,7 +6,7 @@
 /*   By: cmariot <cmariot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/17 18:32:19 by cmariot           #+#    #+#             */
-/*   Updated: 2021/06/30 19:56:56 by cmariot          ###   ########.fr       */
+/*   Updated: 2021/07/07 15:18:18 by cmariot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,19 +50,13 @@ void	ft_print_unsigned_int(t_flags *flags)
 {
 	unsigned int	u;
 	char			*str;
-	unsigned int	len;
 
+	if (flags->star_for_field_width)
+		ft_field_width_star(flags);
+	if (flags->star_for_precision)
+		ft_precision_star(flags);
 	u = va_arg(flags->args, unsigned int);
 	str = ft_u_itoa(u);
-	len = ft_strlen(str);
-	if (flags->field_width && !flags->minus)
-		ft_print_space(flags, len);
-	while (*str)
-	{
-		flags->total_print += ft_putchar(*str++);
-	}
-	if (flags->field_width && flags->minus && !flags->dot)
-		ft_print_space(flags, len);
-	flags->minus = 0;
-	flags->dot = 0;
+	ft_treat_integer(str, flags);
+	free(str);
 }

@@ -6,7 +6,7 @@
 /*   By: cmariot <cmariot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/19 13:29:53 by cmariot           #+#    #+#             */
-/*   Updated: 2021/07/07 13:54:25 by cmariot          ###   ########.fr       */
+/*   Updated: 2021/07/07 16:40:02 by cmariot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -189,15 +189,26 @@ int 	main(void)
 //	printf("%10.2i\n", -1);
 //	ft_printf("%11.2i\n", UINT_MAX);
 //	printf("%11.2li\n", UINT_MAX);
-	ret = ft_printf("%09.0i\n", UINT_MAX);
-	printf("%09.0li\n", UINT_MAX);
-	ft_printf("%010.0i\n", UINT_MAX);
-	printf("%010.0li\n", UINT_MAX);
-	ft_printf("%011.0i\n", UINT_MAX);
-	printf("%011.0li\n", UINT_MAX);
-	ft_printf("%09.0i\n", UINT_MAX + 1);
-	printf("%09.0li\n", UINT_MAX + 1);
+//	ret = ft_printf("%09.0i\n", UINT_MAX);
+//	printf("%09.0i\n\n", UINT_MAX);
+//	ret = ft_printf("%09.1i\n", UINT_MAX);
+//	printf("%09.1i\n\n", UINT_MAX);ft_printf("%010.0i\n", UINT_MAX);
+//	printf("%010.0i\n", UINT_MAX);
+//	ft_printf("%011.0i\n", UINT_MAX);
+//	printf("%011.0i\n", UINT_MAX);
+//	ft_printf("%09.0i\n", UINT_MAX + 1);
+//	printf("%09.0i\n", UINT_MAX + 1);
 //	ft_printf("%010.2i\n", UINT_MAX);
 //	printf("%010.2li\n", UINT_MAX);
+//	ret = printf(".%-9.0ld.\n", UINT_MAX);
+//	ft_printf(".%-9.0u.\n", UINT_MAX);
+//	ret = ft_printf("%x\n", 42);
+//	ret = ft_printf("%X\n", 42);
+	int a = 42;
+	ret = ft_printf("Test d'affichage des adresses\n");
+	ft_printf("Adresse de ret = %p\n", 1);
+	printf("Adresse de ret = %u\n", 1);
+	ft_printf("Adresse de a = %p\n", &a);
+	printf("Adresse de a = %p\n", &a);
 	return (0);
 }

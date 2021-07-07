@@ -6,7 +6,7 @@
 /*   By: cmariot <cmariot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/17 23:26:23 by cmariot           #+#    #+#             */
-/*   Updated: 2021/07/07 13:54:31 by cmariot          ###   ########.fr       */
+/*   Updated: 2021/07/07 15:26:36 by cmariot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ int				ft_printf(const char *format, ...);
 /* All the struct variables are set to 0. */
 t_flags			*ft_initialize_flags(t_flags *flags);
 /* Reset the struct variables to zero. */
-t_flags			*ft_reset_struct(t_flags *flags);
+t_flags			*ft_reset_flags(t_flags *flags);
 /* Print a char and return 1. */
 int				ft_putchar(int c);
 /* When we see a '%' we check the flags and put data in the structure. */
@@ -74,6 +74,8 @@ void			ft_field_width_star(t_flags *flags);
 /* If there is a star flag after the dot flag the va_arg is for the precision */
 void			ft_precision_star(t_flags *flags);
 /* Itoa for unsigned int */ 
-char	*ft_u_itoa(unsigned int n);
+char			*ft_u_itoa(unsigned int n);
+/* Print the spaces or the zeros for the flags */
+void			ft_treat_integer(char *str, t_flags *flags);
 
 #endif
