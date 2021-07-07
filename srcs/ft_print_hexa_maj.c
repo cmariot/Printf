@@ -6,7 +6,7 @@
 /*   By: cmariot <cmariot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/17 18:32:19 by cmariot           #+#    #+#             */
-/*   Updated: 2021/07/07 15:47:26 by cmariot          ###   ########.fr       */
+/*   Updated: 2021/07/07 16:56:38 by cmariot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,14 +32,12 @@ unsigned int	ft_uitoupperhexa_len(unsigned int n)
 char	*ft_uitoa_hexa_maj(unsigned int n)
 {
 	char			*base;
-	unsigned int	len;
 	unsigned int	diviseur;
 	unsigned int	result;
 	char			*str;
 	int				i;
 
-	len = ft_uitoupperhexa_len(n);
-	str = malloc(sizeof(char) * (len + 1));
+	str = malloc(sizeof(char) * (ft_uitoupperhexa_len(n) + 1));
 	if (!str)
 		return (NULL);
 	base = "0123456789ABCDEF";
@@ -55,7 +53,6 @@ char	*ft_uitoa_hexa_maj(unsigned int n)
 	}
 	str[i] = '\0';
 	return (str);
-
 }
 
 void	ft_print_hexa_maj(t_flags *flags)

@@ -6,7 +6,7 @@
 /*   By: cmariot <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/18 14:52:30 by cmariot           #+#    #+#             */
-/*   Updated: 2021/07/07 16:39:02 by cmariot          ###   ########.fr       */
+/*   Updated: 2021/07/07 16:55:33 by cmariot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,14 +32,12 @@ unsigned int	ft_uitohexa_len2(unsigned int n)
 char	*ft_uitoa_hexa2(unsigned int n)
 {
 	char			*base;
-	unsigned int	len;
 	unsigned int	diviseur;
 	unsigned int	result;
 	char			*str;
 	int				i;
 
-	len = ft_uitohexa_len2(n);
-	str = malloc(sizeof(char) * (len + 1));
+	str = malloc(sizeof(char) * (ft_uitohexa_len2(n) + 1));
 	if (!str)
 		return (NULL);
 	base = "0123456789abcdef";
