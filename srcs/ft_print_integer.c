@@ -6,7 +6,7 @@
 /*   By: cmariot <cmariot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/17 19:23:50 by cmariot           #+#    #+#             */
-/*   Updated: 2021/07/07 10:22:45 by cmariot          ###   ########.fr       */
+/*   Updated: 2021/07/07 10:30:05 by cmariot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -168,7 +168,7 @@ void	ft_print_integer(t_flags *flags)
 	d = va_arg(flags->args, int);
 	if (d <= INT_MAX)
 	{
-		str = ft_itoa(d);
+		str = ft_u_itoa(d);
 		ft_treat_integer(str, flags);
 		free(str);
 	}
