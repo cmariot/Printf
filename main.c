@@ -6,7 +6,7 @@
 /*   By: cmariot <cmariot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/19 13:29:53 by cmariot           #+#    #+#             */
-/*   Updated: 2021/07/06 21:22:20 by cmariot          ###   ########.fr       */
+/*   Updated: 2021/07/07 09:47:49 by cmariot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -179,7 +179,7 @@ int 	main(void)
 //	ret = printf(".%0*.0i.%0*.10i.\n", -2, 0, 21, 1);
 //	ret = ft_printf(".%-0*.4i.%-0*.4i.\n", -21, CHAR_MAX, 21, CHAR_MIN);
 //	ret = printf(".%-*.4i.%-*.4i.\n", -21, CHAR_MAX, 21, CHAR_MIN);
-	ft_printf("%9.2i\n", INT_MAX);
+	ret = ft_printf("%9.2i\n", INT_MAX);
 	printf("%9.2i\n", INT_MAX);
 	ft_printf("%10.2i\n", UINT_MAX);
 	printf("%10.2li\n", UINT_MAX);
