@@ -6,7 +6,7 @@
 /*   By: cmariot <cmariot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/17 19:23:50 by cmariot           #+#    #+#             */
-/*   Updated: 2021/07/06 21:22:05 by cmariot          ###   ########.fr       */
+/*   Updated: 2021/07/07 10:22:45 by cmariot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,10 +53,8 @@ void	ft_space_before_integer(t_flags *flags, int len, char *str)
 				flags->total_print += write(1, &c, 1);
 		}
 		else if (flags->field_width > len)
-		{
 			while (flags->field_width-- - len)
 				flags->total_print += write(1, &c, 1);
-		}
 	}
 	flags->field_width = 0;
 	return ;
@@ -72,10 +70,8 @@ void	ft_space_after_integer(t_flags *flags, int len)
 	if (flags->field_width > flags->precision)
 	{
 		if (flags->dot && flags->field_width && !flags->precision)
-		{
 			while (flags->field_width-- - len)
 				flags->total_print += write(1, &c, 1);
-		}
 		else if (flags->precision > len)
 		{
 			if (flags->minus_printed)
