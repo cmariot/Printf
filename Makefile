@@ -6,7 +6,7 @@
 #    By: cmariot <cmariot@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/05/27 18:57:32 by cmariot           #+#    #+#              #
-#    Updated: 2021/06/30 19:08:37 by cmariot          ###   ########.fr        #
+#    Updated: 2021/07/07 12:02:14 by cmariot          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,7 +37,8 @@ SRCS = srcs/ft_printf.c \
        srcs/ft_check_flags.c \
 	   srcs/ft_print_space.c \
 	   srcs/ft_star_flag.c \
-	   srcs/ft_star_precision.c
+	   srcs/ft_star_precision.c \
+	   srcs/ft_u_itoa.c
 
 SRCS_OBJS = ${SRCS:.c=.o}
 

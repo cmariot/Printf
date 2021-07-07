@@ -6,7 +6,7 @@
 /*   By: cmariot <cmariot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/17 23:26:23 by cmariot           #+#    #+#             */
-/*   Updated: 2021/07/06 15:15:11 by cmariot          ###   ########.fr       */
+/*   Updated: 2021/07/07 13:54:31 by cmariot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,5 +73,7 @@ void			ft_print_space(t_flags *flags, int len);
 void			ft_field_width_star(t_flags *flags);
 /* If there is a star flag after the dot flag the va_arg is for the precision */
 void			ft_precision_star(t_flags *flags);
+/* Itoa for unsigned int */ 
+char	*ft_u_itoa(unsigned int n);
 
 #endif

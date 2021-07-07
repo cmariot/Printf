@@ -6,7 +6,7 @@
 /*   By: cmariot <cmariot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/17 19:23:50 by cmariot           #+#    #+#             */
-/*   Updated: 2021/07/07 10:30:05 by cmariot          ###   ########.fr       */
+/*   Updated: 2021/07/07 13:54:34 by cmariot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,12 @@ void	ft_space_before_integer(t_flags *flags, int len, char *str)
 	char	c;
 	int		i;
 
-	if (flags->zero && !flags->minus && !flags->precision)
+	if (flags->zero && flags->precision == 0)
 	{
 		c = '0';
 		if (*str == '-')
 		{
+		//	printf("on entre la & str = .%s.\n", str);
 			flags->total_print += ft_putchar('-');
 			flags->minus_printed = 1;
 		}
@@ -40,12 +41,19 @@ void	ft_space_before_integer(t_flags *flags, int len, char *str)
 	i = 0;
 	if (flags->field_width > flags->precision)
 	{
-		if (flags->dot && flags->field_width && !flags->precision)
+		if (flags->dot && flags->field_width && flags->precision == 0)
 		{
-			while (flags->field_width-- - len)
-				flags->total_print += write(1, &c, 1);
+			if (flags->field_width > len)
+			{
+			//	printf("\non est la & len = %d & FW = %d\n", len, flags->field_width);
+				if (flags->minus_printed)
+					len--;
+			//	while (flags->field_width - len - i++)
+			//		flags->total_print += write(1, &c, 1);
+			}
+
 		}
-		else if (flags->precision > len)
+		if (flags->precision >= len)
 		{
 			if (*str == '-')
 				i++;
@@ -125,6 +133,7 @@ void	ft_treat_integer(char *str, t_flags *flags)
 
 	initial_len = ft_strlen(str);
 	final_len = ft_printf_integer_len(str, flags);
+	//printf("FW = %d\n", flags->field_width);
 	if (flags->field_width && !flags->minus)
 		ft_space_before_integer(flags, final_len, str);
 	if (flags->dot)
@@ -166,10 +175,8 @@ void	ft_print_integer(t_flags *flags)
 	if (flags->star_for_precision)
 		ft_precision_star(flags);
 	d = va_arg(flags->args, int);
-	if (d <= INT_MAX)
-	{
-		str = ft_u_itoa(d);
-		ft_treat_integer(str, flags);
-		free(str);
-	}
+	//printf("VA_ARG = %d\n", d);
+	str = ft_itoa(d);
+	ft_treat_integer(str, flags);
+	free(str);
 }

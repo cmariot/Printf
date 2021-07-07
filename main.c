@@ -6,7 +6,7 @@
 /*   By: cmariot <cmariot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/19 13:29:53 by cmariot           #+#    #+#             */
-/*   Updated: 2021/07/07 10:28:10 by cmariot          ###   ########.fr       */
+/*   Updated: 2021/07/07 13:54:25 by cmariot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -179,24 +179,25 @@ int 	main(void)
 //	ret = printf(".%0*.0i.%0*.10i.\n", -2, 0, 21, 1);
 //	ret = ft_printf(".%-0*.4i.%-0*.4i.\n", -21, CHAR_MAX, 21, CHAR_MIN);
 //	ret = printf(".%-*.4i.%-*.4i.\n", -21, CHAR_MAX, 21, CHAR_MIN);
-	
-	//OK
-	ret = ft_printf("%011.10i", UINT_MAX);
-	ret = printf("%011.10li", UINT_MAX);
-	//Pas OK
-	ft_printf("%9.2i\n", INT_MAX);
-	printf("%9.2i\n", INT_MAX);
-	ft_printf("%10.2i\n", UINT_MAX);
-	printf("%10.2li\n", UINT_MAX);
-	ft_printf("%11.2i\n", UINT_MAX);
-	printf("%11.2li\n", UINT_MAX);
-	ft_printf("%09.0i\n", UINT_MAX);
+//	ret = ft_printf(".%011.10i.\n", INT_MAX);
+//	ret = printf(".%011.10i.\n", INT_MAX);
+//	ret = ft_printf("%9.2i\n", INT_MAX);
+//	printf("resultat printf = %d\n", printf("%9.2i\n", INT_MAX));
+//	ret =ft_printf("%10.2i\n", UINT_MAX);
+//	printf("%10.2li\n", UINT_MAX);
+//	ret =ft_printf("%10.2i\n", -1);
+//	printf("%10.2i\n", -1);
+//	ft_printf("%11.2i\n", UINT_MAX);
+//	printf("%11.2li\n", UINT_MAX);
+	ret = ft_printf("%09.0i\n", UINT_MAX);
 	printf("%09.0li\n", UINT_MAX);
-	ft_printf("%09.2i\n", UINT_MAX);
-	printf("%09.2li\n", UINT_MAX);
 	ft_printf("%010.0i\n", UINT_MAX);
 	printf("%010.0li\n", UINT_MAX);
-	ft_printf("%010.2i\n", UINT_MAX);
-	printf("%010.2li\n", UINT_MAX);
+	ft_printf("%011.0i\n", UINT_MAX);
+	printf("%011.0li\n", UINT_MAX);
+	ft_printf("%09.0i\n", UINT_MAX + 1);
+	printf("%09.0li\n", UINT_MAX + 1);
+//	ft_printf("%010.2i\n", UINT_MAX);
+//	printf("%010.2li\n", UINT_MAX);
 	return (0);
 }
