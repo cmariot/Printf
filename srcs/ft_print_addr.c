@@ -6,7 +6,7 @@
 /*   By: cmariot <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/18 14:52:30 by cmariot           #+#    #+#             */
-/*   Updated: 2021/07/07 16:55:33 by cmariot          ###   ########.fr       */
+/*   Updated: 2021/07/08 12:08:29 by cmariot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,14 @@ char	*ft_uitoa_hexa2(unsigned int n)
 
 void	ft_print_addr(t_flags *flags)
 {
+//	void	*ptr;
+//	char	*str;
+
+//	ptr = va_arg(flags->args, void *);
+//	str = (char *)&ptr;
+//	printf("STR = %s\n", str);
+//	printf("PTR = %p\n", ptr); 
+	
 	unsigned int	p;
 	char			*str;
 	char			*new_str;
@@ -67,7 +75,7 @@ void	ft_print_addr(t_flags *flags)
 		ft_precision_star(flags);
 	p = va_arg(flags->args, unsigned int);
 	str = ft_uitoa_hexa2(p);
-	new_str = ft_strjoin("0x1", str);
+	new_str = ft_strjoin("0x", str);
 	ft_treat_integer(new_str, flags);
 	free(new_str);
 	free(str);
