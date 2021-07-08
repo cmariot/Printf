@@ -6,16 +6,16 @@
 /*   By: cmariot <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/18 14:52:30 by cmariot           #+#    #+#             */
-/*   Updated: 2021/07/08 12:08:29 by cmariot          ###   ########.fr       */
+/*   Updated: 2021/07/08 14:04:07 by cmariot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-unsigned int	ft_uitohexa_len2(unsigned int n)
+unsigned long long	ft_uitohexa_len2(unsigned long long n)
 {
-	unsigned int	n_len;
-	unsigned int	diviseur;
+	unsigned long long	n_len;
+	unsigned long long	diviseur;
 
 	n_len = 0;
 	diviseur = 1;
@@ -29,11 +29,11 @@ unsigned int	ft_uitohexa_len2(unsigned int n)
 	return (n_len);
 }
 
-char	*ft_uitoa_hexa2(unsigned int n)
+char	*ft_uitoa_hexa2(unsigned long long n)
 {
 	char			*base;
-	unsigned int	diviseur;
-	unsigned int	result;
+	unsigned long long	diviseur;
+	unsigned long long	result;
 	char			*str;
 	int				i;
 
@@ -56,24 +56,12 @@ char	*ft_uitoa_hexa2(unsigned int n)
 }
 
 void	ft_print_addr(t_flags *flags)
-{
-//	void	*ptr;
-//	char	*str;
-
-//	ptr = va_arg(flags->args, void *);
-//	str = (char *)&ptr;
-//	printf("STR = %s\n", str);
-//	printf("PTR = %p\n", ptr); 
-	
-	unsigned int	p;
+{	
+	unsigned long long	p;
 	char			*str;
 	char			*new_str;
 
-	if (flags->star_for_field_width)
-		ft_field_width_star(flags);
-	if (flags->star_for_precision)
-		ft_precision_star(flags);
-	p = va_arg(flags->args, unsigned int);
+	p = (unsigned long long)va_arg(flags->args, void *);
 	str = ft_uitoa_hexa2(p);
 	new_str = ft_strjoin("0x", str);
 	ft_treat_integer(new_str, flags);

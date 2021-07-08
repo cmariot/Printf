@@ -6,23 +6,26 @@
 /*   By: cmariot <cmariot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/17 23:26:23 by cmariot           #+#    #+#             */
-/*   Updated: 2021/07/07 16:57:25 by cmariot          ###   ########.fr       */
+/*   Updated: 2021/07/08 13:56:52 by cmariot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
 
+# define CHAR_MIN	-128	
+# define CHAR_MAX	127
 # define INT_MIN	-2147483648
 # define INT_MAX	2147483647
 # define UINT_MAX	4294967295
-# define CHAR_MIN	-128	
-# define CHAR_MAX	127
+# define LONG_MIN	-2147483648
+# define LONG_MAX	2147483647
 
 # include <stdlib.h>
 # include <unistd.h>
 # include <stdarg.h>
 # include <stdio.h>
+//# include <limits.h>
 # include "libft.h"
 
 typedef struct s_flags

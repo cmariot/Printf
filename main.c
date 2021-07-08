@@ -6,7 +6,7 @@
 /*   By: cmariot <cmariot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/19 13:29:53 by cmariot           #+#    #+#             */
-/*   Updated: 2021/07/08 12:49:06 by cmariot          ###   ########.fr       */
+/*   Updated: 2021/07/08 14:12:08 by cmariot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -204,15 +204,25 @@ int 	main(void)
 //	ft_printf(".%-9.0u.\n", UINT_MAX);
 //	ret = ft_printf("%x\n", 42);
 //	ret = ft_printf("%X\n", 42);
-	int a = 42;
 	ret = ft_printf("Test d'affichage des adresses\n");
+//	char *a;
+//	a = "42";
+//	ft_printf("%p\n", &a);
+//	printf("%p\n", &a);
 	//ft_printf("Adresse de ret = %p\n", 1);
 	//printf("Adresse de ret = %u\n", 1);
-	ft_printf("Adresse de a = %p\n", &a);
-	printf("Adresse de a = %p\n", &a);
-	ft_printf("Adresse de ret = %p\n", &a);
-	printf("Adresse de ret = %p\n", &a);
+//	ft_printf("%p\n%p\n\n", &ret, &ret);
+//	printf("%p\n%p\n\n", &ret, &ret);
+
+//	printf("%lx\n%x\n\n", LONG_MIN, LONG_MAX);
+//	printf("Adresse de a = %p\n", &a);
+//	ft_printf("Adresse de ret = %p\n", &a);
+//	printf("Adresse de ret = %p\n", &a);
 //	ft_printf("Adresse de a = %p\n", &a);
 //	printf("Adresse de a = %p\n", &a);
+
+	ft_printf(".%10p.%-10p.\n", 0, 0);
+//	ft_printf(".%*p.%-*p.\n", -10, 101, -10, 42);
+//	printf(".%*x.%-*x.\n", -10, 101, -10, 42);
 	return (0);
 }
