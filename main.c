@@ -6,7 +6,7 @@
 /*   By: cmariot <cmariot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/19 13:29:53 by cmariot           #+#    #+#             */
-/*   Updated: 2021/07/07 16:40:02 by cmariot          ###   ########.fr       */
+/*   Updated: 2021/07/08 12:08:33 by cmariot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -206,9 +206,9 @@ int 	main(void)
 //	ret = ft_printf("%X\n", 42);
 	int a = 42;
 	ret = ft_printf("Test d'affichage des adresses\n");
-	ft_printf("Adresse de ret = %p\n", 1);
-	printf("Adresse de ret = %u\n", 1);
-	ft_printf("Adresse de a = %p\n", &a);
-	printf("Adresse de a = %p\n", &a);
+	ft_printf("Adresse de ret = %p\n", &a);
+	printf("Adresse de ret = %p\n", &a);
+//	ft_printf("Adresse de a = %p\n", &a);
+//	printf("Adresse de a = %p\n", &a);
 	return (0);
 }
