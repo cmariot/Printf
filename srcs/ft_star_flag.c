@@ -6,7 +6,7 @@
 /*   By: cmariot <cmariot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/19 17:27:15 by cmariot           #+#    #+#             */
-/*   Updated: 2021/07/09 11:11:49 by cmariot          ###   ########.fr       */
+/*   Updated: 2021/07/09 12:28:43 by cmariot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,4 +21,10 @@ void	ft_field_width_star(t_flags *flags)
 		flags->minus = 1;
 	}
 	flags->star_for_field_width = 0;
+}
+
+void	ft_precision_star(t_flags *flags)
+{
+	flags->precision = va_arg(flags->args, int);
+	flags->star_for_precision = 0;
 }

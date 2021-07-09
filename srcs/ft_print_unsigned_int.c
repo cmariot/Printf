@@ -6,7 +6,7 @@
 /*   By: cmariot <cmariot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/17 18:32:19 by cmariot           #+#    #+#             */
-/*   Updated: 2021/07/07 15:18:18 by cmariot          ###   ########.fr       */
+/*   Updated: 2021/07/09 12:21:57 by cmariot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,6 @@ void	ft_print_unsigned_int(t_flags *flags)
 		ft_precision_star(flags);
 	u = va_arg(flags->args, unsigned int);
 	str = ft_u_itoa(u);
-	ft_treat_integer(str, flags);
+	ft_print(str, flags);
 	free(str);
 }

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_hexa_maj.c                                :+:      :+:    :+:   */
+/*   ft_print_upper_hexa.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cmariot <cmariot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/17 18:32:19 by cmariot           #+#    #+#             */
-/*   Updated: 2021/07/07 16:56:38 by cmariot          ###   ########.fr       */
+/*   Updated: 2021/07/09 12:25:38 by cmariot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,6 @@ void	ft_print_hexa_maj(t_flags *flags)
 		ft_precision_star(flags);
 	X = va_arg(flags->args, unsigned int);
 	str = ft_uitoa_hexa_maj(X);
-	ft_treat_integer(str, flags);
+	ft_print(str, flags);
 	free(str);
 }

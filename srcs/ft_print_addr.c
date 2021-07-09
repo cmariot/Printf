@@ -6,13 +6,13 @@
 /*   By: cmariot <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/18 14:52:30 by cmariot           #+#    #+#             */
-/*   Updated: 2021/07/09 11:26:25 by cmariot          ###   ########.fr       */
+/*   Updated: 2021/07/09 12:23:21 by cmariot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-unsigned long long	ft_uitohexa_len2(unsigned long long n)
+unsigned long long	ft_ulltohexa_len(unsigned long long n)
 {
 	unsigned long long	n_len;
 	unsigned long long	diviseur;
@@ -29,15 +29,15 @@ unsigned long long	ft_uitohexa_len2(unsigned long long n)
 	return (n_len);
 }
 
-char	*ft_uitoa_hexa2(unsigned long long n)
+char	*ft_ulltoa_hexa(unsigned long long n)
 {
-	char			*base;
+	char				*base;
 	unsigned long long	diviseur;
 	unsigned long long	result;
-	char			*str;
-	int				i;
+	char				*str;
+	int					i;
 
-	str = malloc(sizeof(char) * (ft_uitohexa_len2(n) + 1));
+	str = malloc(sizeof(char) * (ft_ulltohexa_len(n) + 1));
 	if (!str)
 		return (NULL);
 	base = "0123456789abcdef";
@@ -58,17 +58,17 @@ char	*ft_uitoa_hexa2(unsigned long long n)
 void	ft_print_addr(t_flags *flags)
 {	
 	unsigned long long	p;
-	char			*str;
-	char			*new_str;
+	char				*str;
+	char				*new_str;
 
 	if (flags->star_for_field_width)
 		ft_field_width_star(flags);
 	if (flags->star_for_precision)
 		ft_precision_star(flags);
 	p = (unsigned long long)va_arg(flags->args, void *);
-	str = ft_uitoa_hexa2(p);
+	str = ft_ulltoa_hexa(p);
 	new_str = ft_strjoin("0x", str);
-	ft_treat_integer(new_str, flags);
+	ft_print(new_str, flags);
 	free(new_str);
 	free(str);
 }

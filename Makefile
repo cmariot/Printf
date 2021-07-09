@@ -6,7 +6,7 @@
 #    By: cmariot <cmariot@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/05/27 18:57:32 by cmariot           #+#    #+#              #
-#    Updated: 2021/07/08 13:54:11 by cmariot          ###   ########.fr        #
+#    Updated: 2021/07/09 12:46:07 by cmariot          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,22 +23,17 @@ INCLUDES_DIR = includes
 SRCS_DIR = srcs
 
 SRCS = srcs/ft_printf.c \
-       srcs/ft_initialize_flags.c \
-       srcs/ft_check_type.c \
-       srcs/ft_is_in_type_list.c \
-       srcs/ft_putchar.c \
-       srcs/ft_print_char.c \
+       srcs/ft_flags.c \
+       srcs/ft_type.c \
+	   srcs/ft_star_flag.c \
+	   srcs/ft_space_and_precision.c \
+	   srcs/ft_print_char.c \
        srcs/ft_print_str.c \
        srcs/ft_print_integer.c \
        srcs/ft_print_unsigned_int.c \
        srcs/ft_print_hexa.c \
-       srcs/ft_print_hexa_maj.c \
-       srcs/ft_print_addr.c \
-       srcs/ft_check_flags.c \
-	   srcs/ft_print_space.c \
-	   srcs/ft_star_flag.c \
-	   srcs/ft_star_precision.c \
-	   srcs/ft_u_itoa.c
+       srcs/ft_print_upper_hexa.c \
+       srcs/ft_print_addr.c
 
 SRCS_OBJS = ${SRCS:.c=.o}
 
@@ -114,6 +109,8 @@ compil_libft:
 
 compil_srcs:	compil_libft ${SRCS_OBJS}
 				@ar rc ${PROGRAM_NAME} ${SRCS_OBJS} ${LIBFT_OBJS}
+				@rm ${SRCS_OBJS}
+				@rm ${LIBFT_OBJS}
 				@printf "\x1b[32mlibftprintf.a is ready.\x1b[0m\n"
 			
 test:			compil_srcs
