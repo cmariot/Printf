@@ -6,7 +6,7 @@
 #    By: cmariot <cmariot@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/05/27 18:57:32 by cmariot           #+#    #+#              #
-#    Updated: 2021/07/09 12:46:07 by cmariot          ###   ########.fr        #
+#    Updated: 2021/07/09 16:32:51 by cmariot          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,7 +33,8 @@ SRCS = srcs/ft_printf.c \
        srcs/ft_print_unsigned_int.c \
        srcs/ft_print_hexa.c \
        srcs/ft_print_upper_hexa.c \
-       srcs/ft_print_addr.c
+       srcs/ft_print_addr.c \
+	   srcs/ft_print_percent.c
 
 SRCS_OBJS = ${SRCS:.c=.o}
 

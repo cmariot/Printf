@@ -6,11 +6,19 @@
 /*   By: cmariot <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/18 14:52:30 by cmariot           #+#    #+#             */
-/*   Updated: 2021/07/09 12:23:21 by cmariot          ###   ########.fr       */
+/*   Updated: 2021/07/09 18:15:36 by cmariot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+
+int	ft_print_0x(t_flags *flags, char ***str)
+{
+	flags->total_print += ft_printf("0x");
+	(**str)++;
+	(**str)++;
+	return (2);
+}
 
 unsigned long long	ft_ulltohexa_len(unsigned long long n)
 {
@@ -61,6 +69,7 @@ void	ft_print_addr(t_flags *flags)
 	char				*str;
 	char				*new_str;
 
+	flags->pointer = 1;
 	if (flags->star_for_field_width)
 		ft_field_width_star(flags);
 	if (flags->star_for_precision)

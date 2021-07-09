@@ -6,7 +6,7 @@
 /*   By: cmariot <cmariot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/09 12:12:52 by cmariot           #+#    #+#             */
-/*   Updated: 2021/07/09 12:33:34 by cmariot          ###   ########.fr       */
+/*   Updated: 2021/07/09 18:15:12 by cmariot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	ft_space_before(t_flags *flags, int len, char *str)
 	int		i;
 
 	c = ' ';
-	if (flags->zero && !flags->dot)
+	if (flags->zero && ((!flags->dot) || (flags->precision < 0)))
 		c = ft_c_is_zero(flags, str);
 	i = 0;
 	if (flags->field_width > flags->precision)
@@ -114,6 +114,8 @@ void	ft_print_precision(t_flags *flags, char **str, int initial_len)
 	i = 0;
 	if (flags->precision >= initial_len)
 	{
+		if (flags->pointer)
+			initial_len -= ft_print_0x(flags, &str);
 		if (**str == '-')
 		{
 			if (!flags->minus_printed)
@@ -125,6 +127,10 @@ void	ft_print_precision(t_flags *flags, char **str, int initial_len)
 			flags->total_print += ft_putchar('0');
 	}
 	else if (flags->precision == 0)
+	{
+		if (flags->pointer)
+			ft_print_0x(flags, &str);
 		while (**str == '0')
 			(*str)++;
+	}
 }
