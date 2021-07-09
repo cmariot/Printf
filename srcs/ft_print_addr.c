@@ -6,7 +6,7 @@
 /*   By: cmariot <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/18 14:52:30 by cmariot           #+#    #+#             */
-/*   Updated: 2021/07/08 14:04:07 by cmariot          ###   ########.fr       */
+/*   Updated: 2021/07/09 11:26:25 by cmariot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,10 @@ void	ft_print_addr(t_flags *flags)
 	char			*str;
 	char			*new_str;
 
+	if (flags->star_for_field_width)
+		ft_field_width_star(flags);
+	if (flags->star_for_precision)
+		ft_precision_star(flags);
 	p = (unsigned long long)va_arg(flags->args, void *);
 	str = ft_uitoa_hexa2(p);
 	new_str = ft_strjoin("0x", str);
