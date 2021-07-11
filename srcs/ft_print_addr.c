@@ -6,7 +6,7 @@
 /*   By: cmariot <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/18 14:52:30 by cmariot           #+#    #+#             */
-/*   Updated: 2021/07/09 18:15:36 by cmariot          ###   ########.fr       */
+/*   Updated: 2021/07/11 23:31:45 by cmariot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,9 @@
 
 int	ft_print_0x(t_flags *flags, char ***str)
 {
-	flags->total_print += ft_printf("0x");
+	flags->total_print += ft_putchar(***str);
 	(**str)++;
+	flags->total_print += ft_putchar(***str);
 	(**str)++;
 	return (2);
 }

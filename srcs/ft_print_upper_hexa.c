@@ -6,7 +6,7 @@
 /*   By: cmariot <cmariot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/17 18:32:19 by cmariot           #+#    #+#             */
-/*   Updated: 2021/07/09 12:25:38 by cmariot          ###   ########.fr       */
+/*   Updated: 2021/07/11 22:53:49 by cmariot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ void	ft_print_hexa_maj(t_flags *flags)
 {
 	unsigned int	X;
 	char			*str;
+	char			*str0X;
 
 	if (flags->star_for_field_width)
 		ft_field_width_star(flags);
@@ -66,6 +67,13 @@ void	ft_print_hexa_maj(t_flags *flags)
 		ft_precision_star(flags);
 	X = va_arg(flags->args, unsigned int);
 	str = ft_uitoa_hexa_maj(X);
-	ft_print(str, flags);
+	if (flags->hashtag)
+	{
+		str0X = ft_strjoin("0X", str);
+		ft_print(str0X, flags);
+		free(str0X);
+	}
+	else
+		ft_print(str, flags);
 	free(str);
 }

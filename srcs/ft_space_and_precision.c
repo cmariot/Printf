@@ -6,7 +6,7 @@
 /*   By: cmariot <cmariot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/09 12:12:52 by cmariot           #+#    #+#             */
-/*   Updated: 2021/07/11 16:38:19 by cmariot          ###   ########.fr       */
+/*   Updated: 2021/07/11 23:32:34 by cmariot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,7 +102,7 @@ int	ft_len_of_print(char *str, t_flags *flags)
 					len--;
 			}
 		}
-		else if (!flags->precision)
+		else if (!flags->precision && !flags->hashtag)
 			while (*str++ == '0')
 				len--;
 	}
@@ -116,7 +116,7 @@ void	ft_print_precision(t_flags *flags, char **str, int initial_len)
 	i = 0;
 	if (flags->precision >= initial_len)
 	{
-		if (flags->pointer)
+		if (flags->pointer || flags->hashtag)
 			initial_len -= ft_print_0x(flags, &str);
 		if (**str == '-')
 		{
@@ -128,7 +128,7 @@ void	ft_print_precision(t_flags *flags, char **str, int initial_len)
 		while (flags->precision - initial_len - i++)
 			flags->total_print += ft_putchar('0');
 	}
-	else if (flags->precision == 0)
+	else if (flags->precision == 0 && !flags->hashtag)
 	{
 		if (flags->pointer)
 			ft_print_0x(flags, &str);

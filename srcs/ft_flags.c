@@ -6,7 +6,7 @@
 /*   By: cmariot <cmariot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/17 17:34:02 by cmariot           #+#    #+#             */
-/*   Updated: 2021/07/11 15:53:54 by cmariot          ###   ########.fr       */
+/*   Updated: 2021/07/11 22:55:11 by cmariot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,12 @@ unsigned int	ft_set_blank(t_flags *flags)
 	return (1);
 }
 
+unsigned int	ft_set_hashtag(t_flags *flags)
+{
+	flags->hashtag = 1;
+	return (1);
+}
+
 unsigned int	ft_chck_flgs(const char *frmt, t_flags *flgs, unsigned int i)
 {
 	while (!ft_is_in_type_list(frmt[i]) && frmt[i])
@@ -63,6 +69,8 @@ unsigned int	ft_chck_flgs(const char *frmt, t_flags *flgs, unsigned int i)
 			i = ft_set_prec(i, flgs, frmt);
 		else if (frmt[i] == ' ')
 			i += ft_set_blank(flgs);
+		else if (frmt[i] == '#')
+			i += ft_set_hashtag(flgs);
 		else
 			i++;
 	}

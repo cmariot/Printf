@@ -6,7 +6,7 @@
 /*   By: cmariot <cmariot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/11 15:49:42 by cmariot           #+#    #+#             */
-/*   Updated: 2021/07/11 15:51:03 by cmariot          ###   ########.fr       */
+/*   Updated: 2021/07/11 22:55:43 by cmariot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ t_flags	*ft_initialize_flags(t_flags *flags)
 	flags->minus_printed = 0;
 	flags->pointer = 0;
 	flags->blank = 0;
+	flags->hashtag = 0;
 	return (flags);
 }
 
@@ -40,5 +41,6 @@ t_flags	*ft_reset_flags(t_flags *flags)
 	flags->minus_printed = 0;
 	flags->pointer = 0;
 	flags->blank = 0;
+	flags->hashtag = 0;
 	return (flags);
 }
