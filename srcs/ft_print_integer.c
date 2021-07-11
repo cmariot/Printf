@@ -6,7 +6,7 @@
 /*   By: cmariot <cmariot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/17 19:23:50 by cmariot           #+#    #+#             */
-/*   Updated: 2021/07/09 17:49:37 by cmariot          ###   ########.fr       */
+/*   Updated: 2021/07/11 16:34:23 by cmariot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,11 @@ void	ft_print(char *str, t_flags *flags)
 	final_len = ft_len_of_print(str, flags);
 	if (flags->field_width && !flags->minus)
 		ft_space_before(flags, final_len, str);
+	if (flags->blank && ft_isdigit(*str) && !flags->minus_printed)
+	{
+		flags->total_print += ft_putchar(' ');
+		final_len++;
+	}
 	if (flags->dot)
 		ft_print_precision(flags, &str, initial_len);
 	if (flags->minus_printed)

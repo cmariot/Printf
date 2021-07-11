@@ -6,7 +6,7 @@
 #    By: cmariot <cmariot@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/05/27 18:57:32 by cmariot           #+#    #+#              #
-#    Updated: 2021/07/09 16:32:51 by cmariot          ###   ########.fr        #
+#    Updated: 2021/07/11 16:21:09 by cmariot          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,7 +34,8 @@ SRCS = srcs/ft_printf.c \
        srcs/ft_print_hexa.c \
        srcs/ft_print_upper_hexa.c \
        srcs/ft_print_addr.c \
-	   srcs/ft_print_percent.c
+	   srcs/ft_print_percent.c \
+	   srcs/ft_set_flags.c
 
 SRCS_OBJS = ${SRCS:.c=.o}
 
@@ -101,8 +102,11 @@ ${NAME}:		compil_srcs
 
 all: 			compil_srcs
 
+bonus:			compil_srcs
+				@printf "\x1b[32mYou can now use the flags \"-0.\"\x1b[0m\n"
+
 norme:
-				@norminette .
+				@norminette ./srcs ./includes ./libft
 				@printf "\x1b[32mThe norm is checked in this directory and all subdirectories.\x1b[0m\n"
 
 compil_libft:

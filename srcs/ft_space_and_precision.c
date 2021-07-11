@@ -6,7 +6,7 @@
 /*   By: cmariot <cmariot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/09 12:12:52 by cmariot           #+#    #+#             */
-/*   Updated: 2021/07/09 18:15:12 by cmariot          ###   ########.fr       */
+/*   Updated: 2021/07/11 16:38:19 by cmariot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,8 @@ void	ft_space_before(t_flags *flags, int len, char *str)
 		else if (flags->field_width > len)
 			while (flags->field_width-- - len)
 				flags->total_print += ft_putchar(c);
+		if (flags->precision >= len || flags->field_width > len)
+			flags->blank = 0;
 	}
 	flags->field_width = 0;
 }
