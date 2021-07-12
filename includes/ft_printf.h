@@ -6,7 +6,7 @@
 /*   By: cmariot <cmariot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/17 23:26:23 by cmariot           #+#    #+#             */
-/*   Updated: 2021/07/11 16:05:21 by cmariot          ###   ########.fr       */
+/*   Updated: 2021/07/12 14:50:21 by cmariot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@ typedef struct s_flags
 	int		minus_printed;
 	int		pointer;
 	int		blank;
+	int		hashtag;
+	int		plus;
 }	t_flags;
 
 /* This functiun works like the printf function. */
@@ -89,5 +91,8 @@ void			ft_print_precision(t_flags *flags, char **str, int initial_len);
 int				ft_print_0x(t_flags *flags, char ***str);
 t_flags			*ft_initialize_flags(t_flags *flags);
 t_flags			*ft_reset_flags(t_flags *flags);
+unsigned int	ft_set_zero(t_flags *flags);
+unsigned int	ft_set_star(t_flags *flags);
+unsigned int	ft_set_plus(t_flags *flags);
 
 #endif

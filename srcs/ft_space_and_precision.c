@@ -6,7 +6,7 @@
 /*   By: cmariot <cmariot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/09 12:12:52 by cmariot           #+#    #+#             */
-/*   Updated: 2021/07/11 23:32:34 by cmariot          ###   ########.fr       */
+/*   Updated: 2021/07/12 15:22:55 by cmariot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@ void	ft_space_before(t_flags *flags, int len, char *str)
 	if (flags->zero && ((!flags->dot) || (flags->precision < 0)))
 		c = ft_c_is_zero(flags, str);
 	i = 0;
+	if (flags->plus && ft_isdigit(*str))
+		len++;
 	if (flags->field_width > flags->precision)
 	{
 		if (flags->dot && !flags->precision)
@@ -106,6 +108,8 @@ int	ft_len_of_print(char *str, t_flags *flags)
 			while (*str++ == '0')
 				len--;
 	}
+	if (flags->hashtag && flags->precision >= len)
+		len += 2;
 	return (len);
 }
 
@@ -114,9 +118,11 @@ void	ft_print_precision(t_flags *flags, char **str, int initial_len)
 	int	i;
 
 	i = 0;
+	if (flags->hashtag)
+		initial_len -= ft_print_0x(flags, &str);
 	if (flags->precision >= initial_len)
 	{
-		if (flags->pointer || flags->hashtag)
+		if (flags->pointer)
 			initial_len -= ft_print_0x(flags, &str);
 		if (**str == '-')
 		{
@@ -128,7 +134,7 @@ void	ft_print_precision(t_flags *flags, char **str, int initial_len)
 		while (flags->precision - initial_len - i++)
 			flags->total_print += ft_putchar('0');
 	}
-	else if (flags->precision == 0 && !flags->hashtag)
+	else if (flags->precision == 0)
 	{
 		if (flags->pointer)
 			ft_print_0x(flags, &str);

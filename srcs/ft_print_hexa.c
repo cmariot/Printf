@@ -6,7 +6,7 @@
 /*   By: cmariot <cmariot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/17 18:32:19 by cmariot           #+#    #+#             */
-/*   Updated: 2021/07/11 22:53:37 by cmariot          ###   ########.fr       */
+/*   Updated: 2021/07/12 14:34:31 by cmariot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ void	ft_print_hexa(t_flags *flags)
 		ft_precision_star(flags);
 	x = va_arg(flags->args, unsigned int);
 	str = ft_uitoa_hexa(x);
-	if (flags->hashtag)
+	if (flags->hashtag && x != 0)
 	{
 		str0x = ft_strjoin("0x", str);
 		ft_print(str0x, flags);

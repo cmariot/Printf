@@ -6,7 +6,7 @@
 /*   By: cmariot <cmariot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/19 13:29:53 by cmariot           #+#    #+#             */
-/*   Updated: 2021/07/11 16:30:37 by cmariot          ###   ########.fr       */
+/*   Updated: 2021/07/12 15:28:54 by cmariot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,7 @@ int 	main(void)
 {
 	int		ret;
 	ret = ft_printf("Test de la fonction ft_printf\n");
-	ret = ft_printf("|% -3i|\n", 42);
-	ret = printf("|% -3i|\n", 42);
+
 //	ret = ft_printf("Test d'affichage char : %c\n", 'c');
 //	ret = ft_printf("Test d'affichage str : %s\n", "str");
 //	ret = ft_printf("Test d'affichage unsigned int : %u\n", 123456789);
@@ -260,5 +259,14 @@ int 	main(void)
 //	printf("%.p\n", NULL);
 //	ft_printf(".%.5p.\n", 0);
 //	printf(".%.5p.\n", 0);
+//	ret = ft_printf("|% -3i|\n", 42);
+//	ret = printf("|% -3i|\n", 42);
+//	ret = ft_printf(".%#x.\n", 0);
+//	ret = printf(".%#x.\n", 0);	
+//	ret = ft_printf("%5p\n", 42);
+//	ret = printf("%5p\n", (void *)42);
+//	ret = ft_printf(".%-7i.\n", 33);
+//	ret = printf(".%-7i.\n", 33);
+//	ret = ft_printf(".%+-5.4i.\n", 10);
 	return (0);
 }

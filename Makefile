@@ -6,7 +6,7 @@
 #    By: cmariot <cmariot@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/05/27 18:57:32 by cmariot           #+#    #+#              #
-#    Updated: 2021/07/11 16:21:09 by cmariot          ###   ########.fr        #
+#    Updated: 2021/07/12 15:25:02 by cmariot          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -103,7 +103,7 @@ ${NAME}:		compil_srcs
 all: 			compil_srcs
 
 bonus:			compil_srcs
-				@printf "\x1b[32mYou can now use the flags \"-0.\"\x1b[0m\n"
+				@printf "\x1b[32mYou can now use the flags \"-0.#+ and space\"\x1b[0m\n"
 
 norme:
 				@norminette ./srcs ./includes ./libft

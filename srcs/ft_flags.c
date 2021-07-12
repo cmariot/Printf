@@ -6,7 +6,7 @@
 /*   By: cmariot <cmariot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/17 17:34:02 by cmariot           #+#    #+#             */
-/*   Updated: 2021/07/11 22:55:11 by cmariot          ###   ########.fr       */
+/*   Updated: 2021/07/12 14:51:55 by cmariot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,24 +53,20 @@ unsigned int	ft_chck_flgs(const char *frmt, t_flags *flgs, unsigned int i)
 		if (frmt[i] == '-')
 			i += ft_set_minus(flgs);
 		else if (frmt[i] == '0')
-		{
-			flgs->zero = 1;
-			i++;
-		}
+			i += ft_set_zero(flgs);
 		else if (frmt[i] == '*')
-		{
-			flgs->star_for_field_width = 1;
-			i++;
-		}
+			i += ft_set_star(flgs);
 		else if (ft_isdigit(frmt[i]))
 			while (ft_isdigit(frmt[i]))
 				flgs->field_width = flgs->field_width * 10 + (frmt[i++] - '0');
 		else if (frmt[i] == '.')
 			i = ft_set_prec(i, flgs, frmt);
-		else if (frmt[i] == ' ')
+		else if (frmt[i] == ' ' && !flgs->plus)
 			i += ft_set_blank(flgs);
 		else if (frmt[i] == '#')
 			i += ft_set_hashtag(flgs);
+		else if (frmt[i] == '+')
+			i += ft_set_plus(flgs);
 		else
 			i++;
 	}
