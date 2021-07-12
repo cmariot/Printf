@@ -6,24 +6,11 @@
 /*   By: cmariot <cmariot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/09 12:12:52 by cmariot           #+#    #+#             */
-/*   Updated: 2021/07/12 15:22:55 by cmariot          ###   ########.fr       */
+/*   Updated: 2021/07/12 16:06:31 by cmariot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-
-char	ft_c_is_zero(t_flags *flags, char *str)
-{
-	char	c;
-
-	c = '0';
-	if (*str == '-')
-	{
-		flags->total_print += ft_putchar('-');
-		flags->minus_printed = 1;
-	}
-	return (c);
-}
 
 void	ft_space_before(t_flags *flags, int len, char *str)
 {
@@ -43,12 +30,7 @@ void	ft_space_before(t_flags *flags, int len, char *str)
 				if (flags->minus_printed)
 					len--;
 		if (flags->precision >= len)
-		{
-			if (*str == '-')
-				i++;
-			while ((flags->field_width - flags->precision) - i++)
-				flags->total_print += ft_putchar(c);
-		}
+			ft_print_fw(flags, str, i, c);
 		else if (flags->field_width > len)
 			while (flags->field_width-- - len)
 				flags->total_print += ft_putchar(c);
@@ -113,6 +95,14 @@ int	ft_len_of_print(char *str, t_flags *flags)
 	return (len);
 }
 
+int	ft_print_minus(t_flags *flags)
+{
+	if (!flags->minus_printed)
+		flags->total_print += ft_putchar('-');
+	flags->minus_printed = 1;
+	return (1);
+}
+
 void	ft_print_precision(t_flags *flags, char **str, int initial_len)
 {
 	int	i;
@@ -125,12 +115,7 @@ void	ft_print_precision(t_flags *flags, char **str, int initial_len)
 		if (flags->pointer)
 			initial_len -= ft_print_0x(flags, &str);
 		if (**str == '-')
-		{
-			if (!flags->minus_printed)
-				flags->total_print += ft_putchar('-');
-			initial_len--;
-			flags->minus_printed = 1;
-		}
+			initial_len -= ft_print_minus(flags);
 		while (flags->precision - initial_len - i++)
 			flags->total_print += ft_putchar('0');
 	}

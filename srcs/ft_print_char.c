@@ -6,7 +6,7 @@
 /*   By: cmariot <cmariot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/17 18:32:19 by cmariot           #+#    #+#             */
-/*   Updated: 2021/07/09 15:29:30 by cmariot          ###   ########.fr       */
+/*   Updated: 2021/07/12 15:58:52 by cmariot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,19 @@ int	ft_putchar(int c)
 	}
 	else
 		return (0);
+}
+
+char	ft_c_is_zero(t_flags *flags, char *str)
+{
+	char	c;
+
+	c = '0';
+	if (*str == '-')
+	{
+		flags->total_print += ft_putchar('-');
+		flags->minus_printed = 1;
+	}
+	return (c);
 }
 
 void	ft_print_space(t_flags *flags, int len)

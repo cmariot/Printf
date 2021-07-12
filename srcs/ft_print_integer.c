@@ -6,11 +6,35 @@
 /*   By: cmariot <cmariot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/17 19:23:50 by cmariot           #+#    #+#             */
-/*   Updated: 2021/07/12 15:21:54 by cmariot          ###   ########.fr       */
+/*   Updated: 2021/07/12 16:06:19 by cmariot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+
+void	ft_print_fw(t_flags *flags, char *str, int i, char c)
+{
+	if (*str == '-')
+		i++;
+	while ((flags->field_width - flags->precision) - i++)
+		flags->total_print += ft_putchar(c);
+}
+
+int	ft_flags_blank_or_plus(t_flags *flags)
+{
+	if (flags->blank)
+	{
+		flags->total_print += ft_putchar(' ');
+		return (1);
+	}
+	else if (flags->plus)
+	{
+		flags->total_print += ft_putchar('+');
+		return (1);
+	}
+	else
+		return (0);
+}
 
 void	ft_print(char *str, t_flags *flags)
 {
@@ -21,14 +45,8 @@ void	ft_print(char *str, t_flags *flags)
 	final_len = ft_len_of_print(str, flags);
 	if (flags->field_width && !flags->minus)
 		ft_space_before(flags, final_len, str);
-	if (ft_isdigit(*str) && !flags->minus_printed && (flags->blank || flags->plus))
-	{
-		if (flags->blank)
-			flags->total_print += ft_putchar(' ');
-		else if (flags->plus)
-			flags->total_print += ft_putchar('+');
-		final_len++;
-	}
+	if (ft_isdigit(*str) && !flags->minus_printed)
+		final_len += ft_flags_blank_or_plus(flags);
 	if (flags->dot)
 		ft_print_precision(flags, &str, initial_len);
 	if (flags->minus_printed)
