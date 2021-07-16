@@ -6,7 +6,7 @@
 #    By: cmariot <cmariot@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/05/27 18:57:32 by cmariot           #+#    #+#              #
-#    Updated: 2021/07/12 15:25:02 by cmariot          ###   ########.fr        #
+#    Updated: 2021/07/16 19:16:38 by cmariot          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -114,8 +114,6 @@ compil_libft:
 
 compil_srcs:	compil_libft ${SRCS_OBJS}
 				@ar rc ${PROGRAM_NAME} ${SRCS_OBJS} ${LIBFT_OBJS}
-				@rm ${SRCS_OBJS}
-				@rm ${LIBFT_OBJS}
 				@printf "\x1b[32mlibftprintf.a is ready.\x1b[0m\n"
 			
 test:			compil_srcs
