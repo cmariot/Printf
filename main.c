@@ -6,7 +6,7 @@
 /*   By: cmariot <cmariot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/19 13:29:53 by cmariot           #+#    #+#             */
-/*   Updated: 2021/07/17 19:36:45 by cmariot          ###   ########.fr       */
+/*   Updated: 2021/07/18 01:20:12 by cmariot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int 	main(void)
 {
 	int		ret;
-//	ret = ft_printf("Test de la fonction ft_printf\n");
+	ret = ft_printf("Test de la fonction ft_printf\n");
 
 //	ret = ft_printf("Test d'affichage char : %c\n", 'c');
 //	ret = ft_printf("Test d'affichage str : %s\n", "str");
