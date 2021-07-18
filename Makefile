@@ -6,7 +6,7 @@
 #    By: cmariot <cmariot@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/05/27 18:57:32 by cmariot           #+#    #+#              #
-#    Updated: 2021/07/16 19:16:38 by cmariot          ###   ########.fr        #
+#    Updated: 2021/07/18 03:06:40 by cmariot          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -119,6 +119,10 @@ compil_srcs:	compil_libft ${SRCS_OBJS}
 test:			compil_srcs
 				@${COMPILER} ${COMPILER_FLAGS} ${MAIN} ${PROGRAM_NAME} -o ${EXECUTABLE_NAME} -I ${INCLUDES_DIR} -I ${LIBFT_DIR}
 				@./ft_printf
+
+leaks:			compil_srcs
+				@${COMPILER} ${COMPILER_FLAGS} ${MAIN} ${PROGRAM_NAME} -o ${EXECUTABLE_NAME} -I ${INCLUDES_DIR} -I ${LIBFT_DIR}
+				@leaks -atExit -- ./${EXECUTABLE_NAME}
 
 clean:
 				@cd libft && make clean
