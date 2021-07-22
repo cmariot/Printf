@@ -6,7 +6,7 @@
 /*   By: cmariot <cmariot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/19 13:29:53 by cmariot           #+#    #+#             */
-/*   Updated: 2021/07/18 01:20:12 by cmariot          ###   ########.fr       */
+/*   Updated: 2021/07/21 00:35:55 by cmariot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int 	main(void)
 {
 	int		ret;
 	ret = ft_printf("Test de la fonction ft_printf\n");
-
+	ret = ft_printf("Vulnerable ? %x %x\n");
 //	ret = ft_printf("Test d'affichage char : %c\n", 'c');
 //	ret = ft_printf("Test d'affichage str : %s\n", "str");
 //	ret = ft_printf("Test d'affichage unsigned int : %u\n", 123456789);
@@ -268,9 +268,8 @@ int 	main(void)
 //	ret = ft_printf(".%-7i.\n", 33);
 //	ret = printf(".%-7i.\n", 33);
 //	ret = ft_printf(".%+-5.4i.\n", 10);
-	int hex;
-
-	hex = 42;
-	ret = ft_printf("Test d'affichage hexadecimal %x\n", hex);
+//	int hex;
+//	hex = 42;
+//	ret = ft_printf("Test d'affichage hexadecimal %x\n", hex);
 	return (0);
 }
