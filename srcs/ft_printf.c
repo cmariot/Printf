@@ -6,7 +6,7 @@
 /*   By: cmariot <cmariot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/17 23:26:05 by cmariot           #+#    #+#             */
-/*   Updated: 2021/07/26 16:44:37 by cmariot          ###   ########.fr       */
+/*   Updated: 2021/07/26 18:18:12 by cmariot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,15 +28,10 @@ int	ft_printf(const char *format, ...)
 	{
 		if (format[i] != '%')
 			flags->total_print += ft_putchar(format[i]);
-		// Sinon si le format est gere par la fonction ? 
 		else if (format[i++] == '%')
 		{
 			i = ft_chck_flgs(format, flags, i);
 			ft_chck_type(format, i, flags);
-		}
-		// Sinon erreur
-		else ()
-		{
 		}
 		i++;
 	}
