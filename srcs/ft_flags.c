@@ -6,7 +6,7 @@
 /*   By: cmariot <cmariot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/17 17:34:02 by cmariot           #+#    #+#             */
-/*   Updated: 2021/07/12 14:51:55 by cmariot          ###   ########.fr       */
+/*   Updated: 2021/07/26 16:44:35 by cmariot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,8 +67,6 @@ unsigned int	ft_chck_flgs(const char *frmt, t_flags *flgs, unsigned int i)
 			i += ft_set_hashtag(flgs);
 		else if (frmt[i] == '+')
 			i += ft_set_plus(flgs);
-		else
-			i++;
 	}
 	return (i);
 }
