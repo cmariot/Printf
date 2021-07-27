@@ -6,7 +6,7 @@
 /*   By: cmariot <cmariot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/17 23:26:23 by cmariot           #+#    #+#             */
-/*   Updated: 2021/07/12 16:06:50 by cmariot          ###   ########.fr       */
+/*   Updated: 2021/07/27 10:47:02 by cmariot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ t_flags			*ft_reset_flags(t_flags *flags);
 /* Print a char and return 1. */
 int				ft_putchar(int c);
 /* When we see a '%' we check the flags and put data in the structure. */
-unsigned int	ft_chck_flgs(const char *frmt, t_flags *flgs, unsigned int i);
+int				ft_chck_flgs(const char *frmt, t_flags *flgs, unsigned int i);
 /* We check if the specifier is correct. */
 int				ft_is_in_type_list(int c);
 /* We call the right function for the specifier. */
@@ -66,6 +66,7 @@ void			ft_print_hexa(t_flags *flags);
 void			ft_print_hexa_maj(t_flags *flags);
 /* If %p print the memory. */
 void			ft_print_addr(t_flags *flags);
+/* Print '%' if "%%" is given to ft_printf */
 void			ft_print_percent(t_flags *flags);
 /* If there is a flag that specifies a field width. */
 void			ft_print_space(t_flags *flags, int len);
@@ -89,12 +90,19 @@ int				ft_len_of_print(char *str, t_flags *flags);
 void			ft_print_precision(t_flags *flags, char **str, int initial_len);
 /* If a precision is given for an address */
 int				ft_print_0x(t_flags *flags, char ***str);
+/* Initialize all the elements of the structure to zero */
 t_flags			*ft_initialize_flags(t_flags *flags);
+/* Reset the elements of the structure to zero */
 t_flags			*ft_reset_flags(t_flags *flags);
+/* If a 0 is parsed set the zero element of the structure to 1 */
 unsigned int	ft_set_zero(t_flags *flags);
+/* If a * is parsed set the star element of the structure to 1 */
 unsigned int	ft_set_star(t_flags *flags);
+/* If a + is parsed set the plus element of the structure to 1 */
 unsigned int	ft_set_plus(t_flags *flags);
+/* If flag 0 print 0 instead spaces for the int field_width */
 char			ft_c_is_zero(t_flags *flags, char *str);
+/* Print the correct number of spaces for the field_width */
 void			ft_print_fw(t_flags *flags, char *str, int i, char c);
 
 #endif

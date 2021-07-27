@@ -6,7 +6,7 @@
 /*   By: cmariot <cmariot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/19 13:29:53 by cmariot           #+#    #+#             */
-/*   Updated: 2021/07/26 18:33:02 by cmariot          ###   ########.fr       */
+/*   Updated: 2021/07/27 10:09:47 by cmariot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -270,8 +270,12 @@ int 	main(void)
 //	int hex;
 //	hex = 42;
 //	ret = ft_printf("Test d'affichage hexadecimal %x\n", hex);
-	ret = ft_printf("..%o..");
+//	ret = ft_printf("..%o..");
 //	printf("%");
 
+	ret = ft_printf("%");
+	ret = ft_printf("%-0");
+//	printf("%");
+//	ret = ft_printf("%a");
 	return (0);
 }

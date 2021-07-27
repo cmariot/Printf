@@ -6,7 +6,7 @@
 /*   By: cmariot <cmariot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/17 17:34:02 by cmariot           #+#    #+#             */
-/*   Updated: 2021/07/26 18:33:34 by cmariot          ###   ########.fr       */
+/*   Updated: 2021/07/27 10:47:33 by cmariot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,9 +46,9 @@ unsigned int	ft_set_hashtag(t_flags *flags)
 	return (1);
 }
 
-unsigned int	ft_chck_flgs(const char *frmt, t_flags *flgs, unsigned int i)
+int	ft_chck_flgs(const char *frmt, t_flags *flgs, unsigned int i)
 {
-	while (!ft_is_in_type_list(frmt[i]) && frmt[i])
+	while (!ft_is_in_type_list(frmt[i]))
 	{
 		if (frmt[i] == '-')
 			i += ft_set_minus(flgs);
@@ -68,7 +68,7 @@ unsigned int	ft_chck_flgs(const char *frmt, t_flags *flgs, unsigned int i)
 		else if (frmt[i] == '+')
 			i += ft_set_plus(flgs);
 		else
-			return (i);
+			return (-1);
 	}
 	return (i);
 }
