@@ -6,7 +6,7 @@
 /*   By: cmariot <cmariot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/09 12:12:52 by cmariot           #+#    #+#             */
-/*   Updated: 2021/07/12 16:06:31 by cmariot          ###   ########.fr       */
+/*   Updated: 2021/07/28 18:08:59 by cmariot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,6 +92,8 @@ int	ft_len_of_print(char *str, t_flags *flags)
 	}
 	if (flags->hashtag && flags->precision >= len)
 		len += 2;
+	if (flags->blank && flags->field_width > len)
+		len += 1;
 	return (len);
 }
 
